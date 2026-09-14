@@ -21,12 +21,20 @@ function Index() {
       <img src={images.palace} alt="Cour royale lors d’une cérémonie à Illasso" className="hero-image" width={1920} height={1080} />
       <div className="hero-shade" />
       <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-[1440px] items-end px-6 pb-16 pt-32 lg:px-12 lg:pb-20">
-        <div className="max-w-4xl animate-fade-in">
-          <p className="eyebrow">Commune de Sakété — Royaume Mère</p>
-          <div className="mt-5 flex items-center gap-5"><img src={logoAsset.url} alt="" className="hidden size-24 rounded-full object-cover ring-1 ring-gold/60 sm:block" width={96} height={96} /><h1 className="font-serif text-6xl leading-none sm:text-8xl">ILLASSO</h1></div>
-          <p className="mt-5 font-serif text-2xl italic text-gold sm:text-3xl">Un trône, une mémoire, une terre à vivre.</p>
-          <p className="mt-7 max-w-2xl text-base leading-relaxed text-cream/75 sm:text-lg">Au cœur de Sakété, le Royaume Mère d’Illasso veille sur une mémoire vivante faite de transmission, de culture et de communauté.</p>
-          <div className="mt-9 flex flex-wrap gap-3"><Link to="/a-propos" className="button-primary">Découvrir le royaume <ArrowRight size={16} /></Link><a href="#mot-du-roi" className="button-secondary">Le mot du Roi</a></div>
+        <div className="grid w-full animate-fade-in gap-10 lg:grid-cols-[1fr_420px] lg:items-end lg:gap-16">
+          <div className="max-w-4xl">
+            <p className="eyebrow">Commune de Sakété — Royaume Mère</p>
+            <div className="mt-5 flex items-center gap-5"><img src={logoAsset.url} alt="" className="hidden size-24 rounded-full object-cover ring-1 ring-gold/60 sm:block" width={96} height={96} /><h1 className="font-serif text-6xl leading-none sm:text-8xl">ILLASSO</h1></div>
+            <p className="mt-5 font-serif text-2xl italic text-gold sm:text-3xl">Un trône, une mémoire, une terre à vivre.</p>
+            <p className="mt-7 max-w-2xl text-base leading-relaxed text-cream/75 sm:text-lg">Au cœur de Sakété, le Royaume Mère d’Illasso veille sur une mémoire vivante faite de transmission, de culture et de communauté.</p>
+            <div className="mt-9 flex flex-wrap gap-3"><Link to="/a-propos" className="button-primary">Découvrir le royaume <ArrowRight size={16} /></Link><a href="#mot-du-roi" className="button-secondary">Le mot du Roi</a></div>
+          </div>
+          <div className="hidden lg:block">
+            <div className="relative">
+              <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-gold/25 to-ember/15 blur-2xl" />
+              <img src={images.king} alt="Portrait du Roi d’Illasso" className="relative aspect-[4/5] w-full rounded-3xl border border-gold/30 object-cover shadow-2xl" width={1024} height={1280} />
+            </div>
+          </div>
         </div>
       </div>
     </section>

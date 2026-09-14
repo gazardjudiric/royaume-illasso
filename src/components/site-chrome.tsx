@@ -20,7 +20,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
           <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
             <img src={logoAsset.url} alt="Sceau du Royaume Mère de Sakété" className="size-11 rounded-full object-cover ring-1 ring-gold/50" width={44} height={44} />
             <span className="leading-tight">
-              <span className="block font-serif text-sm text-cream">Royaume Mère</span>
+              <span className="block font-serif text-sm text-ink">Royaume Mère</span>
               <span className="block text-[9px] uppercase tracking-[0.2em] text-gold">Sakété · Illasso</span>
             </span>
           </Link>
@@ -35,7 +35,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
         </nav>
         {open && (
           <div className="glass mx-auto mt-2 max-w-[1440px] rounded-2xl p-3 lg:hidden">
-            {links.map((link) => <Link key={link.to} to={link.to} className="block rounded-lg px-4 py-3 text-sm text-cream/75" activeProps={{ className: "block rounded-lg bg-gold/10 px-4 py-3 text-sm text-gold" }} onClick={() => setOpen(false)}>{link.label}</Link>)}
+            {links.map((link) => <Link key={link.to} to={link.to} className="block rounded-lg px-4 py-3 text-sm text-ink/75" activeProps={{ className: "block rounded-lg bg-gold/10 px-4 py-3 text-sm text-gold" }} onClick={() => setOpen(false)}>{link.label}</Link>)}
           </div>
         )}
       </header>
@@ -44,17 +44,17 @@ export function SiteChrome({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-[1344px] gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div className="flex items-start gap-4">
             <img src={logoAsset.url} alt="Emblème royal" loading="lazy" className="size-16 rounded-full object-cover" width={64} height={64} />
-            <div><p className="font-serif text-xl">Illasso</p><p className="mt-2 max-w-sm text-sm leading-relaxed text-cream/55">Royaume Mère de la Commune de Sakété, patrimoine vivant et lieu de transmission.</p></div>
+            <div><p className="font-serif text-xl">Illasso</p><p className="mt-2 max-w-sm text-sm leading-relaxed text-ink/55">Royaume Mère de la Commune de Sakété, patrimoine vivant et lieu de transmission.</p></div>
           </div>
-          <div><p className="eyebrow">Explorer</p><div className="mt-4 grid gap-2 text-sm text-cream/60"><Link to="/a-propos">À propos</Link><Link to="/galerie">Galerie</Link><Link to="/evenements">Événements</Link></div></div>
-          <div><p className="eyebrow">Correspondance</p><p className="mt-4 text-sm leading-relaxed text-cream/60">Palais royal d’Illasso<br />Commune de Sakété, Bénin</p><Link to="/contact" className="mt-4 inline-block text-sm text-gold">Nous écrire →</Link></div>
+          <div><p className="eyebrow">Explorer</p><div className="mt-4 grid gap-2 text-sm text-ink/60"><Link to="/a-propos">À propos</Link><Link to="/galerie">Galerie</Link><Link to="/evenements">Événements</Link></div></div>
+          <div><p className="eyebrow">Correspondance</p><p className="mt-4 text-sm leading-relaxed text-ink/60">Palais royal d’Illasso<br />Commune de Sakété, Bénin</p><Link to="/contact" className="mt-4 inline-block text-sm text-gold">Nous écrire →</Link></div>
         </div>
-        <div className="mx-auto mt-10 max-w-[1344px] border-t border-gold/15 pt-5 text-xs text-cream/40">© 2026 Royaume Mère d’Illasso — Sakété</div>
+        <div className="mx-auto mt-10 max-w-[1344px] border-t border-gold/15 pt-5 text-xs text-ink/40">© 2026 Royaume Mère d’Illasso — Sakété</div>
       </footer>
     </div>
   );
 }
 
 export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
-  return <section className="page-intro"><div className="mx-auto max-w-[1344px] px-6 lg:px-12"><p className="eyebrow">{eyebrow}</p><h1 className="mt-5 max-w-4xl font-serif text-4xl leading-tight sm:text-6xl">{title}</h1><div className="mt-6 max-w-2xl text-base leading-relaxed text-cream/65">{children}</div></div></section>;
+  return <section className="page-intro"><div className="mx-auto max-w-[1344px] px-6 lg:px-12"><p className="eyebrow">{eyebrow}</p><h1 className="mt-5 max-w-4xl font-serif text-4xl leading-tight sm:text-6xl">{title}</h1><div className="mt-6 max-w-2xl text-base leading-relaxed text-ink/65">{children}</div></div></section>;
 }

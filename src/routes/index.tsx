@@ -65,6 +65,29 @@ function Index() {
         </div>
       </section>
     ))}
+    <section className="section-shell section-alt">
+      <div className="mx-auto max-w-[1344px]">
+        <div className="flex items-end justify-between gap-4">
+          <div><p className="eyebrow">Galerie royale</p><h2 className="section-title">Un aperçu de la galerie</h2></div>
+          <Link to="/galerie" className="hidden text-sm text-gold sm:block">Voir toute la galerie →</Link>
+        </div>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {gallery.slice(0, 4).map((item) => (
+            <Link key={item.title} to="/galerie" className="glass edge group overflow-hidden rounded-2xl">
+              <figure className="overflow-hidden">
+                <img src={item.image} alt={`${item.title} — ${item.meta}`} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.05]" width={1280} height={960} />
+              </figure>
+              <div className="p-5">
+                <p className="text-xs uppercase tracking-[0.18em] text-gold">{item.category}</p>
+                <h3 className="mt-2 font-serif text-lg">{item.title}</h3>
+                <p className="mt-1 text-sm text-ink/55">{item.meta}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <Link to="/galerie" className="button-secondary mt-8 sm:hidden">Voir toute la galerie</Link>
+      </div>
+    </section>
     <section className="section-shell">
       <div className="mx-auto max-w-[1344px]"><div className="flex items-end justify-between gap-4"><div><p className="eyebrow">Agenda royal</p><h2 className="section-title">Prochains événements</h2></div><Link to="/evenements" className="hidden text-sm text-gold sm:block">Voir tous les événements →</Link></div><div className="mt-10 grid gap-6 md:grid-cols-3">{events.slice(0,3).map((event) => <article key={event.title} className="glass edge overflow-hidden rounded-2xl"><img src={event.image} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover" width={1280} height={800} /><div className="p-6"><p className="text-xs uppercase tracking-[0.18em] text-gold">{event.date}</p><h3 className="mt-3 font-serif text-xl">{event.title}</h3><p className="mt-3 text-sm leading-relaxed text-ink/55">{event.description}</p></div></article>)}</div><Link to="/evenements" className="button-primary mt-8 sm:hidden">Tous les événements</Link></div>
     </section>

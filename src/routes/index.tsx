@@ -22,7 +22,7 @@ function Index() {
       <div className="hero-shade" />
       <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-[1440px] items-end px-6 pb-16 pt-32 lg:px-12 lg:pb-20">
         <div className="grid w-full animate-fade-in gap-10 lg:grid-cols-[1fr_420px] lg:items-end lg:gap-16">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl text-cream">
             <p className="eyebrow">Commune de Sakété — Royaume Mère</p>
             <div className="mt-5 flex items-center gap-5"><img src={logoAsset.url} alt="" className="hidden size-24 rounded-full object-cover ring-1 ring-gold/60 sm:block" width={96} height={96} /><h1 className="font-serif text-6xl leading-none sm:text-8xl">ILLASSO</h1></div>
             <p className="mt-5 font-serif text-2xl italic text-gold sm:text-3xl">Un trône, une mémoire, une terre à vivre.</p>
@@ -49,6 +49,22 @@ function Index() {
         ["Histoire", "Les origines et les grandes étapes du royaume."], ["Culture", "Rites, langues, artisanat et cérémonies."], ["Le Roi", "Une fonction au service de la transmission."], ["Activités", "Audiences, visites et actions sociales."], ["Territoire", "Des lieux, villages et terres de mémoire."],
       ].map(([title = "Illasso", text = ""], index) => <Link key={title} to="/a-propos" hash={title === "Le Roi" ? "roi" : title.toLowerCase()} className="glass edge group rounded-2xl p-6"><span className="font-serif text-gold">0{index + 1}</span><h3 className="mt-8 font-serif text-xl">{title}</h3><p className="mt-3 text-sm leading-relaxed text-ink/55">{text}</p><span className="mt-6 inline-block text-sm text-gold opacity-70 transition group-hover:translate-x-1">En savoir plus →</span></Link>)}</div></div>
     </section>
+    {homeSections.map((section, index) => (
+      <section key={section.id} id={section.id} className={index % 2 === 1 ? "section-shell section-alt" : "section-shell"}>
+        <div className={`mx-auto grid max-w-[1344px] items-center gap-10 lg:grid-cols-2 lg:gap-16 ${index % 2 === 1 ? "lg:[&>figure]:order-2" : ""}`}>
+          <figure className="edge overflow-hidden rounded-3xl border border-gold/30">
+            <img src={section.image} alt={section.imageAlt} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.03]" width={1280} height={960} />
+          </figure>
+          <div>
+            <p className="eyebrow">{section.eyebrow}</p>
+            <h2 className="section-title">{section.title}</h2>
+            {section.paragraphs.map((paragraph) => <p key={paragraph} className="mt-5 text-base leading-relaxed text-ink/70">{paragraph}</p>)}
+            <ul className="mt-7 space-y-3">{section.points.map((point) => <li key={point} className="flex items-start gap-3 text-sm text-ink/65"><span className="mt-2 size-1.5 shrink-0 rounded-full bg-gold" />{point}</li>)}</ul>
+            <Link to="/a-propos" hash={section.id} className="mt-8 inline-flex items-center gap-2 text-sm text-gold">En savoir plus <ArrowRight size={15} /></Link>
+          </div>
+        </div>
+      </section>
+    ))}
     <section className="section-shell">
       <div className="mx-auto max-w-[1344px]"><div className="flex items-end justify-between gap-4"><div><p className="eyebrow">Agenda royal</p><h2 className="section-title">Prochains événements</h2></div><Link to="/evenements" className="hidden text-sm text-gold sm:block">Voir tous les événements →</Link></div><div className="mt-10 grid gap-6 md:grid-cols-3">{events.slice(0,3).map((event) => <article key={event.title} className="glass edge overflow-hidden rounded-2xl"><img src={event.image} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover" width={1280} height={800} /><div className="p-6"><p className="text-xs uppercase tracking-[0.18em] text-gold">{event.date}</p><h3 className="mt-3 font-serif text-xl">{event.title}</h3><p className="mt-3 text-sm leading-relaxed text-ink/55">{event.description}</p></div></article>)}</div><Link to="/evenements" className="button-primary mt-8 sm:hidden">Tous les événements</Link></div>
     </section>

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import logoAsset from "../assets/logo-illasso.jpeg.asset.json";
-import { events, homeSections, images } from "../lib/site-data";
+import { events, gallery, homeSections, images } from "../lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [

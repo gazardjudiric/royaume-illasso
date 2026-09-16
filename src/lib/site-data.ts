@@ -13,6 +13,72 @@ export const events = [
   { title: "Audience de la jeunesse", date: "12 juillet 2026", place: "Cour du palais", type: "Action sociale", status: "Passé", image: palace, description: "Dialogue autour de l’éducation, de la culture et de la préservation du patrimoine." },
 ];
 
+// Sections verticales de la page d'accueil.
+// Textes et images sont librement remplaçables : changez `image` par un autre
+// import d'illustration et `paragraphs` par le contenu officiel du palais.
+export const homeSections = [
+  {
+    id: "histoire",
+    eyebrow: "Chapitre 01",
+    title: "Histoire & origines",
+    image: palace,
+    imageAlt: "Palais royal d’Illasso",
+    paragraphs: [
+      "Le Royaume Mère d’Illasso puise ses racines dans les premières familles fondatrices installées sur les terres de l’actuelle commune de Sakété.",
+      "De génération en génération, la parole des anciens a fixé les alliances, les limites du territoire et les règles de la succession au trône.",
+    ],
+    points: ["Fondation par les familles d’origine", "Transmission orale de la mémoire", "Continuité du trône jusqu’à aujourd’hui"],
+  },
+  {
+    id: "culture",
+    eyebrow: "Chapitre 02",
+    title: "Culture & traditions",
+    image: craft,
+    imageAlt: "Atelier d’artisanat royal",
+    paragraphs: [
+      "Rites, chants, tambours, textiles et sculptures composent une culture vivante, pratiquée au quotidien et non conservée sous vitrine.",
+      "Chaque cérémonie réunit les lignées et rappelle le rôle de chacun dans l’équilibre du royaume.",
+    ],
+    points: ["Tambours et chants de cour", "Artisanat textile et sculpture", "Rites de passage et cérémonies"],
+  },
+  {
+    id: "roi",
+    eyebrow: "Chapitre 03",
+    title: "Le Roi",
+    image: king,
+    imageAlt: "Portrait du Roi d’Illasso",
+    paragraphs: [
+      "Le souverain est le gardien de la parole donnée : il arbitre, protège et représente le royaume auprès des autorités et des communautés voisines.",
+      "Sa fonction est d’abord un service — celui de transmettre intact ce qu’il a reçu.",
+    ],
+    points: ["Gardien de la parole et des coutumes", "Arbitrage et conciliation", "Représentation du royaume"],
+  },
+  {
+    id: "activites",
+    eyebrow: "Chapitre 04",
+    title: "Activités & actions",
+    image: festival,
+    imageAlt: "Fête culturelle du royaume",
+    paragraphs: [
+      "Audiences, visites de villages, actions en faveur de la jeunesse et de l’éducation : la vie du royaume se déploie tout au long de l’année.",
+      "Les grandes fêtes rassemblent la cour, les dignitaires et les familles autour d’un même héritage.",
+    ],
+    points: ["Audiences et conseils", "Actions sociales et éducatives", "Fêtes et cérémonies annuelles"],
+  },
+  {
+    id: "territoire",
+    eyebrow: "Chapitre 05",
+    title: "Territoire",
+    image: territory,
+    imageAlt: "Terres et villages d’Illasso",
+    paragraphs: [
+      "Les terres d’Illasso s’étendent autour du palais : places de rassemblement, quartiers, champs et villages voisins.",
+      "Chaque lieu porte un nom, une histoire et une fonction dans l’organisation du royaume.",
+    ],
+    points: ["Palais royal et sa cour", "Places de rassemblement", "Terres agricoles et villages"],
+  },
+];
+
 export const gallery = [
   { image: palace, title: "La cour royale", category: "Roi", meta: "Palais royal · cérémonie symbolique" },
   { image: king, title: "Portrait de souverain", category: "Roi", meta: "Illasso · portrait éditorial" },

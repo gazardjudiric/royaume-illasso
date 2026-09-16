@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import logoAsset from "../assets/logo-illasso.jpeg.asset.json";
-import { events, images } from "../lib/site-data";
+import { events, homeSections, images } from "../lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -26,7 +26,7 @@ function Index() {
             <p className="eyebrow">Commune de Sakété — Royaume Mère</p>
             <div className="mt-5 flex items-center gap-5"><img src={logoAsset.url} alt="" className="hidden size-24 rounded-full object-cover ring-1 ring-gold/60 sm:block" width={96} height={96} /><h1 className="font-serif text-6xl leading-none sm:text-8xl">ILLASSO</h1></div>
             <p className="mt-5 font-serif text-2xl italic text-gold sm:text-3xl">Un trône, une mémoire, une terre à vivre.</p>
-            <p className="mt-7 max-w-2xl text-base leading-relaxed text-ink/75 sm:text-lg">Au cœur de Sakété, le Royaume Mère d’Illasso veille sur une mémoire vivante faite de transmission, de culture et de communauté.</p>
+            <p className="mt-7 max-w-2xl text-base leading-relaxed text-cream/80 sm:text-lg">Au cœur de Sakété, le Royaume Mère d’Illasso veille sur une mémoire vivante faite de transmission, de culture et de communauté.</p>
             <div className="mt-9 flex flex-wrap gap-3"><Link to="/a-propos" className="button-primary">Découvrir le royaume <ArrowRight size={16} /></Link><a href="#mot-du-roi" className="button-secondary">Le mot du Roi</a></div>
           </div>
           <div className="hidden lg:block">

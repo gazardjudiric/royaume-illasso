@@ -86,3 +86,32 @@ export const gallery = [
   { image: craft, title: "La main et la mémoire", category: "Culture", meta: "Atelier royal · artisanat" },
   { image: territory, title: "Terres d’Illasso", category: "Territoire", meta: "Commune de Sakété · vue aérienne" },
 ];
+
+// Albums événementiels de la galerie. Les descriptions racontent le contexte
+// de prise de vue et peuvent être remplacées avec les archives officielles.
+export const galleryEvents = [
+  {
+    id: "fete-du-trone",
+    title: "Fête du Trône",
+    date: "14 août 2026",
+    place: "Palais royal d’Illasso",
+    description: "Ces images ont été réalisées pendant les préparatifs et les temps forts de la Fête du Trône. Elles suivent l’arrivée des dignitaires, les tambours de cour et le rassemblement des familles autour du palais.",
+    photos: [gallery[2], gallery[0], gallery[1], gallery[4]],
+  },
+  {
+    id: "rencontre-des-artisans",
+    title: "Rencontre des artisans",
+    date: "26 septembre 2026",
+    place: "Place du marché royal",
+    description: "Cette série documente une journée de transmission consacrée aux gestes, aux matières et aux motifs d’Illasso. Les photographies ont été prises au fil des démonstrations et des échanges avec les artisans.",
+    photos: [gallery[3], gallery[1], gallery[2]],
+  },
+  {
+    id: "journee-du-territoire",
+    title: "Journée du territoire",
+    date: "18 octobre 2026",
+    place: "Illasso et villages voisins",
+    description: "Prises lors d’une visite des terres du royaume, ces images retracent le parcours entre le palais, les espaces de rassemblement et les villages voisins, en présence des sages et des communautés.",
+    photos: [gallery[4], gallery[0], gallery[3]],
+  },
+];

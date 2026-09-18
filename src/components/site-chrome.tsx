@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import logoAsset from "../assets/logo-illasso.jpeg.asset.json";
@@ -11,20 +11,10 @@ const links = [
   { to: "/contact" as const, label: "Contact" },
 ];
 
-const pageByPath: Record<string, string> = {
-  "/": "accueil",
-  "/a-propos": "a-propos",
-  "/galerie": "galerie",
-  "/evenements": "evenements",
-  "/contact": "contact",
-};
-
 export function SiteChrome({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const page = pageByPath[pathname] ?? "accueil";
   return (
-    <div data-page={page} className="min-h-screen overflow-hidden bg-background text-foreground">
+    <div className="min-h-screen overflow-hidden bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 lg:px-8">
         <nav className="glass edge mx-auto flex max-w-[1440px] items-center justify-between rounded-2xl px-4 py-3 lg:px-6" aria-label="Navigation principale">
           <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>

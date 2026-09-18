@@ -157,13 +157,6 @@
   }
   html { scroll-behavior: smooth; }
   button, a, input, textarea { outline-color: var(--gold); }
-
-  /* Chaque page porte sa propre teinte de fond, toujours dans la famille parchemin */
-  [data-page="accueil"]   { --background: oklch(0.965 0.018 86); }
-  [data-page="a-propos"]  { --background: oklch(0.955 0.026 70); }
-  [data-page="galerie"]   { --background: oklch(0.972 0.014 96); }
-  [data-page="evenements"]{ --background: oklch(0.945 0.032 82); }
-  [data-page="contact"]   { --background: oklch(0.958 0.022 58); }
 }
 
 @utility glass {

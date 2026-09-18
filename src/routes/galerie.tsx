@@ -41,6 +41,7 @@ function Gallery() {
             </header>
             <div className={eventIndex === 0 ? "grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4" : "grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-6"}>
               {event.photos.map((photo, photoIndex) => {
+                if (!photo) return null;
                 const firstAlbumClass = photoIndex === 0 ? "col-span-2 row-span-2 aspect-square" : photoIndex === 3 ? "col-span-2 aspect-[2/1]" : "aspect-square";
                 const laterAlbumClass = photoIndex === 0 ? "col-span-2 aspect-[4/3] lg:col-span-3" : photoIndex === 1 ? "col-span-1 aspect-[3/4] lg:col-span-1" : "col-span-1 aspect-[3/4] lg:col-span-2";
                 return <Button key={`${event.id}-${photo.title}`} type="button" variant="ghost" onClick={() => setSelected(photo)} aria-label={`Agrandir : ${photo.title}`} className={`gallery-mosaic group relative h-auto overflow-hidden p-0 ${eventIndex === 0 ? firstAlbumClass : laterAlbumClass}`}>

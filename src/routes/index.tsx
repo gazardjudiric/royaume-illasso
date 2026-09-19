@@ -38,21 +38,21 @@ function Index() {
         </div>
       </div>
     </section>
-    <section id="mot-du-roi" className="section-shell">
+    <section id="mot-du-roi" className="section-shell tone-cream section-reveal">
       <div className="glass edge mx-auto grid max-w-[1344px] gap-8 rounded-3xl p-7 md:grid-cols-[240px_1fr] md:p-10">
         <img src={images.king} alt="Portrait éditorial du Roi d’Illasso" loading="lazy" className="aspect-[4/5] w-full rounded-2xl object-cover" width={1024} height={1280} />
         <div className="self-center"><p className="eyebrow">Le mot du Roi</p><blockquote className="mt-5 font-serif text-2xl leading-relaxed sm:text-3xl">« Que la sagesse de nos aïeux guide chaque pas sur cette terre bénie. Nous n’héritons pas d’Illasso — nous le recevons, et nous le transmettons. »</blockquote><p className="mt-6 text-sm text-ink/55">Sa Majesté, Roi d’Illasso — Gardien de la parole et du territoire</p></div>
       </div>
     </section>
-    <section className="section-shell">
+    <section className="section-shell tone-gold section-reveal">
       <div className="mx-auto max-w-[1344px]"><p className="eyebrow">Découvrir Illasso</p><h2 className="section-title">Les chapitres d’un patrimoine vivant</h2><div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">{[
         ["Histoire", "Les origines et les grandes étapes du royaume."], ["Culture", "Rites, langues, artisanat et cérémonies."], ["Le Roi", "Une fonction au service de la transmission."], ["Activités", "Audiences, visites et actions sociales."], ["Territoire", "Des lieux, villages et terres de mémoire."],
       ].map(([title = "Illasso", text = ""], index) => <Link key={title} to="/a-propos" hash={["histoire", "culture", "roi", "activites", "territoire"][index] ?? "histoire"} className="glass edge group rounded-2xl p-6"><span className="font-serif text-gold">0{index + 1}</span><h3 className="mt-8 font-serif text-xl">{title}</h3><p className="mt-3 text-sm leading-relaxed text-ink/55">{text}</p><span className="mt-6 inline-block text-sm text-gold opacity-70 transition group-hover:translate-x-1">En savoir plus →</span></Link>)}</div></div>
     </section>
     {homeSections.map((section, index) => (
-      <section key={section.id} id={section.id} className={index % 2 === 1 ? "section-shell section-alt" : "section-shell"}>
+      <section key={section.id} id={section.id} className={`section-shell section-reveal ${["tone-ivory", "tone-ember", "tone-cream", "tone-ink", "tone-gold"][index] ?? "tone-ivory"}`}>
         <div className={`mx-auto grid max-w-[1344px] items-center gap-10 lg:grid-cols-2 lg:gap-16 ${index % 2 === 1 ? "lg:[&>figure]:order-2" : ""}`}>
-          <figure className="edge overflow-hidden rounded-3xl border border-gold/30">
+          <figure className="parallax-media edge overflow-hidden rounded-3xl border border-gold/30">
             <img src={section.image} alt={section.imageAlt} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.03]" width={1280} height={960} />
           </figure>
           <div>
@@ -65,7 +65,7 @@ function Index() {
         </div>
       </section>
     ))}
-    <section className="section-shell section-alt">
+    <section className="section-shell tone-photo section-reveal">
       <div className="mx-auto max-w-[1344px]">
         <div className="flex items-end justify-between gap-4">
           <div><p className="eyebrow">Galerie royale</p><h2 className="section-title">Un aperçu de la galerie</h2></div>
@@ -88,7 +88,7 @@ function Index() {
         <Link to="/galerie" className="button-secondary mt-8 sm:hidden">Voir toute la galerie</Link>
       </div>
     </section>
-    <section className="section-shell">
+    <section className="section-shell tone-cream section-reveal">
       <div className="mx-auto max-w-[1344px]"><div className="flex items-end justify-between gap-4"><div><p className="eyebrow">Agenda royal</p><h2 className="section-title">Prochains événements</h2></div><Link to="/evenements" className="hidden text-sm text-gold sm:block">Voir tous les événements →</Link></div><div className="mt-10 grid gap-6 md:grid-cols-3">{events.slice(0,3).map((event) => <article key={event.title} className="glass edge overflow-hidden rounded-2xl"><img src={event.image} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover" width={1280} height={800} /><div className="p-6"><p className="text-xs uppercase tracking-[0.18em] text-gold">{event.date}</p><h3 className="mt-3 font-serif text-xl">{event.title}</h3><p className="mt-3 text-sm leading-relaxed text-ink/55">{event.description}</p></div></article>)}</div><Link to="/evenements" className="button-primary mt-8 sm:hidden">Tous les événements</Link></div>
     </section>
   </>;

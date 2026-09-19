@@ -176,6 +176,14 @@
 @utility hero-hem { position: absolute; inset-inline: 0; bottom: 0; height: 5rem; background: linear-gradient(0deg, var(--parchment) 12%, color-mix(in oklab, var(--parchment) 55%, transparent) 55%, transparent); }
 @utility section-shell { position: relative; padding: 5rem 1.5rem; @media (min-width: 1024px) { padding-left: 3rem; padding-right: 3rem; } }
 @utility section-alt { background: color-mix(in oklab, var(--cream) 65%, white); border-block: 1px solid color-mix(in oklab, var(--gold) 20%, transparent); }
+@utility tone-ivory { background: var(--parchment); color: var(--ink); }
+@utility tone-cream { background: linear-gradient(135deg, color-mix(in oklab, var(--cream) 82%, white), color-mix(in oklab, var(--gold) 12%, white)); color: var(--ink); }
+@utility tone-gold { background: linear-gradient(145deg, color-mix(in oklab, var(--gold) 23%, var(--cream)), color-mix(in oklab, var(--ember) 9%, white)); color: var(--ink); }
+@utility tone-ember { --ink: oklch(0.96 0.025 84); background: linear-gradient(135deg, oklch(0.42 0.11 42), oklch(0.31 0.07 53)); color: var(--ink); }
+@utility tone-ink { --ink: oklch(0.96 0.025 84); background: linear-gradient(140deg, oklch(0.19 0.018 72), oklch(0.28 0.045 59)); color: var(--ink); }
+@utility tone-photo { --ink: oklch(0.97 0.025 84); background: linear-gradient(100deg, oklch(0.18 0.02 72 / 94%), oklch(0.27 0.05 52 / 88%)), url("./assets/illasso-palace-hero.jpg") center / cover fixed; color: var(--ink); }
+@utility section-reveal { animation: section-rise .75s both ease-out; animation-timeline: view(); animation-range: entry 8% cover 28%; }
+@utility parallax-media { overflow: hidden; & img { min-height: 112%; transform: translateY(-3%); transition: transform .7s ease; } &:hover img { transform: translateY(-3%) scale(1.035); } }
 @utility section-title { margin-top: 1rem; max-width: 50rem; font-family: var(--font-serif); font-size: 2.25rem; line-height: 1.2; @media (min-width: 640px) { font-size: 3rem; } }
 @utility page-intro { padding: 10rem 0 5rem; background: radial-gradient(circle at 80% 0%, color-mix(in oklab, var(--gold) 22%, transparent), transparent 45%); border-bottom: 1px solid color-mix(in oklab, var(--gold) 25%, transparent); }
 @utility button-primary { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; background: var(--gold); color: white; padding: .8rem 1.4rem; font-size: .875rem; font-weight: 600; transition: background .2s ease, transform .2s ease; &:hover { background: var(--ember); transform: translateY(-1px); } }
@@ -189,4 +197,25 @@
 @utility field-label { display: block; color: color-mix(in oklab, var(--ink) 70%, transparent); font-size: .8rem; }
 @utility field { margin-top: .55rem; width: 100%; border-radius: .65rem; border: 1px solid color-mix(in oklab, var(--gold) 30%, transparent); background: white; padding: .8rem 1rem; color: var(--ink); &:focus { border-color: var(--gold); outline: 1px solid var(--gold); } }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+@keyframes section-rise { from { opacity: 0; transform: translateY(2.25rem); } to { opacity: 1; transform: translateY(0); } }
+
+.tone-ink .glass,
+.tone-ember .glass,
+.tone-photo .glass {
+  background: linear-gradient(135deg, oklch(0.17 0.018 70 / 88%), oklch(0.28 0.05 48 / 78%));
+  border-color: color-mix(in oklab, var(--gold) 42%, transparent);
+}
+
+.tone-ink .gallery-mosaic,
+.tone-ember .gallery-mosaic,
+.tone-photo .gallery-mosaic {
+  background: oklch(0.2 0.02 70);
+}
+
+@media (max-width: 767px) {
+  .tone-photo { background-attachment: scroll; }
+  .parallax-media img { min-height: 100%; transform: none; }
+  .parallax-media:hover img { transform: scale(1.025); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-timeline: auto !important; transition-duration: .01ms !important; } .parallax-media img { transform: none !important; } }

@@ -199,6 +199,19 @@
 
 @keyframes section-rise { from { opacity: 0; transform: translateY(2.25rem); } to { opacity: 1; transform: translateY(0); } }
 
+.tone-ink .glass,
+.tone-ember .glass,
+.tone-photo .glass {
+  background: linear-gradient(135deg, oklch(0.17 0.018 70 / 88%), oklch(0.28 0.05 48 / 78%));
+  border-color: color-mix(in oklab, var(--gold) 42%, transparent);
+}
+
+.tone-ink .gallery-mosaic,
+.tone-ember .gallery-mosaic,
+.tone-photo .gallery-mosaic {
+  background: oklch(0.2 0.02 70);
+}
+
 @media (max-width: 767px) {
   .tone-photo { background-attachment: scroll; }
   .parallax-media img { min-height: 100%; transform: none; }

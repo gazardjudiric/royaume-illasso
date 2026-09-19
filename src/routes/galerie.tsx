@@ -23,16 +23,16 @@ function Gallery() {
 
   return <>
     <PageIntro eyebrow="Galerie" title="Les événements en images.">Chaque album rassemble les photographies d’un moment de la vie du royaume. Un court récit en précise le lieu, la date et les circonstances.</PageIntro>
-    <nav className="border-b border-gold/20 px-6 py-5 lg:px-12" aria-label="Albums de la galerie">
+    <nav className="tone-gold border-b border-gold/20 px-6 py-5 lg:px-12" aria-label="Albums de la galerie">
       <div className="mx-auto flex max-w-[1344px] gap-2 overflow-x-auto pb-1">
         {galleryEvents.map((event) => <a key={event.id} href={`#${event.id}`} className="filter-button shrink-0">{event.title}</a>)}
       </div>
     </nav>
-    <div className="mx-auto max-w-[1344px] px-6 py-16 lg:px-12 lg:py-24">
-      <div className="space-y-24 lg:space-y-32">
+    <div className="bg-background">
+      <div>
         {galleryEvents.map((event, eventIndex) => (
-          <section key={event.id} id={event.id} className="scroll-mt-28">
-            <header className="mb-10 max-w-3xl">
+          <section key={event.id} id={event.id} className={`section-shell section-reveal scroll-mt-28 ${["tone-cream", "tone-ink", "tone-gold"][eventIndex] ?? "tone-ivory"}`}>
+            <div className="mx-auto max-w-[1344px]"><header className="mb-10 max-w-3xl">
               <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 text-xs font-semibold uppercase text-gold sm:flex">
                 <span className="min-w-0 truncate">{event.date}</span><span className="size-1 shrink-0 rounded-full bg-gold/50"/><span className="min-w-0 text-right sm:text-left">{event.place}</span>
               </div>
@@ -49,7 +49,7 @@ function Gallery() {
                   <span className="absolute inset-x-0 bottom-0 bg-ink/70 p-4 text-left text-cream opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100"><span className="block font-serif text-base">{photo.title}</span><span className="mt-1 block text-xs text-cream/70">{photo.meta}</span></span>
                 </Button>;
               })}
-            </div>
+            </div></div>
           </section>
         ))}
       </div>

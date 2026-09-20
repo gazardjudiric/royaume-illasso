@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { PageIntro } from "../components/site-chrome";
-import { gallery, galleryEvents } from "../lib/site-data";
+import { gallery, galleryEvents, images } from "../lib/site-data";
 
 export const Route = createFileRoute("/galerie")({
   head: () => ({ meta: [{ title: "Galerie — Royaume d’Illasso" }, { name: "description", content: "Images, cérémonies, culture et territoire du Royaume Mère d’Illasso." }, { property: "og:title", content: "Galerie du Royaume d’Illasso" }, { property: "og:description", content: "Un regard photographique sur le patrimoine vivant d’Illasso." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/galerie" }] }), component: Gallery,
@@ -22,7 +22,7 @@ function Gallery() {
   }, [selected]);
 
   return <>
-    <PageIntro eyebrow="Galerie" title="Les événements en images.">Chaque album rassemble les photographies d’un moment de la vie du royaume. Un court récit en précise le lieu, la date et les circonstances.</PageIntro>
+    <PageIntro eyebrow="Galerie" title="Les événements en images." image={images.craft} imageAlt="Scène d’artisanat et de patrimoine du Royaume d’Illasso">Chaque album rassemble les photographies d’un moment de la vie du royaume. Un court récit en précise le lieu, la date et les circonstances.</PageIntro>
     <nav className="tone-gold border-b border-gold/20 px-6 py-5 lg:px-12" aria-label="Albums de la galerie">
       <div className="mx-auto flex max-w-[1344px] gap-2 overflow-x-auto pb-1">
         {galleryEvents.map((event) => <a key={event.id} href={`#${event.id}`} className="filter-button shrink-0">{event.title}</a>)}

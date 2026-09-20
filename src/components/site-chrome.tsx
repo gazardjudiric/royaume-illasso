@@ -55,6 +55,17 @@ export function SiteChrome({ children }: { children: ReactNode }) {
   );
 }
 
-export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
-  return <section className="page-intro"><div className="mx-auto max-w-[1344px] px-6 lg:px-12"><p className="eyebrow">{eyebrow}</p><h1 className="mt-5 max-w-4xl font-serif text-4xl leading-tight sm:text-6xl">{title}</h1><div className="mt-6 max-w-2xl text-base leading-relaxed text-ink/65">{children}</div></div></section>;
+export function PageIntro({ eyebrow, title, image, imageAlt, children }: { eyebrow: string; title: string; image: string; imageAlt: string; children: ReactNode }) {
+  return <section className="page-banner on-dark">
+    <img src={image} alt={imageAlt} className="page-banner-image" width={1600} height={900} />
+    <div className="page-banner-shade" />
+    <div className="relative z-10 mx-auto flex min-h-[inherit] max-w-[1344px] flex-col justify-end px-6 pb-10 pt-32 lg:px-12 lg:pb-14">
+      <p className="eyebrow">{eyebrow}</p>
+      <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight sm:text-6xl">{title}</h1>
+      <div className="mt-4 max-w-2xl text-sm leading-relaxed text-cream/80 sm:text-base">{children}</div>
+      <nav aria-label="Fil d’Ariane" className="mt-6 flex items-center gap-2 text-xs text-cream/65">
+        <Link to="/" className="transition-colors hover:text-gold">Accueil</Link><span aria-hidden="true">›</span><span aria-current="page" className="text-cream">{eyebrow}</span>
+      </nav>
+    </div>
+  </section>;
 }

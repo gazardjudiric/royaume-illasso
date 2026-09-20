@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Maximize2, Minus, Plus, RotateCcw, X } from "lucide-react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import mapAsset from "../assets/carte-palais-illasso-web.png.asset.json";
@@ -31,7 +32,7 @@ export function RoyalMapImage({ interactive = false }: { interactive?: boolean }
       {image}
       <span className="absolute bottom-4 right-4 grid size-11 place-items-center rounded-full bg-ink/85 text-cream shadow-lg transition group-hover:bg-gold" aria-hidden="true"><Maximize2 size={19} /></span>
     </Button>
-    {open && <div className="map-lightbox" role="dialog" aria-modal="true" aria-label="Carte officielle agrandie">
+    {open && createPortal(<div className="map-lightbox" role="dialog" aria-modal="true" aria-label="Carte officielle agrandie">
       <TransformWrapper initialScale={1} minScale={0.8} maxScale={6} centerOnInit wheel={{ step: 0.12 }} doubleClick={{ mode: "zoomIn", step: 0.8 }}>
         {({ zoomIn, zoomOut, resetTransform }) => <>
           <div className="map-lightbox-controls" aria-label="Commandes de la carte">
@@ -45,6 +46,6 @@ export function RoyalMapImage({ interactive = false }: { interactive?: boolean }
           </TransformComponent>
         </>}
       </TransformWrapper>
-    </div>}
+    </div>, document.body)}
   </>;
 }

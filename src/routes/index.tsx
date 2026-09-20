@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import logoAsset from "../assets/logo-illasso.jpeg.asset.json";
+import { RoyalMapImage } from "../components/royal-map-lightbox";
 import { events, gallery, homeSections, images } from "../lib/site-data";
 
 export const Route = createFileRoute("/")({
@@ -65,6 +66,20 @@ function Index() {
         </div>
       </section>
     ))}
+    <section className="section-shell tone-ivory section-reveal">
+      <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[minmax(300px,500px)_1fr] lg:gap-20">
+        <figure className="mx-auto w-full max-w-[500px] overflow-hidden border border-gold/30 bg-cream shadow-2xl">
+          <RoyalMapImage />
+        </figure>
+        <div className="max-w-xl">
+          <p className="eyebrow">Géographie & patrimoine</p>
+          <h2 className="section-title">Le Territoire Royal</h2>
+          <p className="mt-6 text-lg leading-relaxed text-ink/70">Le Palais Royal d’Illasso se situe dans l’arrondissement de Yoko, au cœur de la commune de Sakété, dans le département du Plateau au Bénin.</p>
+          <p className="mt-5 leading-relaxed text-ink/60">La carte officielle retrace les villages, les voies et les repères qui relient Illasso à son territoire historique.</p>
+          <Link to="/a-propos" hash="territoire" className="button-primary mt-8">Découvrir le territoire <ArrowRight size={16} /></Link>
+        </div>
+      </div>
+    </section>
     <section className="section-shell tone-photo section-reveal">
       <div className="mx-auto max-w-[1344px]">
         <div className="flex items-end justify-between gap-4">

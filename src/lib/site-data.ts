@@ -6,22 +6,12 @@ import palace from "../assets/illasso-palace-hero.jpg";
 
 export const images = { festival, craft, territory, king, palace };
 
-export type EventCategory = "Cérémonie" | "Culture" | "Communauté";
-export type RoyalEvent = { title: string; date: string; place: string; category: EventCategory; description: string; image?: string };
-
-// Dates au format AAAA-MM-JJ. Ajoutez `image` uniquement avec une photo propre à l’événement.
-export const events: RoyalEvent[] = [
-  { title: "Fête du Trône", date: "2026-08-14", place: "Palais royal d’Illasso", category: "Cérémonie", description: "Célébration annuelle réunissant la cour, les dignitaires et les familles du royaume." },
-  { title: "Rencontre des artisans", date: "2026-09-26", place: "Place du marché royal", category: "Culture", description: "Une journée consacrée aux savoir-faire, aux textiles, à la sculpture et à leur transmission." },
-  { title: "Journée du territoire", date: "2026-10-18", place: "Illasso et villages voisins", category: "Communauté", description: "Visite des communautés, échanges avec les sages et découverte des terres du royaume." },
-  { title: "Audience de la jeunesse", date: "2026-07-12", place: "Cour du palais", category: "Communauté", description: "Dialogue autour de l’éducation, de la culture et de la préservation du patrimoine." },
+export const events = [
+  { title: "Fête du Trône", date: "14 août 2026", place: "Palais royal d’Illasso", type: "Cérémonie officielle", status: "À venir", image: festival, description: "Célébration annuelle réunissant la cour, les dignitaires et les familles du royaume." },
+  { title: "Rencontre des artisans", date: "26 septembre 2026", place: "Place du marché royal", type: "Culture", status: "À venir", image: craft, description: "Une journée consacrée aux savoir-faire, aux textiles, à la sculpture et à leur transmission." },
+  { title: "Journée du territoire", date: "18 octobre 2026", place: "Illasso et villages voisins", type: "Visite", status: "À venir", image: territory, description: "Visite des communautés, échanges avec les sages et découverte des terres du royaume." },
+  { title: "Audience de la jeunesse", date: "12 juillet 2026", place: "Cour du palais", type: "Action sociale", status: "Passé", image: palace, description: "Dialogue autour de l’éducation, de la culture et de la préservation du patrimoine." },
 ];
-
-const todayKey = () => new Date().toLocaleDateString("en-CA");
-export const upcomingEvents = (list = events, today = todayKey()) => list.filter((e) => e.date >= today).sort((a, b) => a.date.localeCompare(b.date));
-export const pastEvents = (list = events, today = todayKey()) => list.filter((e) => e.date < today).sort((a, b) => b.date.localeCompare(a.date));
-export const eventDay = (date: string) => new Date(`${date}T12:00:00`).toLocaleDateString("fr-FR", { day: "2-digit" });
-export const eventMonth = (date: string) => new Date(`${date}T12:00:00`).toLocaleDateString("fr-FR", { month: "short", year: "numeric" });
 
 // Sections verticales de la page d'accueil.
 // Textes et images sont librement remplaçables : changez `image` par un autre
@@ -31,7 +21,7 @@ export const homeSections = [
     id: "histoire",
     eyebrow: "Chapitre 01",
     title: "Histoire & origines",
-    image: null as string | null, // aucune photo dédiée : fond texturé de la charte
+    image: palace,
     imageAlt: "Palais royal d’Illasso",
     paragraphs: [
       "Le Royaume Mère d’Illasso puise ses racines dans les premières familles fondatrices installées sur les terres de l’actuelle commune de Sakété.",
@@ -43,7 +33,7 @@ export const homeSections = [
     id: "culture",
     eyebrow: "Chapitre 02",
     title: "Culture & traditions",
-    image: craft as string | null,
+    image: craft,
     imageAlt: "Atelier d’artisanat royal",
     paragraphs: [
       "Rites, chants, tambours, textiles et sculptures composent une culture vivante, pratiquée au quotidien et non conservée sous vitrine.",
@@ -55,7 +45,7 @@ export const homeSections = [
     id: "roi",
     eyebrow: "Chapitre 03",
     title: "Le Roi",
-    image: null as string | null, // portrait déjà utilisé dans « Le mot du Roi »
+    image: king,
     imageAlt: "Portrait du Roi d’Illasso",
     paragraphs: [
       "Le souverain est le gardien de la parole donnée : il arbitre, protège et représente le royaume auprès des autorités et des communautés voisines.",
@@ -67,7 +57,7 @@ export const homeSections = [
     id: "activites",
     eyebrow: "Chapitre 04",
     title: "Activités & actions",
-    image: festival as string | null,
+    image: festival,
     imageAlt: "Fête culturelle du royaume",
     paragraphs: [
       "Audiences, visites de villages, actions en faveur de la jeunesse et de l’éducation : la vie du royaume se déploie tout au long de l’année.",
@@ -79,7 +69,7 @@ export const homeSections = [
     id: "territoire",
     eyebrow: "Chapitre 05",
     title: "Territoire",
-    image: territory as string | null,
+    image: territory,
     imageAlt: "Terres et villages d’Illasso",
     paragraphs: [
       "Les terres d’Illasso s’étendent autour du palais : places de rassemblement, quartiers, champs et villages voisins.",
@@ -90,11 +80,11 @@ export const homeSections = [
 ];
 
 export const gallery = [
-  { image: palace, title: "La cour royale", category: "Roi", meta: "Palais royal d’Illasso · 14 août 2026 · Fête du Trône" },
-  { image: king, title: "Portrait de souverain", category: "Roi", meta: "Cour du palais · 12 juillet 2026 · Audience de la jeunesse" },
-  { image: festival, title: "Tambours du royaume", category: "Cérémonies", meta: "Palais royal · 14 août 2026 · Fête du Trône" },
-  { image: craft, title: "La main et la mémoire", category: "Culture", meta: "Place du marché royal · 26 sept. 2026 · Rencontre des artisans" },
-  { image: territory, title: "Terres d’Illasso", category: "Territoire", meta: "Villages voisins · 18 oct. 2026 · Journée du territoire" },
+  { image: palace, title: "La cour royale", category: "Roi", meta: "Palais royal · cérémonie symbolique" },
+  { image: king, title: "Portrait de souverain", category: "Roi", meta: "Illasso · portrait éditorial" },
+  { image: festival, title: "Tambours du royaume", category: "Cérémonies", meta: "Sakété · fête culturelle" },
+  { image: craft, title: "La main et la mémoire", category: "Culture", meta: "Atelier royal · artisanat" },
+  { image: territory, title: "Terres d’Illasso", category: "Territoire", meta: "Commune de Sakété · vue aérienne" },
 ];
 
 // Albums événementiels de la galerie. Les descriptions racontent le contexte

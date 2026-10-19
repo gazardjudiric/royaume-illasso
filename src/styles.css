@@ -228,11 +228,3 @@
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-timeline: auto !important; transition-duration: .01ms !important; } .parallax-media img { transform: none !important; } }
-
-@utility royal-texture {
-  background-color: var(--ink);
-  background-image:
-    radial-gradient(circle at 30% 20%, color-mix(in oklab, var(--gold) 35%, transparent), transparent 55%),
-    radial-gradient(circle at 80% 90%, color-mix(in oklab, var(--ember) 40%, transparent), transparent 50%),
-    repeating-linear-gradient(45deg, color-mix(in oklab, var(--gold) 10%, transparent) 0 1px, transparent 1px 14px);
-}

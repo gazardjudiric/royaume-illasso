@@ -250,7 +250,7 @@ button[class*="w-9"], .icon-button { min-width: 44px; min-height: 44px; }
 .event-past { background: color-mix(in oklab, var(--cream) 40%, var(--parchment)); border-style: dashed; }
 .gallery-dialog { z-index: 80; width: calc(100vw - 2rem); max-width: 70rem; max-height: 94dvh; overflow: auto; padding-top: 3rem; }
 .gallery-dialog > button:last-child, .map-dialog > button:last-child { min-width: 44px; min-height: 44px; }
-.map-dialog { z-index: 90; position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; transform: none; padding: 0; border: none; border-radius: 0; background: var(--button-ink); }
+.map-dialog { translate: none !important; left: 0 !important; top: 0 !important; animation: none !important; z-index: 90; position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; transform: none; padding: 0; border: none; border-radius: 0; background: var(--button-ink); }
 .map-dialog > button:last-child { display: none; }
 .map-zoom-content img { max-width: 95vw; }
 @media (prefers-reduced-motion: reduce) { .section-reveal { opacity: 1; } }

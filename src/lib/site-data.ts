@@ -1,3 +1,4 @@
+import type { CalendarEvent } from "./event-calendar";
 import festival from "../assets/illasso-festival.jpg";
 import craft from "../assets/illasso-craft.jpg";
 import territory from "../assets/illasso-territory.jpg";
@@ -6,11 +7,11 @@ import palace from "../assets/illasso-palace-hero.jpg";
 
 export const images = { festival, craft, territory, king, palace };
 
-export const events = [
-  { title: "Fête du Trône", date: "14 août 2026", place: "Palais royal d’Illasso", type: "Cérémonie officielle", status: "À venir", image: festival, description: "Célébration annuelle réunissant la cour, les dignitaires et les familles du royaume." },
-  { title: "Rencontre des artisans", date: "26 septembre 2026", place: "Place du marché royal", type: "Culture", status: "À venir", image: craft, description: "Une journée consacrée aux savoir-faire, aux textiles, à la sculpture et à leur transmission." },
-  { title: "Journée du territoire", date: "18 octobre 2026", place: "Illasso et villages voisins", type: "Visite", status: "À venir", image: territory, description: "Visite des communautés, échanges avec les sages et découverte des terres du royaume." },
-  { title: "Audience de la jeunesse", date: "12 juillet 2026", place: "Cour du palais", type: "Action sociale", status: "Passé", image: palace, description: "Dialogue autour de l’éducation, de la culture et de la préservation du patrimoine." },
+export const events: CalendarEvent[] = [
+  { title: "Fête du Trône", dateISO: "2026-08-14", place: "Palais royal d’Illasso", category: "Cérémonie", description: "Célébration annuelle réunissant la cour, les dignitaires et les familles du royaume." },
+  { title: "Rencontre des artisans", dateISO: "2026-09-26", place: "Place du marché royal", category: "Culture", description: "Une journée consacrée aux savoir-faire, aux textiles, à la sculpture et à leur transmission." },
+  { title: "Journée du territoire", dateISO: "2026-10-18", place: "Illasso et villages voisins", category: "Communauté", description: "Visite des communautés et échanges avec les sages autour des terres du royaume." },
+  { title: "Audience de la jeunesse", dateISO: "2026-07-12", place: "Cour du palais", category: "Communauté", description: "Dialogue autour de l’éducation, de la culture et de la préservation du patrimoine." },
 ];
 
 // Sections verticales de la page d'accueil.
@@ -80,11 +81,11 @@ export const homeSections = [
 ];
 
 export const gallery = [
-  { image: palace, title: "La cour royale", category: "Roi", meta: "Palais royal · cérémonie symbolique" },
-  { image: king, title: "Portrait de souverain", category: "Roi", meta: "Illasso · portrait éditorial" },
-  { image: festival, title: "Tambours du royaume", category: "Cérémonies", meta: "Sakété · fête culturelle" },
-  { image: craft, title: "La main et la mémoire", category: "Culture", meta: "Atelier royal · artisanat" },
-  { image: territory, title: "Terres d’Illasso", category: "Territoire", meta: "Commune de Sakété · vue aérienne" },
+  { image: palace, title: "La cour royale", category: "Roi", meta: "Illustration du palais · lieu et date de prise de vue non renseignés" },
+  { image: king, title: "Portrait de souverain", category: "Roi", meta: "Portrait illustratif · lieu et date non renseignés" },
+  { image: festival, title: "Tambours du royaume", category: "Cérémonies", meta: "Scène de cérémonie illustrative · lieu et date non renseignés" },
+  { image: craft, title: "La main et la mémoire", category: "Culture", meta: "Scène d’artisanat illustrative · lieu et date non renseignés" },
+  { image: territory, title: "Terres d’Illasso", category: "Territoire", meta: "Paysage illustratif · lieu et date non renseignés" },
 ];
 
 // Albums événementiels de la galerie. Les descriptions racontent le contexte
@@ -95,7 +96,7 @@ export const galleryEvents = [
     title: "Fête du Trône",
     date: "14 août 2026",
     place: "Palais royal d’Illasso",
-    description: "Ces images ont été réalisées pendant les préparatifs et les temps forts de la Fête du Trône. Elles suivent l’arrivée des dignitaires, les tambours de cour et le rassemblement des familles autour du palais.",
+    description: "Sélection illustrative autour de ce rendez-vous du royaume. Les photographies officielles et leurs circonstances de prise de vue restent à renseigner.",
     photos: [gallery[2], gallery[0], gallery[1], gallery[4]],
   },
   {
@@ -103,7 +104,7 @@ export const galleryEvents = [
     title: "Rencontre des artisans",
     date: "26 septembre 2026",
     place: "Place du marché royal",
-    description: "Cette série documente une journée de transmission consacrée aux gestes, aux matières et aux motifs d’Illasso. Les photographies ont été prises au fil des démonstrations et des échanges avec les artisans.",
+    description: "Sélection illustrative autour de ce rendez-vous du royaume. Les photographies officielles et leurs circonstances de prise de vue restent à renseigner.",
     photos: [gallery[3], gallery[1], gallery[2]],
   },
   {
@@ -111,7 +112,7 @@ export const galleryEvents = [
     title: "Journée du territoire",
     date: "18 octobre 2026",
     place: "Illasso et villages voisins",
-    description: "Prises lors d’une visite des terres du royaume, ces images retracent le parcours entre le palais, les espaces de rassemblement et les villages voisins, en présence des sages et des communautés.",
+    description: "Sélection illustrative autour de ce rendez-vous du royaume. Les photographies officielles et leurs circonstances de prise de vue restent à renseigner.",
     photos: [gallery[4], gallery[0], gallery[3]],
   },
 ];

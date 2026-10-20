@@ -254,3 +254,6 @@ button[class*="w-9"], .icon-button { min-width: 44px; min-height: 44px; }
 .map-dialog > button:last-child { display: none; }
 .map-zoom-content img { max-width: 95vw; }
 @media (prefers-reduced-motion: reduce) { .section-reveal { opacity: 1; } }
+
+.text-primary { color: var(--readable-accent); }
+:is(.gallery-dialog, .map-dialog) button.bg-background { color: var(--foreground); }

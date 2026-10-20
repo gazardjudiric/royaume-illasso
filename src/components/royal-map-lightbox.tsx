@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-import { Maximize2, Minus, Plus, RotateCcw, X } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "./ui/dialog";
+import pdfAsset from "../assets/carte-palais-illasso.pdf.asset.json";
+import { Download, Minus, Plus, RotateCcw, X } from "lucide-react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import mapAsset from "../assets/carte-palais-illasso-web.png.asset.json";
 import { Button } from "./ui/button";
 
 const mapAlt = "Carte officielle du Palais Royal d’Illasso dans l’arrondissement de Yoko, commune de Sakété";
 
-export function RoyalMapImage({ interactive = false }: { interactive?: boolean }) {
+export function RoyalMapImage({ interactive = false, download = false }: { interactive?: boolean; download?: boolean }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -23,16 +24,16 @@ export function RoyalMapImage({ interactive = false }: { interactive?: boolean }
     };
   }, [open]);
 
-  const image = <img src={mapAsset.url} alt={mapAlt} className="block h-auto w-full object-contain" width={440} height={680} />;
+  const image = <img src={mapAsset.url} alt={mapAlt} className="block h-auto w-full object-contain" width={440} height={680} loading="lazy" />;
 
   if (!interactive) return image;
 
   return <>
     <Button type="button" variant="ghost" className="group relative h-auto w-full p-0" onClick={() => setOpen(true)} aria-label="Agrandir la carte officielle du Palais Royal d’Illasso">
       {image}
-      <span className="absolute bottom-4 right-4 grid size-11 place-items-center rounded-full bg-ink/85 text-cream shadow-lg transition group-hover:bg-gold" aria-hidden="true"><Maximize2 size={19} /></span>
     </Button>
-    {open && createPortal(<div className="map-lightbox" role="dialog" aria-modal="true" aria-label="Carte officielle agrandie">
+    {download && <div className="mt-4"><p className="text-sm leading-relaxed">Carte officielle du Palais Royal d’Illasso — arrondissement de Yoko, commune de Sakété</p><Button asChild variant="outline" className="mt-3 h-auto min-h-11 whitespace-normal"><a href={pdfAsset.url} download="carte-palais-illasso.pdf" target="_blank" rel="noopener noreferrer"><Download />Télécharger la carte (PDF)</a></Button></div>}
+    <Dialog open={open} onOpenChange={setOpen}><DialogContent className="map-dialog"><DialogTitle className="sr-only">Carte officielle agrandie</DialogTitle><DialogDescription className="sr-only">Carte du Palais Royal d’Illasso, avec zoom et déplacement.</DialogDescription>
       <TransformWrapper initialScale={1} minScale={0.8} maxScale={6} centerOnInit wheel={{ step: 0.12 }} doubleClick={{ mode: "zoomIn", step: 0.8 }}>
         {({ zoomIn, zoomOut, resetTransform }) => <>
           <div className="map-lightbox-controls" aria-label="Commandes de la carte">
@@ -46,6 +47,6 @@ export function RoyalMapImage({ interactive = false }: { interactive?: boolean }
           </TransformComponent>
         </>}
       </TransformWrapper>
-    </div>, document.body)}
+    </DialogContent></Dialog>
   </>;
 }

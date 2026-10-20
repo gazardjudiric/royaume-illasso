@@ -25,6 +25,7 @@
   --color-gold: var(--gold);
   --color-cream: var(--cream);
   --color-ember: var(--ember);
+  --color-readable-accent: var(--readable-accent);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -74,6 +75,8 @@
   --cream: oklch(0.94 0.03 85);
   --parchment: oklch(0.965 0.018 86);
   --ember: oklch(0.48 0.13 43);
+  --readable-accent: oklch(0.43 0.085 72);
+  --button-ink: oklch(0.19 0.018 72);
   --background: var(--parchment);
   --foreground: var(--ink);
   --card: oklch(0.99 0.01 88);
@@ -188,7 +191,7 @@
 @utility page-banner { position: relative; min-height: clamp(24rem, 48vh, 34rem); overflow: hidden; border-bottom: 3px solid var(--gold); background: var(--ink); }
 @utility page-banner-image { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; animation: banner-breathe 12s ease-out both; }
 @utility page-banner-shade { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in oklab, var(--ink) 88%, transparent), color-mix(in oklab, var(--ink) 48%, transparent) 65%, color-mix(in oklab, var(--ink) 64%, transparent)), linear-gradient(0deg, color-mix(in oklab, var(--ink) 72%, transparent), transparent 62%); }
-@utility button-primary { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; background: var(--gold); color: white; padding: .8rem 1.4rem; font-size: .875rem; font-weight: 600; transition: background .2s ease, transform .2s ease; &:hover { background: var(--ember); transform: translateY(-1px); } }
+@utility button-primary { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; background: var(--gold); color: var(--button-ink); padding: .8rem 1.4rem; font-size: .875rem; font-weight: 600; transition: background .2s ease, transform .2s ease; &:hover { background: var(--ember); color: var(--cream); transform: translateY(-1px); } }
 @utility button-secondary { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--cream) 70%, transparent); color: var(--cream); padding: .8rem 1.4rem; font-size: .875rem; transition: color .2s ease, border-color .2s ease; &:hover { color: var(--gold); border-color: var(--gold); } }
 @utility filter-button { border-radius: 999px; border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent); padding: .55rem 1rem; color: color-mix(in oklab, var(--ink) 70%, transparent); font-size: .78rem; background: color-mix(in oklab, white 70%, transparent); transition: all .2s ease; }
 @utility filter-active { border-color: var(--gold); background: color-mix(in oklab, var(--gold) 16%, transparent); color: var(--gold); }
@@ -228,3 +231,26 @@
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-timeline: auto !important; transition-duration: .01ms !important; } .parallax-media img { transform: none !important; } }
+
+/* Readability corrections preserve the brand palette and existing type scale. */
+:where(a, button, input, textarea, select):focus-visible { outline: 3px solid var(--readable-accent); outline-offset: 4px; }
+:where(a, button) { min-height: 44px; }
+nav a, footer a { display: inline-flex; align-items: center; }
+button[class*="w-9"], .icon-button { min-width: 44px; min-height: 44px; }
+[class*="text-ink/"] { color: color-mix(in oklab, var(--ink) 85%, transparent); }
+:is(.tone-ink, .tone-ember, .tone-photo, .hero-section, .page-banner) { --readable-accent: var(--cream); }
+:is(.tone-ink, .tone-ember, .tone-photo, .hero-section, .page-banner) .text-gold,
+:is(.tone-ink, .tone-ember, .tone-photo, .hero-section, .page-banner) .eyebrow { color: var(--cream); }
+:is(.tone-ivory, .tone-cream, .tone-gold, header, footer) :is(.text-gold, .eyebrow, .nav-link-active) { color: var(--readable-accent); }
+.filter-button, .filter-active { color: var(--readable-accent); min-height: 44px; }
+.button-primary { color: var(--button-ink); white-space: normal; }
+.quote-mark { position: absolute; top: -1.5rem; left: -1rem; font-family: var(--font-serif); font-size: 7rem; line-height: 1; color: var(--gold); opacity: .3; }
+.royal-image-slot { background: repeating-linear-gradient(45deg, transparent, transparent 18px, color-mix(in oklab, var(--gold) 12%, transparent) 18px, color-mix(in oklab, var(--gold) 12%, transparent) 19px), linear-gradient(135deg, var(--cream), var(--parchment)); color: var(--button-ink); }
+.event-card { color: var(--button-ink); }
+.event-past { background: color-mix(in oklab, var(--cream) 40%, var(--parchment)); border-style: dashed; }
+.gallery-dialog { z-index: 80; width: calc(100vw - 2rem); max-width: 70rem; max-height: 94dvh; overflow: auto; padding-top: 3rem; }
+.gallery-dialog > button:last-child, .map-dialog > button:last-child { min-width: 44px; min-height: 44px; }
+.map-dialog { z-index: 90; position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; transform: none; padding: 0; border: none; border-radius: 0; background: var(--button-ink); }
+.map-dialog > button:last-child { display: none; }
+.map-zoom-content img { max-width: 95vw; }
+@media (prefers-reduced-motion: reduce) { .section-reveal { opacity: 1; } }

@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "../components/ui/button";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "../components/ui/dialog";
 import { PageIntro } from "../components/site-chrome";
 import { gallery, galleryEvents, images } from "../lib/site-data";
 
@@ -10,50 +11,41 @@ export const Route = createFileRoute("/galerie")({
 });
 
 function Gallery() {
-  const [selected, setSelected] = useState<(typeof gallery)[number] | null>(null);
-
+  const [category, setCategory] = useState("Toutes");
+  const [selected, setSelected] = useState<string | null>(null);
+  const touchStart = useRef<number | null>(null);
+  const visiblePhotos = gallery.filter(photo => category === "Toutes" || photo.category === category);
+  const selectedIndex = visiblePhotos.findIndex(photo => photo.title === selected);
+  const photo = visiblePhotos[selectedIndex];
+  const move = (direction: number) => {
+    const next = visiblePhotos[(selectedIndex + direction + visiblePhotos.length) % visiblePhotos.length];
+    if (next) setSelected(next.title);
+  };
   useEffect(() => {
     if (!selected) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelected(null);
+    const handle = (event: KeyboardEvent) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      const next = visiblePhotos[(selectedIndex + (event.key === "ArrowRight" ? 1 : -1) + visiblePhotos.length) % visiblePhotos.length];
+      if (next) setSelected(next.title);
     };
-    document.addEventListener("keydown", closeOnEscape);
-    return () => document.removeEventListener("keydown", closeOnEscape);
-  }, [selected]);
-
+    window.addEventListener("keydown", handle);
+    return () => window.removeEventListener("keydown", handle);
+  }, [selected, selectedIndex, category]);
+  // A photograph is displayed in only one album; replace these illustrative slots with official archives.
+  const albums = galleryEvents.map((event, index) => ({ ...event, photos: index === 0 ? [gallery[2], gallery[0], gallery[1]] : index === 1 ? [gallery[3]] : [gallery[4]] }));
   return <>
-    <PageIntro eyebrow="Galerie" title="Les événements en images." image={images.craft} imageAlt="Scène d’artisanat et de patrimoine du Royaume d’Illasso">Chaque album rassemble les photographies d’un moment de la vie du royaume. Un court récit en précise le lieu, la date et les circonstances.</PageIntro>
-    <nav className="tone-gold border-b border-gold/20 px-6 py-5 lg:px-12" aria-label="Albums de la galerie">
-      <div className="mx-auto flex max-w-[1344px] gap-2 overflow-x-auto pb-1">
-        {galleryEvents.map((event) => <a key={event.id} href={`#${event.id}`} className="filter-button shrink-0">{event.title}</a>)}
-      </div>
-    </nav>
-    <div className="bg-background">
-      <div>
-        {galleryEvents.map((event, eventIndex) => (
-          <section key={event.id} id={event.id} className={`section-shell section-reveal scroll-mt-28 ${["tone-cream", "tone-ink", "tone-gold"][eventIndex] ?? "tone-ivory"}`}>
-            <div className="mx-auto max-w-[1344px]"><header className="mb-10 max-w-3xl">
-              <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 text-xs font-semibold uppercase text-gold sm:flex">
-                <span className="min-w-0 truncate">{event.date}</span><span className="size-1 shrink-0 rounded-full bg-gold/50"/><span className="min-w-0 text-right sm:text-left">{event.place}</span>
-              </div>
-              <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-5xl">{event.title}</h2>
-              <p className="mt-5 text-base leading-relaxed text-ink/65 sm:text-lg">{event.description}</p>
-            </header>
-            <div className={eventIndex === 0 ? "grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4" : "grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-6"}>
-              {event.photos.map((photo, photoIndex) => {
-                if (!photo) return null;
-                const firstAlbumClass = photoIndex === 0 ? "col-span-2 row-span-2 aspect-square" : photoIndex === 3 ? "col-span-2 aspect-[2/1]" : "aspect-square";
-                const laterAlbumClass = photoIndex === 0 ? "col-span-2 aspect-[4/3] lg:col-span-3" : photoIndex === 1 ? "col-span-1 aspect-[3/4] lg:col-span-1" : "col-span-1 aspect-[3/4] lg:col-span-2";
-                return <Button key={`${event.id}-${photo.title}`} type="button" variant="ghost" onClick={() => setSelected(photo)} aria-label={`Agrandir : ${photo.title}`} className={`gallery-mosaic group relative h-auto overflow-hidden p-0 ${eventIndex === 0 ? firstAlbumClass : laterAlbumClass}`}>
-                  <img src={photo.image} alt={photo.title} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" />
-                  <span className="absolute inset-x-0 bottom-0 bg-ink/70 p-4 text-left text-cream opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100"><span className="block font-serif text-base">{photo.title}</span><span className="mt-1 block text-xs text-cream/70">{photo.meta}</span></span>
-                </Button>;
-              })}
-            </div></div>
-          </section>
-        ))}
-      </div>
-    </div>
-    {selected && <div className="lightbox" role="dialog" aria-modal="true" aria-label={selected.title} onClick={() => setSelected(null)}><Button type="button" variant="outline" size="icon" className="absolute right-5 top-5 rounded-full" aria-label="Fermer" onClick={() => setSelected(null)}><X size={20}/></Button><div className="max-w-5xl" onClick={(event) => event.stopPropagation()}><img src={selected.image} alt={selected.title} className="max-h-[75vh] w-full object-contain"/><h2 className="mt-5 font-serif text-2xl text-cream">{selected.title}</h2><p className="mt-2 text-sm text-cream/65">{selected.meta}</p></div></div>}
+    <PageIntro eyebrow="Galerie" title="Les événements en images." image={images.craft} imageAlt="Illustration d’un atelier où un artisan travaille textiles et sculptures">Cérémonies, gestes et paysages du royaume. Les images présentées sont illustratives, en attendant les archives officielles.</PageIntro>
+    <nav className="tone-gold border-b border-gold/20 px-6 py-5 lg:px-12" aria-label="Catégories photographiques"><div className="mx-auto flex max-w-[1344px] flex-wrap gap-2">{["Toutes", ...new Set(gallery.map(photo => photo.category))].map(item => <Button key={item} variant="ghost" className={`filter-button h-auto ${item === category ? "filter-active" : ""}`} aria-pressed={item === category} onClick={() => setCategory(item)}>{item}</Button>)}</div></nav>
+    {albums.map((event, index) => {
+      const photos = event.photos.filter(p => p && (category === "Toutes" || p.category === category));
+      if (!photos.length) return null;
+      return <section key={event.id} className={`section-shell ${["tone-cream", "tone-ink", "tone-gold"][index]}`}><div className="mx-auto max-w-[1344px]"><header className="mb-10 max-w-3xl"><p className="text-xs">{event.date} · {event.place} · agenda éditorial</p><h2 className="mt-4 font-serif text-3xl leading-tight sm:text-5xl">{event.title}</h2><p className="mt-5 text-base leading-relaxed text-ink/65 sm:text-lg">{event.description}</p></header><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{photos.map((p, i) => p ? <figure key={p.title} className={photos.length > 1 && i === 0 ? "sm:col-span-2 lg:col-span-2" : ""}><Button variant="ghost" className="gallery-mosaic group block h-auto w-full overflow-hidden p-0" aria-label={`Agrandir : ${p.title}`} onClick={() => setSelected(p.title)}><img src={p.image} alt={`${p.title} : ${p.meta}`} loading="lazy" className={`${photos.length > 1 && i === 0 ? "aspect-[2/1]" : "aspect-[4/3]"} w-full object-cover transition duration-700 group-hover:scale-[1.04]`} /></Button><figcaption className="mt-4"><h3 className="font-serif text-lg">{p.title}</h3><p className="mt-2 text-sm leading-relaxed">{p.meta}</p></figcaption></figure> : null)}</div></div></section>;
+    })}
+    <Dialog open={Boolean(photo)} onOpenChange={open => { if (!open) setSelected(null); }}><DialogContent className="gallery-dialog tone-ink" onTouchStart={event => { touchStart.current = event.touches[0]?.clientX ?? null; }} onTouchEnd={event => { const end = event.changedTouches[0]?.clientX; if (touchStart.current !== null && end !== undefined && Math.abs(end - touchStart.current) > 50) move(end < touchStart.current ? 1 : -1); touchStart.current = null; }}>
+      <DialogTitle className="font-serif text-2xl">{photo?.title}</DialogTitle><DialogDescription className="text-sm text-ink">{photo?.meta}</DialogDescription>
+      {photo && <img src={photo.image} alt={`${photo.title} : ${photo.meta}`} className="max-h-[65dvh] w-full object-contain" />}
+      <div className="flex items-center justify-between gap-5"><Button variant="outline" size="icon" onClick={() => move(-1)} aria-label="Photo précédente"><ArrowLeft /></Button><p className="text-sm">{selectedIndex + 1} / {visiblePhotos.length}</p><Button variant="outline" size="icon" onClick={() => move(1)} aria-label="Photo suivante"><ArrowRight /></Button></div>
+    </DialogContent></Dialog>
   </>;
 }

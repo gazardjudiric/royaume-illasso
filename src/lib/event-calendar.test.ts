@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "bun:test";
 import { nextEvents, partitionEvents, todayInBenin, type CalendarEvent } from "./event-calendar";
 const event = (dateISO: string): CalendarEvent => ({ dateISO, title: dateISO, place: "Illasso", category: "Culture", description: "" });
 describe("agenda royal", () => {

@@ -1,9 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
-import { Button } from "./ui/button";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "./ui/dialog";
-import { officialDetails } from "../lib/official-details";
 import logoAsset from "../assets/logo-illasso.jpeg.asset.json";
 
 const links = [
@@ -11,12 +8,11 @@ const links = [
   { to: "/a-propos" as const, label: "À propos" },
   { to: "/galerie" as const, label: "Galerie" },
   { to: "/evenements" as const, label: "Événements" },
-
+  { to: "/contact" as const, label: "Contact" },
 ];
 
 export function SiteChrome({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
-  const [legalOpen, setLegalOpen] = useState(false);
   return (
     <div className="min-h-screen overflow-hidden bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 lg:px-8">
@@ -33,10 +29,9 @@ export function SiteChrome({ children }: { children: ReactNode }) {
               <Link key={link.to} to={link.to} activeOptions={{ exact: link.to === "/" }} className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>{link.label}</Link>
             ))}
           </div>
-          <div className="flex items-center gap-3"><Button asChild className="button-primary h-auto"><Link to="/contact" onClick={() => setOpen(false)}>Contact</Link></Button>
-          <Button variant="ghost" type="button" className="icon-button lg:hidden" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} onClick={() => setOpen((value) => !value)}>
+          <button type="button" className="icon-button lg:hidden" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} onClick={() => setOpen((value) => !value)}>
             {open ? <X size={19} /> : <Menu size={19} />}
-          </Button></div>
+          </button>
         </nav>
         {open && (
           <div className="glass mx-auto mt-2 max-w-[1440px] rounded-2xl p-3 lg:hidden">
@@ -54,14 +49,6 @@ export function SiteChrome({ children }: { children: ReactNode }) {
           <div><p className="eyebrow">Explorer</p><div className="mt-4 grid gap-2 text-sm text-ink/60"><Link to="/a-propos">À propos</Link><Link to="/galerie">Galerie</Link><Link to="/evenements">Événements</Link></div></div>
           <div><p className="eyebrow">Correspondance</p><p className="mt-4 text-sm leading-relaxed text-ink/60">Palais royal d’Illasso<br />Commune de Sakété, Bénin</p><Link to="/contact" className="mt-4 inline-block text-sm text-gold">Nous écrire →</Link></div>
         </div>
-        <div className="mx-auto mt-8 flex max-w-[1344px] flex-wrap items-center gap-5 text-sm">
-          {officialDetails.email && <a href={`mailto:${officialDetails.email}`} className="flex items-center gap-2"><Mail size={18} />{officialDetails.email}</a>}
-          {officialDetails.phone && <a href={`tel:${officialDetails.phone}`} className="flex items-center gap-2"><Phone size={18} />{officialDetails.phone}</a>}
-          {officialDetails.mapsUrl && <a href={officialDetails.mapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2"><MapPin size={18} />Voir sur la carte</a>}
-          {[{url: officialDetails.facebook, Icon: Facebook, label: "Facebook"}, {url: officialDetails.instagram, Icon: Instagram, label: "Instagram"}, {url: officialDetails.youtube, Icon: Youtube, label: "YouTube"}].map(({url, Icon, label}) => url ? <Button key={String(label)} asChild variant="ghost" size="icon"><a href={url} aria-label={String(label)} target="_blank" rel="noopener noreferrer"><Icon size={18} /></a></Button> : null)}
-          {officialDetails.legalText && <Button variant="link" onClick={() => setLegalOpen(true)}>Mentions légales</Button>}
-        </div>
-        <Dialog open={legalOpen} onOpenChange={setLegalOpen}><DialogContent><DialogTitle>Mentions légales</DialogTitle><DialogDescription className="whitespace-pre-line">{officialDetails.legalText}</DialogDescription></DialogContent></Dialog>
         <div className="mx-auto mt-10 max-w-[1344px] border-t border-gold/15 pt-5 text-xs text-ink/40">© 2026 Royaume Mère d’Illasso — Sakété</div>
       </footer>
     </div>

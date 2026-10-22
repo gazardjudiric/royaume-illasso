@@ -184,10 +184,19 @@ function Index() {
         </div>
       </div>
     </section>
-    <section id="mot-du-roi" className="section-shell tone-cream section-reveal">
-      <div className="glass edge mx-auto grid max-w-[1344px] gap-8 rounded-3xl p-7 md:grid-cols-[240px_1fr] md:p-10">
-        <img src={images.king} alt="Portrait éditorial du Roi d’Illasso" loading="lazy" className="aspect-[4/5] w-full rounded-2xl object-cover" width={1024} height={1280} />
-        <div className="self-center"><p className="eyebrow">Le mot du Roi</p><blockquote className="mt-5 font-serif text-2xl leading-relaxed sm:text-3xl">« Que la sagesse de nos aïeux guide chaque pas sur cette terre bénie. Nous n’héritons pas d’Illasso — nous le recevons, et nous le transmettons. »</blockquote><p className="mt-6 text-sm text-ink/55">Sa Majesté, Roi d’Illasso — Gardien de la parole et du territoire</p></div>
+    <section id="mot-du-roi" className="king-message-section section-shell section-reveal bg-white text-ink">
+      <div className="king-message-layout mx-auto grid max-w-[1344px] items-center gap-9 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-14 lg:gap-20">
+        <figure className="king-message-image-wrap mx-auto w-full max-w-[300px] overflow-hidden rounded-2xl">
+          <img src={images.king} alt="Portrait éditorial du Roi d’Illasso" loading="lazy" decoding="async" className="king-message-photo aspect-[4/5] w-full object-cover" width={1024} height={1280} />
+        </figure>
+        <div className="king-message-copy max-w-[900px] self-center">
+          <span className="king-message-mark block h-12 font-serif text-7xl leading-[.8] text-gold/40" aria-hidden="true">“</span>
+          <p className="eyebrow mt-4">Le mot du Roi</p>
+          <blockquote className="king-message-quote mt-5 font-serif text-[clamp(1.65rem,3.15vw,2.75rem)] leading-[1.45]">
+            Que la sagesse de nos aïeux guide chaque pas sur cette terre bénie. Nous n’héritons pas d’Illasso — nous le recevons, et nous le transmettons.
+          </blockquote>
+          <p className="mt-6 text-sm leading-relaxed text-ink/60">Sa Majesté, Roi d’Illasso — Gardien de la parole et du territoire</p>
+        </div>
       </div>
     </section>
     <section className="section-shell tone-gold section-reveal">

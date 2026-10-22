@@ -379,41 +379,43 @@
 
 
 .king-message-motif-layer { z-index: 0; }
-.king-message-motif {
+.king-message-watermark {
   position: absolute;
-  width: clamp(5.5rem, 10vw, 9rem);
+  display: block;
   height: auto;
-  color: var(--gold);
-  opacity: .12;
-  filter: drop-shadow(0 8px 18px color-mix(in oklab, var(--gold) 14%, transparent));
-  animation: king-motif-drift 15s ease-in-out infinite alternate;
+  object-fit: contain;
+  opacity: .11;
+  mix-blend-mode: multiply;
+  filter: saturate(.72);
+  animation: king-motif-drift 16s ease-in-out infinite alternate;
 }
-.king-message-motif-throne {
-  left: 2.5%;
+.king-message-watermark-throne {
+  left: 2%;
   top: 18%;
-  width: clamp(5rem, 8vw, 7.5rem);
+  width: clamp(5.5rem, 8vw, 7.5rem);
   animation-delay: -5s;
 }
-.king-message-motif-crown {
+.king-message-watermark-crown {
   right: 2.5%;
-  top: 12%;
+  top: 8%;
+  width: clamp(4.5rem, 6vw, 6.25rem);
 }
-.king-message-motif-palace {
-  right: 3%;
-  bottom: -1rem;
-  width: clamp(7rem, 14vw, 12rem);
+.king-message-watermark-palace {
+  right: 2%;
+  bottom: -.5rem;
+  width: clamp(9rem, 18vw, 16rem);
   animation-delay: -9s;
 }
 @keyframes king-motif-drift {
   from { transform: translateY(0); }
-  to { transform: translateY(-8px); }
+  to { transform: translateY(-7px); }
 }
 @media (max-width: 767px) {
-  .king-message-motif { opacity: .075; }
-  .king-message-motif-throne { left: -1rem; top: 24%; }
-  .king-message-motif-crown { right: -1rem; top: 8%; }
-  .king-message-motif-palace { right: -1.5rem; bottom: -1rem; }
+  .king-message-watermark { opacity: .065; }
+  .king-message-watermark-throne { left: -1.25rem; top: 24%; }
+  .king-message-watermark-crown { right: -.5rem; top: 8%; }
+  .king-message-watermark-palace { right: -1.5rem; bottom: -.5rem; width: clamp(8rem, 36vw, 11rem); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .king-message-motif { animation: none; }
+  .king-message-watermark { animation: none; }
 }

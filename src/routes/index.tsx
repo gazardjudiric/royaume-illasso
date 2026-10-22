@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Armchair, ArrowRight, Castle, ChevronLeft, ChevronRight, Crown } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import logoAsset from "../assets/logo-illasso.jpeg.asset.json";
+import throneWatermark from "../assets/royal-throne-watermark.webp";
+import crownWatermark from "../assets/royal-crown-watermark.webp";
+import palaceWatermark from "../assets/royal-palace-watermark.webp";
 import { RoyalMapImage } from "../components/royal-map-lightbox";
 import { events, gallery, homeSections, images } from "../lib/site-data";
 
@@ -186,9 +189,9 @@ function Index() {
     </section>
     <section id="mot-du-roi" className="king-message-section section-shell section-reveal overflow-hidden bg-white text-ink">
       <div className="king-message-motif-layer pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <Armchair className="king-message-motif king-message-motif-throne" strokeWidth={1} />
-        <Crown className="king-message-motif king-message-motif-crown" strokeWidth={1} />
-        <Castle className="king-message-motif king-message-motif-palace" strokeWidth={1} />
+        <img src={throneWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-throne" />
+        <img src={crownWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-crown" />
+        <img src={palaceWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-palace" />
       </div>
       <div className="king-message-layout relative z-10 mx-auto grid max-w-[1344px] items-center gap-9 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-14 lg:gap-20">
         <figure className="king-message-image-wrap mx-auto w-full max-w-[300px] overflow-hidden rounded-2xl">

@@ -165,14 +165,14 @@ function About() {
           </figure>
         </div>
         <div className="glass edge rounded-3xl p-7 md:p-9">
-          <p className="eyebrow">Territoire</p><h2 className="mt-5 font-serif text-3xl">Sakété, entre rivières et palmeraies</h2>
-          <p className="mt-5 leading-relaxed text-ink/70">{aboutChapterSummaries.territory}</p>
-          <p className="mt-4 text-sm leading-relaxed text-ink/65">La commune est limitée au nord par Adja-Ouèrè, au sud par Avrankou et Missérété, à l’est par la frontière du Nigeria et Ifangni, et à l’ouest par Adjohoun et Bonou. Elle se trouve à une soixantaine de kilomètres de Cotonou, dans le sud-ouest du Plateau.</p>
+          <p className="eyebrow">Territoire</p><h2 className="mt-5 font-serif text-3xl">Repères sur la commune</h2>
+          <p className="mt-5 leading-relaxed text-ink/70">
+            Sakété se situe au sud-ouest du département du Plateau, à une soixantaine de kilomètres de Cotonou. La commune couvre environ 700 km². Elle est bordée au nord par Adja-Ouèrè, au sud par Avrankou et Missérété, à l’est par le Nigeria et Ifangni, et à l’ouest par Adjohoun et Bonou. En 2020, sa population était estimée à plus de 115 000 habitants. La commune compte 81 villages et quartiers de ville répartis dans six (06) arrondissements (Aguidi, Ita-Djèbou, Sakété I, Sakété II, Takon et Yoko).
+          </p>
           <dl className="mt-8 divide-y divide-gold/15">
             {[["Superficie", "700 km²"], ["Arrondissements", "6"], ["Villages et quartiers", "81"], ["Distance de Cotonou", "Environ 60 km"], ["Forêt classée", "Environ 60 ha"]].map(([key, value]) => <div key={key} className="flex justify-between gap-4 py-3"><dt className="text-sm text-ink/50">{key}</dt><dd className="text-right text-sm font-semibold">{value}</dd></div>)}
           </dl>
-          <h3 className="mt-8 font-serif text-xl">Un paysage façonné par l’eau et les saisons</h3>
-          <p className="mt-3 text-sm leading-relaxed text-ink/65">Aguidi, Iya-Nsa et Odo Yansa, les cours d’eau d’Oké Awo et de Takon, ainsi que les marais d’Igba et d’Akpéchi irriguent les terres et structurent les paysages. Au sud, les sols sont sablo-argileux et légèrement ferralitiques ; au nord, rouges et profonds ; au centre, argilo-sablonneux et hydromorphes. Les palmeraies et la forêt classée d’environ 60 hectares témoignent de la richesse végétale du territoire.</p>
+          
         </div>
       </div>
     </section>

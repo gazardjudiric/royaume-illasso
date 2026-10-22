@@ -388,7 +388,7 @@
   opacity: .105;
   mix-blend-mode: multiply;
   filter: saturate(.72);
-  animation: king-motif-drift 6.5s ease-in-out infinite alternate;
+  animation: king-motif-drift 4.2s ease-in-out infinite alternate;
 }
 .king-message-watermark-throne {
   left: -4rem;
@@ -409,7 +409,7 @@
 }
 @keyframes king-motif-drift {
   from { transform: translateY(0); }
-  to { transform: translateY(-19px); }
+  to { transform: translateY(-26px); }
 }
 
 section.section-shell:not(.king-message-section)::before {
@@ -424,22 +424,27 @@ section.section-shell:not(.king-message-section)::before {
   background-size: clamp(5rem, 8vw, 8.5rem) auto, clamp(5rem, 8vw, 8.5rem) auto, clamp(5rem, 8vw, 8.5rem) auto, clamp(5rem, 8vw, 8.5rem) auto;
   opacity: .065;
   mix-blend-mode: multiply;
-  animation: king-motif-drift 6.5s ease-in-out infinite alternate;
+  animation: king-motif-drift 4.2s ease-in-out infinite alternate;
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n + 1)::before {
   background-image: url("./assets/royal-throne-watermark.webp"), url("./assets/royal-crown-watermark.webp"), url("./assets/royal-palace-watermark.webp"), url("./assets/royal-scepter-watermark.webp");
+  background-position: left 1rem top 8%, right 1.5rem top 22%, left 1rem bottom 18%, right 1.5rem bottom 5%;
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n + 2)::before {
   background-image: url("./assets/royal-fan-watermark.webp"), url("./assets/royal-parasol-watermark.webp"), url("./assets/royal-drum-watermark.webp"), url("./assets/royal-gong-watermark.webp");
+  background-position: left 1rem top 25%, right 1rem top 6%, left 1rem bottom 6%, right 1rem bottom 24%;
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n + 3)::before {
   background-image: url("./assets/royal-calabash-watermark.webp"), url("./assets/royal-flywhisk-watermark.webp"), url("./assets/royal-emblem-watermark.webp"), url("./assets/royal-coronation-watermark.webp");
+  background-position: left 1rem top 4rem, right 1rem top 32%, left 1rem bottom 1.5rem, right 1rem bottom 3rem;
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n + 4)::before {
   background-image: url("./assets/royal-palace-gate-watermark.webp"), url("./assets/royal-palaver-tree-watermark.webp"), url("./assets/royal-textile-watermark.webp"), url("./assets/royal-dancers-watermark.webp");
+  background-position: left 1rem top 16%, right 1rem top 4rem, left 1rem bottom 5rem, right 1rem bottom 10%;
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n + 5)::before {
   background-image: url("./assets/royal-musicians-watermark.webp"), url("./assets/royal-procession-watermark.webp"), url("./assets/royal-beads-watermark.webp"), url("./assets/royal-palace-watermark.webp");
+  background-position: left 1rem top 3rem, right 1rem top 15%, left 1rem bottom 8%, right 1rem bottom 3rem;
 }
 section.section-shell.tone-ink::before,
 section.section-shell.tone-ember::before,
@@ -454,7 +459,6 @@ section.section-shell.tone-photo::before {
   .king-message-watermark-crown { right: -.5rem; top: 8%; }
   .king-message-watermark-palace { right: -1.5rem; bottom: -.5rem; width: clamp(8rem, 36vw, 11rem); }
   section.section-shell:not(.king-message-section)::before {
-    background-position: left .65rem top .65rem, right .65rem top .65rem, left .65rem bottom .65rem, right .65rem bottom .65rem;
     background-size: clamp(3.5rem, 13vw, 5rem) auto, clamp(3.5rem, 13vw, 5rem) auto, clamp(3.5rem, 13vw, 5rem) auto, clamp(3.5rem, 13vw, 5rem) auto;
     opacity: .065;
   }
@@ -478,7 +482,7 @@ section.page-banner::after {
   opacity: .09;
   mix-blend-mode: screen;
   filter: saturate(.65);
-  animation: king-motif-drift 6.5s ease-in-out infinite alternate;
+  animation: king-motif-drift 4.2s ease-in-out infinite alternate;
 }
 section.hero-section::after {
   left: 49%;

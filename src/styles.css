@@ -264,6 +264,59 @@
 }
 .hero-section .hero-carousel-dot[aria-current="true"] { background: var(--action-on) !important; }
 @media (prefers-reduced-motion: reduce) { .hero-carousel-image { transition: none; } }
+.chapter-card {
+  border-color: color-mix(in oklab, var(--gold) 22%, transparent);
+  transition: transform .35s cubic-bezier(.2, .75, .25, 1), border-color .3s ease, box-shadow .35s ease;
+  animation: chapter-card-enter .65s both ease-out;
+  animation-timeline: view();
+  animation-range: entry 12% cover 32%;
+}
+.chapter-card:nth-child(2) { animation-delay: 70ms; }
+.chapter-card:nth-child(3) { animation-delay: 140ms; }
+.chapter-card:nth-child(4) { animation-delay: 210ms; }
+.chapter-card:nth-child(5) { animation-delay: 280ms; }
+.chapter-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in oklab, var(--gold) 55%, transparent);
+  box-shadow: 0 18px 44px color-mix(in oklab, var(--ink) 16%, transparent);
+}
+.chapter-card:focus-within { outline: 2px solid var(--action-gold); outline-offset: 4px; }
+.chapter-card-media { background: color-mix(in oklab, var(--ink) 12%, var(--parchment)); }
+.chapter-card-image { transform: scale(1.001); transition: transform .8s cubic-bezier(.2, .65, .25, 1); }
+.chapter-card:hover .chapter-card-image { transform: scale(1.06); }
+.chapter-card-shade {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--ink) 18%, transparent), transparent 42%, color-mix(in oklab, var(--ink) 36%, transparent));
+  pointer-events: none;
+}
+.chapter-card-number {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: grid;
+  min-width: 2.75rem;
+  height: 2.25rem;
+  place-items: center;
+  padding-inline: .7rem;
+  border: 1px solid color-mix(in oklab, var(--action-on) 75%, transparent);
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--ink) 68%, transparent);
+  color: var(--action-on);
+  font-family: var(--font-serif);
+  font-size: .82rem;
+  backdrop-filter: blur(10px);
+}
+.chapter-card-cta { color: var(--gold); }
+.chapter-card-cta svg { transition: transform .25s ease; }
+.chapter-card:hover .chapter-card-cta svg { transform: translateX(4px); }
+@keyframes chapter-card-enter {
+  from { opacity: .35; transform: translateY(1rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chapter-card { animation: none; transition: none; }
+  .chapter-card-image, .chapter-card-cta svg { transition: none; }
+  .chapter-card:hover .chapter-card-image, .chapter-card:hover .chapter-card-cta svg { transform: none; }
+}
 @media (max-width: 374px) { .hero-wordmark { font-size: 3rem; } }
 
 .tone-ink .glass,

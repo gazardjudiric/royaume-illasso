@@ -193,7 +193,7 @@
 @utility page-banner { position: relative; min-height: clamp(24rem, 48vh, 34rem); overflow: hidden; border-bottom: 3px solid var(--gold); background: var(--ink); }
 @utility page-banner-image { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; animation: banner-breathe 12s ease-out both; }
 @utility page-banner-shade { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in oklab, var(--ink) 88%, transparent), color-mix(in oklab, var(--ink) 48%, transparent) 65%, color-mix(in oklab, var(--ink) 64%, transparent)), linear-gradient(0deg, color-mix(in oklab, var(--ink) 72%, transparent), transparent 62%); }
-@utility filter-active { border-color: var(--action-foreground); background: var(--action-gold); color: var(--action-foreground); }
+@utility filter-active { border-color: var(--action-gold); background: var(--action-gold); color: var(--action-on); }
 @utility gallery-item { break-inside: avoid; overflow: hidden; border-radius: 1rem; border: 1px solid color-mix(in oklab, var(--gold) 25%, transparent); background: white; transition: transform .25s ease, border-color .25s ease; &:hover { transform: translateY(-3px); border-color: color-mix(in oklab, var(--gold) 60%, transparent); } }
 @utility gallery-mosaic { border-radius: .75rem; border: 1px solid color-mix(in oklab, var(--gold) 25%, transparent); background: var(--card); box-shadow: 0 10px 28px color-mix(in oklab, var(--ink) 8%, transparent); }
 @utility lightbox { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 2rem; background: color-mix(in oklab, var(--ink) 92%, transparent); backdrop-filter: blur(16px); }

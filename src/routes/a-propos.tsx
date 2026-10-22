@@ -170,7 +170,7 @@ function About() {
             Sakété se situe au sud-ouest du département du Plateau, à une soixantaine de kilomètres de Cotonou. La commune couvre environ 700 km². Elle est bordée au nord par Adja-Ouèrè, au sud par Avrankou et Missérété, à l’est par le Nigeria et Ifangni, et à l’ouest par Adjohoun et Bonou. En 2020, sa population était estimée à plus de 115 000 habitants. La commune compte 81 villages et quartiers de ville répartis dans six (06) arrondissements (Aguidi, Ita-Djèbou, Sakété I, Sakété II, Takon et Yoko).
           </p>
           <dl className="mt-8 divide-y divide-gold/15">
-            {[["Superficie", "700 km²"], ["Arrondissements", "6"], ["Villages et quartiers", "81"], ["Distance de Cotonou", "Environ 60 km"], ["Forêt classée", "Environ 60 ha"]].map(([key, value]) => <div key={key} className="flex justify-between gap-4 py-3"><dt className="text-sm text-ink/50">{key}</dt><dd className="text-right text-sm font-semibold">{value}</dd></div>)}
+            {[["Superficie", "700 km²"], ["Arrondissements", "6 (Aguidi, Ita-Djèbou, Sakété I, Sakété II, Takon et Yoko)"], ["Villages et quartiers", "81"], ["Distance de Cotonou", "Environ 60 km"], ["Forêt classée", "Environ 60 ha"], ["Population", "Estimée à plus de 115 000 habitants (selon le RGPH-4 de 2013)"]].map(([key, value]) => <div key={key} className="flex justify-between gap-4 py-3"><dt className="text-sm text-ink/50">{key}</dt><dd className="max-w-[70%] text-right text-sm font-semibold">{value}</dd></div>)}
           </dl>
           
         </div>

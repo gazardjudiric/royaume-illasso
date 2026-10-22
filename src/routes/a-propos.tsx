@@ -158,7 +158,6 @@ function About() {
         <div className="w-full">
           <figure className="mx-auto w-full max-w-[500px] overflow-hidden rounded-3xl border border-gold/35 bg-cream shadow-2xl">
             <RoyalMapImage interactive />
-            <figcaption className="border-t border-gold/20 bg-card px-5 py-4 text-sm text-ink/60">Touchez ou cliquez sur la carte pour l’agrandir et lire les noms des villages.</figcaption>
           </figure>
         </div>
         <div className="glass edge rounded-3xl p-7 md:p-9">

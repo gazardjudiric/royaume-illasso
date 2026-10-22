@@ -1,8 +1,9 @@
-import { describe, expect, test } from "bun:test";
+import { describe, it } from "node:test";
+import { deepStrictEqual } from "node:assert";
 import { contributionDestination } from "./contribution";
 
 describe("Contribution without official payment details", () => {
-  test("directs donors to the dedicated contact step, not a payment provider", () => {
-    expect(contributionDestination).toEqual({ to: "/contact", hash: "don" });
+  it("directs donors to the dedicated contact step, not a payment provider", () => {
+    deepStrictEqual(contributionDestination, { to: "/contact", hash: "don" });
   });
 });

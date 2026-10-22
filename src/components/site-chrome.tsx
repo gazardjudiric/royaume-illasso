@@ -27,7 +27,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
             </span>
           </Link>
            <div className="hidden items-center justify-center gap-7 lg:flex">
-             {links.filter((link) => link.to !== "/contact").map((link) => (
+             {links.map((link) => (
               <Link key={link.to} to={link.to} activeOptions={{ exact: link.to === "/" }} className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>{link.label}</Link>
             ))}
           </div>

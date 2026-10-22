@@ -72,9 +72,11 @@
   --ink: oklch(0.22 0.015 75);
   --gold: oklch(0.62 0.12 72);
   --action-foreground: oklch(0.18 0.015 75);
-  --action-gold: oklch(0.69 0.135 76);
-  --action-hover: oklch(0.75 0.125 79);
+  --action-gold: oklch(0.56 0.12 68);
+  --action-hover: oklch(0.5 0.11 64);
+  --action-on: oklch(0.995 0.004 85);
   --action-shadow: 0 2px 5px oklch(0.18 0.015 75 / 16%);
+  --action-shadow-hover: 0 10px 22px oklch(0.18 0.015 75 / 28%);
   --cream: oklch(0.94 0.03 85);
   --parchment: oklch(0.965 0.018 86);
   --ember: oklch(0.48 0.13 43);
@@ -191,7 +193,7 @@
 @utility page-banner { position: relative; min-height: clamp(24rem, 48vh, 34rem); overflow: hidden; border-bottom: 3px solid var(--gold); background: var(--ink); }
 @utility page-banner-image { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; animation: banner-breathe 12s ease-out both; }
 @utility page-banner-shade { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in oklab, var(--ink) 88%, transparent), color-mix(in oklab, var(--ink) 48%, transparent) 65%, color-mix(in oklab, var(--ink) 64%, transparent)), linear-gradient(0deg, color-mix(in oklab, var(--ink) 72%, transparent), transparent 62%); }
-@utility filter-active { border-color: var(--action-foreground); background: var(--action-gold); color: var(--action-foreground); }
+@utility filter-active { border-color: var(--action-gold); background: var(--action-gold); color: var(--action-on); }
 @utility gallery-item { break-inside: avoid; overflow: hidden; border-radius: 1rem; border: 1px solid color-mix(in oklab, var(--gold) 25%, transparent); background: white; transition: transform .25s ease, border-color .25s ease; &:hover { transform: translateY(-3px); border-color: color-mix(in oklab, var(--gold) 60%, transparent); } }
 @utility gallery-mosaic { border-radius: .75rem; border: 1px solid color-mix(in oklab, var(--gold) 25%, transparent); background: var(--card); box-shadow: 0 10px 28px color-mix(in oklab, var(--ink) 8%, transparent); }
 @utility lightbox { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 2rem; background: color-mix(in oklab, var(--ink) 92%, transparent); backdrop-filter: blur(16px); }
@@ -211,11 +213,13 @@
   border: 1px solid transparent;
   letter-spacing: 0;
   box-shadow: var(--action-shadow);
-  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  transition: background .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
+.royal-control:not(.royal-control-media):not(.royal-control-link):hover { transform: translateY(-2px) scale(1.02); box-shadow: var(--action-shadow-hover); }
+.royal-control:not(.royal-control-media):not(.royal-control-link):active { transform: translateY(0) scale(.97); box-shadow: var(--action-shadow); filter: brightness(.94); }
 .royal-control:focus-visible { outline: 2px solid var(--action-gold); outline-offset: 3px; }
-.royal-control-primary { background: var(--action-gold); color: var(--action-foreground); }
-.royal-control-primary:hover { background: var(--action-hover); }
+.royal-control-primary { background: var(--action-gold); color: var(--action-on); }
+.royal-control-primary:hover { background: var(--action-hover); color: var(--action-on); }
 .royal-control-secondary, .royal-control-ghost {
   background: var(--card); color: var(--action-foreground);
   border-color: var(--gold);
@@ -225,13 +229,14 @@
 .tone-ink .royal-control-secondary, .tone-ember .royal-control-secondary,
 .tone-photo .royal-control-secondary, .lightbox .royal-control-secondary,
 .map-lightbox .royal-control-secondary {
-  background: var(--action-foreground); color: var(--cream); border-color: var(--action-gold);
+  background: transparent; color: var(--cream); border-color: var(--action-on);
 }
 .on-dark .royal-control-secondary:hover, .hero-section .royal-control-secondary:hover,
 .tone-ink .royal-control-secondary:hover, .tone-ember .royal-control-secondary:hover,
 .tone-photo .royal-control-secondary:hover, .lightbox .royal-control-secondary:hover,
-.map-lightbox .royal-control-secondary:hover { background: var(--action-gold); color: var(--action-foreground); }
+.map-lightbox .royal-control-secondary:hover { background: oklch(0.12 0.01 75 / 72%); color: var(--action-on); border-color: var(--action-on); }
 .royal-control-media, .royal-control-link { box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .royal-control, .royal-control:hover, .royal-control:active { transform: none !important; } }
 .royal-control-media { display: block; }
 .hero-wordmark { display: flex; align-items: baseline; gap: .025em; white-space: nowrap; }
 .hero-seal { width: .78em; height: .78em; flex: none; object-fit: cover; border-radius: 50%; align-self: baseline; }

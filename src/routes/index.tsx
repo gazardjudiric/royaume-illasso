@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import logoAsset from "../assets/logo-illasso.jpeg.asset.json";
 import { RoyalMapImage } from "../components/royal-map-lightbox";
@@ -16,6 +17,113 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const heroSlides = [
+  { image: images.king, alt: "Portrait du Roi d’Illasso", label: "Le Roi" },
+  { image: images.festival, alt: "Célébration culturelle du Royaume d’Illasso", label: "Cérémonies royales" },
+  { image: images.craft, alt: "Artisanat et savoir-faire d’Illasso", label: "Culture & traditions" },
+  { image: images.territory, alt: "Terres et villages du Royaume d’Illasso", label: "Territoire royal" },
+] as const;
+
+function HeroCarousel() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const intervalId = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => window.clearInterval(intervalId);
+  }, [activeSlide, isPaused]);
+
+  const goToSlide = (index: number) => {
+    setActiveSlide((index + heroSlides.length) % heroSlides.length);
+  };
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setIsPaused(false);
+        }
+      }}
+    >
+      <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-gold/25 to-ember/15 blur-2xl" />
+      <div
+        className="hero-carousel-frame relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-gold/30 shadow-2xl"
+        role="group"
+        aria-roledescription="carrousel"
+        aria-label="Images du Royaume d’Illasso"
+      >
+        {heroSlides.map((slide, index) => (
+          <img
+            key={slide.label}
+            src={slide.image}
+            alt={slide.alt}
+            className={[
+              "hero-carousel-image absolute inset-0 h-full w-full object-cover",
+              index === activeSlide ? "is-active" : "",
+            ].filter(Boolean).join(" ")}
+            aria-hidden={index !== activeSlide}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+          />
+        ))}
+        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent p-4 pt-16">
+          <div className="min-w-0">
+            <p className="truncate text-xs uppercase tracking-[0.16em] text-cream/75">{heroSlides[activeSlide].label}</p>
+            <p className="mt-1 text-xs text-cream/60">{activeSlide + 1} / {heroSlides.length}</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5" aria-label="Choisir une image">
+              {heroSlides.map((slide, index) => (
+                <Button
+                  key={slide.label}
+                  type="button"
+                  variant="secondary"
+                  size="icon"
+                  className="hero-carousel-dot"
+                  aria-label={`Afficher l’image ${index + 1} : ${slide.label}`}
+                  aria-current={index === activeSlide ? "true" : undefined}
+                  onClick={() => goToSlide(index)}
+                />
+              ))}
+            </div>
+            <div className="hero-carousel-controls">
+              <Button
+                type="button"
+                variant="secondary"
+                size="icon"
+                className="hero-carousel-control"
+                aria-label="Image précédente"
+                onClick={() => goToSlide(activeSlide - 1)}
+              >
+                <ChevronLeft size={16} />
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                size="icon"
+                className="hero-carousel-control"
+                aria-label="Image suivante"
+                onClick={() => goToSlide(activeSlide + 1)}
+              >
+                <ChevronRight size={16} />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return <>
@@ -31,11 +139,8 @@ function Index() {
             <p className="mt-7 max-w-2xl text-base leading-relaxed text-cream/80 sm:text-lg">Au cœur de Sakété, le Royaume Mère d’Illasso veille sur une mémoire vivante faite de transmission, de culture et de communauté.</p>
             <div className="mt-9 flex flex-wrap gap-3"><Button asChild><Link to="/a-propos">Découvrir le royaume <ArrowRight size={16} /></Link></Button><Button asChild variant="secondary"><a href="#mot-du-roi">Le mot du Roi</a></Button></div>
           </div>
-          <div className="hidden lg:block">
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-gold/25 to-ember/15 blur-2xl" />
-              <img src={images.king} alt="Portrait du Roi d’Illasso" className="relative aspect-[4/5] w-full rounded-3xl border border-gold/30 object-cover shadow-2xl" width={1024} height={1280} />
-            </div>
+          <div className="mx-auto w-full max-w-[260px] lg:max-w-none">
+            <HeroCarousel />
           </div>
         </div>
       </div>

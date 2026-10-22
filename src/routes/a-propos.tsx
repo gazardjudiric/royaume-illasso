@@ -52,7 +52,7 @@ function About() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+        <div className="mt-10 max-w-4xl">
           <article className="rounded-3xl border border-gold/20 bg-card/80 p-7 md:p-8">
             <p className="eyebrow">Les habitants et leurs traditions</p>
             <h3 className="mt-3 font-serif text-2xl">Une terre aux identités multiples</h3>
@@ -63,19 +63,7 @@ function About() {
               Avant la colonisation, les cultes endogènes structuraient la vie spirituelle. Ils demeurent présents aux côtés du christianisme et de l’islam. Le culte d’Oro, entité purificatrice de la cité, conserve une place particulière avec ses interdits et ses traditions. Les danses Egungun, Guèlèdè, Akpala, Batta et Bolodjo accompagnent les réjouissances. Originaire de Sakété, le Bolodjo a été mis en valeur par la chanteuse Zeynab.
             </p>
           </article>
-          <article className="rounded-3xl border border-gold/20 bg-card/80 p-7 md:p-8">
-            <p className="eyebrow">Repères sur la commune</p>
-            <h3 className="mt-3 font-serif text-2xl">Entre le Plateau et la frontière nigériane</h3>
-            <p className="mt-4 text-sm leading-relaxed text-ink/65">
-              Sakété se situe au sud-ouest du département du Plateau, à une soixantaine de kilomètres de Cotonou. La commune couvre environ 700 km². Elle est bordée au nord par Adja-Ouèrè, au sud par Avrankou et Missérété, à l’est par le Nigeria et Ifangni, et à l’ouest par Adjohoun et Bonou. En 2020, sa population était estimée à plus de 115 000 habitants. La commune compte six arrondissements — Aguidi, Ita-Djèbou, Sakété I, Sakété II, Takon et Yoko — pour 81 villages et quartiers.
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-ink/65">
-              Le climat subéquatorial subit des influences soudano-guinéennes. Deux saisons pluvieuses alternent avec deux saisons sèches : la grande saison des pluies s’étend généralement de mars à juillet, la petite de septembre à novembre. L’eau façonne les paysages : l’Aguidi prend sa source à Adja-Ouèrè et traverse la commune sur près de 30 km ; l’Iya-Nsa arrose les deux arrondissements du centre. Les marigots Mamagué à Ikpédjilé, Tolossi à Iloro-Sodji et Aguidi à Aguidi-centre, les cours d’eau d’Oké Awo et de Takon ainsi que les marais d’Igba et d’Akpéchi forment un réseau remarquable.
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-ink/65">
-              Au sud, les terres sont sablo-argileuses et légèrement ferralitiques ; au nord, elles sont rouges, profondes et ferralitiques ; au centre, argilo-sablonneuses et hydromorphes. L’ancienne zone forestière est aujourd’hui largement couverte de palmeraies. Une forêt classée d’environ 60 hectares y est préservée. Sakété est réputée comme la première productrice de noix de palme au Bénin.
-            </p>
-          </article>
+          
         </div>
 
         <div className="mt-10 rounded-3xl bg-ink px-7 py-8 text-cream md:px-9">

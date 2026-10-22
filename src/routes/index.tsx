@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { Button } from "../components/ui/button";
 import logoAsset from "../assets/logo-illasso.jpeg.asset.json";
 import { RoyalMapImage } from "../components/royal-map-lightbox";
 import { events, gallery, homeSections, images } from "../lib/site-data";
@@ -25,10 +26,10 @@ function Index() {
         <div className="grid w-full animate-fade-in gap-10 lg:grid-cols-[1fr_420px] lg:items-end lg:gap-16">
           <div className="max-w-4xl text-cream">
             <p className="eyebrow">Commune de Sakété — Royaume Mère</p>
-            <div className="mt-5 flex items-center gap-5"><img src={logoAsset.url} alt="" className="hidden size-24 rounded-full object-cover ring-1 ring-gold/60 sm:block" width={96} height={96} /><h1 className="font-serif text-6xl leading-none sm:text-8xl">ILLASSO</h1></div>
+            <h1 aria-label="ILLASSO" className="hero-wordmark mt-5 font-serif text-6xl leading-none sm:text-8xl"><span aria-hidden="true">ILLASS</span><img src={logoAsset.url} alt="" aria-hidden="true" className="hero-seal" width={96} height={96} /></h1>
             <p className="mt-5 font-serif text-2xl italic text-gold sm:text-3xl">Un trône, une mémoire, une terre à vivre.</p>
             <p className="mt-7 max-w-2xl text-base leading-relaxed text-cream/80 sm:text-lg">Au cœur de Sakété, le Royaume Mère d’Illasso veille sur une mémoire vivante faite de transmission, de culture et de communauté.</p>
-            <div className="mt-9 flex flex-wrap gap-3"><Link to="/a-propos" className="button-primary">Découvrir le royaume <ArrowRight size={16} /></Link><a href="#mot-du-roi" className="button-secondary">Le mot du Roi</a></div>
+            <div className="mt-9 flex flex-wrap gap-3"><Button asChild><Link to="/a-propos">Découvrir le royaume <ArrowRight size={16} /></Link></Button><Button asChild variant="secondary"><a href="#mot-du-roi">Le mot du Roi</a></Button></div>
           </div>
           <div className="hidden lg:block">
             <div className="relative">
@@ -76,7 +77,7 @@ function Index() {
           <h2 className="section-title">Le Territoire Royal</h2>
           <p className="mt-6 text-lg leading-relaxed text-ink/70">Le Palais Royal d’Illasso se situe dans l’arrondissement de Yoko, au cœur de la commune de Sakété, dans le département du Plateau au Bénin.</p>
           <p className="mt-5 leading-relaxed text-ink/60">La carte officielle retrace les villages, les voies et les repères qui relient Illasso à son territoire historique.</p>
-          <Link to="/a-propos" hash="territoire" className="button-primary mt-8">Découvrir le territoire <ArrowRight size={16} /></Link>
+          <Button asChild className="mt-8"><Link to="/a-propos" hash="territoire">Découvrir le territoire <ArrowRight size={16} /></Link></Button>
         </div>
       </div>
     </section>
@@ -100,11 +101,11 @@ function Index() {
             </Link>
           ))}
         </div>
-        <Link to="/galerie" className="button-secondary mt-8 sm:hidden">Voir toute la galerie</Link>
+        <Button asChild variant="secondary" className="mt-8 sm:hidden"><Link to="/galerie">Voir toute la galerie</Link></Button>
       </div>
     </section>
     <section className="section-shell tone-cream section-reveal">
-      <div className="mx-auto max-w-[1344px]"><div className="flex items-end justify-between gap-4"><div><p className="eyebrow">Agenda royal</p><h2 className="section-title">Prochains événements</h2></div><Link to="/evenements" className="hidden text-sm text-gold sm:block">Voir tous les événements →</Link></div><div className="mt-10 grid gap-6 md:grid-cols-3">{events.slice(0,3).map((event) => <article key={event.title} className="glass edge overflow-hidden rounded-2xl"><img src={event.image} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover" width={1280} height={800} /><div className="p-6"><p className="text-xs uppercase tracking-[0.18em] text-gold">{event.date}</p><h3 className="mt-3 font-serif text-xl">{event.title}</h3><p className="mt-3 text-sm leading-relaxed text-ink/55">{event.description}</p></div></article>)}</div><Link to="/evenements" className="button-primary mt-8 sm:hidden">Tous les événements</Link></div>
+      <div className="mx-auto max-w-[1344px]"><div className="flex items-end justify-between gap-4"><div><p className="eyebrow">Agenda royal</p><h2 className="section-title">Prochains événements</h2></div><Link to="/evenements" className="hidden text-sm text-gold sm:block">Voir tous les événements →</Link></div><div className="mt-10 grid gap-6 md:grid-cols-3">{events.slice(0,3).map((event) => <article key={event.title} className="glass edge overflow-hidden rounded-2xl"><img src={event.image} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover" width={1280} height={800} /><div className="p-6"><p className="text-xs uppercase tracking-[0.18em] text-gold">{event.date}</p><h3 className="mt-3 font-serif text-xl">{event.title}</h3><p className="mt-3 text-sm leading-relaxed text-ink/55">{event.description}</p></div></article>)}</div><Button asChild className="mt-8 sm:hidden"><Link to="/evenements">Tous les événements</Link></Button></div>
     </section>
   </>;
 }

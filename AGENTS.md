@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Use the shared Button component for site actions, including links via asChild; shared CSS action tokens keep controls consistent across section themes.
+- Keep contribution navigation in a single browser-safe configuration so an official payment destination can replace the contact step without rewriting navigation.

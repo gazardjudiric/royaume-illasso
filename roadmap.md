@@ -1,0 +1,4 @@
+- [x] Centrer la navigation et proposer le don sur ordinateur et mobile.
+- [x] Unifier les boutons et intégrer le sceau au titre d’accueil.
+- [x] Ajouter une démarche de contribution honnête sur Contact.
+- [x] Vérifier les pages, le zoom, la version mobile et les erreurs.

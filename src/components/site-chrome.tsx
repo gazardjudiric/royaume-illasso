@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import logoAsset from "../assets/logo-illasso.jpeg.asset.json";
+import { Button } from "./ui/button";
+import { contributionDestination } from "../lib/contribution";
 
 const links = [
   { to: "/" as const, label: "Accueil" },
@@ -16,7 +18,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen overflow-hidden bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 lg:px-8">
-        <nav className="glass edge mx-auto flex max-w-[1440px] items-center justify-between rounded-2xl px-4 py-3 lg:px-6" aria-label="Navigation principale">
+         <nav className="glass edge mx-auto grid max-w-[1440px] grid-cols-[1fr_auto] items-center rounded-2xl px-4 py-3 lg:grid-cols-[1fr_auto_1fr] lg:px-6" aria-label="Navigation principale">
           <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
             <img src={logoAsset.url} alt="Sceau du Royaume Mère de Sakété" className="size-11 rounded-full object-cover ring-1 ring-gold/50" width={44} height={44} />
             <span className="leading-tight">
@@ -24,18 +26,20 @@ export function SiteChrome({ children }: { children: ReactNode }) {
               <span className="block text-[9px] uppercase tracking-[0.2em] text-gold">Sakété · Illasso</span>
             </span>
           </Link>
-          <div className="hidden items-center gap-7 lg:flex">
-            {links.map((link) => (
+           <div className="hidden items-center justify-center gap-7 lg:flex">
+             {links.filter((link) => link.to !== "/contact").map((link) => (
               <Link key={link.to} to={link.to} activeOptions={{ exact: link.to === "/" }} className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>{link.label}</Link>
             ))}
           </div>
-          <button type="button" className="icon-button lg:hidden" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} onClick={() => setOpen((value) => !value)}>
+           <div className="flex justify-end"><Button asChild className="hidden lg:inline-flex"><Link {...contributionDestination}>Faites un don</Link></Button>
+           <Button type="button" size="icon" variant="secondary" className="lg:hidden" title={open ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} onClick={() => setOpen((value) => !value)}>
             {open ? <X size={19} /> : <Menu size={19} />}
-          </button>
+           </Button></div>
         </nav>
         {open && (
-          <div className="glass mx-auto mt-2 max-w-[1440px] rounded-2xl p-3 lg:hidden">
+           <div id="mobile-navigation" className="glass mx-auto mt-2 max-w-[1440px] rounded-2xl p-3 lg:hidden">
             {links.map((link) => <Link key={link.to} to={link.to} className="block rounded-lg px-4 py-3 text-sm text-ink/75" activeProps={{ className: "block rounded-lg bg-gold/10 px-4 py-3 text-sm text-gold" }} onClick={() => setOpen(false)}>{link.label}</Link>)}
+             <Button asChild className="mt-3 w-full"><Link {...contributionDestination} onClick={() => setOpen(false)}>Faites un don</Link></Button>
           </div>
         )}
       </header>

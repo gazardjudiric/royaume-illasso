@@ -25,7 +25,7 @@ function Gallery() {
     <PageIntro eyebrow="Galerie" title="Les événements en images." image={images.craft} imageAlt="Scène d’artisanat et de patrimoine du Royaume d’Illasso">Chaque album rassemble les photographies d’un moment de la vie du royaume. Un court récit en précise le lieu, la date et les circonstances.</PageIntro>
     <nav className="tone-gold border-b border-gold/20 px-6 py-5 lg:px-12" aria-label="Albums de la galerie">
       <div className="mx-auto flex max-w-[1344px] gap-2 overflow-x-auto pb-1">
-        {galleryEvents.map((event) => <a key={event.id} href={`#${event.id}`} className="filter-button shrink-0">{event.title}</a>)}
+        {galleryEvents.map((event) => <Button asChild variant="secondary" key={event.id} className="shrink-0"><a href={`#${event.id}`}>{event.title}</a></Button>)}
       </div>
     </nav>
     <div className="bg-background">
@@ -44,7 +44,7 @@ function Gallery() {
                 if (!photo) return null;
                 const firstAlbumClass = photoIndex === 0 ? "col-span-2 row-span-2 aspect-square" : photoIndex === 3 ? "col-span-2 aspect-[2/1]" : "aspect-square";
                 const laterAlbumClass = photoIndex === 0 ? "col-span-2 aspect-[4/3] lg:col-span-3" : photoIndex === 1 ? "col-span-1 aspect-[3/4] lg:col-span-1" : "col-span-1 aspect-[3/4] lg:col-span-2";
-                return <Button key={`${event.id}-${photo.title}`} type="button" variant="ghost" onClick={() => setSelected(photo)} aria-label={`Agrandir : ${photo.title}`} className={`gallery-mosaic group relative h-auto overflow-hidden p-0 ${eventIndex === 0 ? firstAlbumClass : laterAlbumClass}`}>
+                return <Button key={`${event.id}-${photo.title}`} type="button" variant="media" onClick={() => setSelected(photo)} aria-label={`Agrandir : ${photo.title}`} className={`gallery-mosaic group relative h-auto overflow-hidden p-0 ${eventIndex === 0 ? firstAlbumClass : laterAlbumClass}`}>
                   <img src={photo.image} alt={photo.title} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" />
                   <span className="absolute inset-x-0 bottom-0 bg-ink/70 p-4 text-left text-cream opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100"><span className="block font-serif text-base">{photo.title}</span><span className="mt-1 block text-xs text-cream/70">{photo.meta}</span></span>
                 </Button>;
@@ -54,6 +54,6 @@ function Gallery() {
         ))}
       </div>
     </div>
-    {selected && <div className="lightbox" role="dialog" aria-modal="true" aria-label={selected.title} onClick={() => setSelected(null)}><Button type="button" variant="outline" size="icon" className="absolute right-5 top-5 rounded-full" aria-label="Fermer" onClick={() => setSelected(null)}><X size={20}/></Button><div className="max-w-5xl" onClick={(event) => event.stopPropagation()}><img src={selected.image} alt={selected.title} className="max-h-[75vh] w-full object-contain"/><h2 className="mt-5 font-serif text-2xl text-cream">{selected.title}</h2><p className="mt-2 text-sm text-cream/65">{selected.meta}</p></div></div>}
+    {selected && <div className="lightbox" role="dialog" aria-modal="true" aria-label={selected.title} onClick={() => setSelected(null)}><Button type="button" variant="outline" size="icon" className="absolute right-5 top-5" title="Fermer" aria-label="Fermer" onClick={() => setSelected(null)}><X size={20}/></Button><div className="max-w-5xl" onClick={(event) => event.stopPropagation()}><img src={selected.image} alt={selected.title} className="max-h-[75vh] w-full object-contain"/><h2 className="mt-5 font-serif text-2xl text-cream">{selected.title}</h2><p className="mt-2 text-sm text-cream/65">{selected.meta}</p></div></div>}
   </>;
 }

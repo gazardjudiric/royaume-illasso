@@ -7,7 +7,7 @@ import throneWatermark from "../assets/royal-throne-watermark.webp";
 import crownWatermark from "../assets/royal-crown-watermark.webp";
 import palaceWatermark from "../assets/royal-palace-watermark.webp";
 import { RoyalMapImage } from "../components/royal-map-lightbox";
-import { events, gallery, homeSections, images } from "../lib/site-data";
+import { aboutChapterSummaries, events, gallery, homeSections, images } from "../lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -30,35 +30,35 @@ const heroSlides = [
 const chapterCards = [
   {
     title: "Histoire",
-    text: "Les origines et les grandes étapes du royaume.",
+    text: aboutChapterSummaries.history,
     section: "histoire",
     image: images.palace,
     imageAlt: "Palais royal d’Illasso",
   },
   {
     title: "Culture",
-    text: "Rites, langues, artisanat et cérémonies.",
+    text: aboutChapterSummaries.culture,
     section: "culture",
     image: images.craft,
     imageAlt: "Savoir-faire artisanal d’Illasso",
   },
   {
     title: "Le Roi",
-    text: "Une fonction au service de la transmission.",
+    text: aboutChapterSummaries.king,
     section: "roi",
     image: images.king,
     imageAlt: "Portrait du Roi d’Illasso",
   },
   {
     title: "Activités",
-    text: "Audiences, visites et actions sociales.",
+    text: aboutChapterSummaries.actions,
     section: "activites",
     image: images.festival,
     imageAlt: "Cérémonie culturelle du royaume",
   },
   {
     title: "Territoire",
-    text: "Des lieux, villages et terres de mémoire.",
+    text: aboutChapterSummaries.territory,
     section: "territoire",
     image: images.territory,
     imageAlt: "Terres et villages d’Illasso",

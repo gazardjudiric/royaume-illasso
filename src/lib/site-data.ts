@@ -6,6 +6,14 @@ import palace from "../assets/illasso-palace-hero.jpg";
 
 export const images = { festival, craft, territory, king, palace };
 
+export const aboutChapterSummaries = {
+  history: "Les fondateurs de Sakété se seraient d’abord établis à Illassô. Le Royaume Mère d’Illasso constitue ainsi l’origine historique de la dynastie d’Oba Otchoukpa, avant le départ de Takété et la découverte d’Odo Yansa.",
+  culture: "L’identité Nago-Yoruba se transmet par les danses Egungun, Guèlèdè, Akpala, Batta et Bolodjo, les cultes endogènes et l’artisanat. Elle se partage avec les communautés Fon, Goun et d’autres groupes.",
+  king: "La lignée royale traverse fondation, exils et résistance. L’article du Gouvernement publié en 2020 indique l’installation d’Oba Adé Kpadawalé en mai 2016, après une longue crise au trône.",
+  actions: "Rites, danses et rassemblements font vivre la mémoire collective. Les récits des rois Otchoukpa, Agbola et Adélu illustrent des choix de protection, de résistance et de défense de la cité.",
+  territory: "Située au sud-ouest du Plateau, la commune couvre 700 km² et comprend six arrondissements. Rivières, palmeraies, villages et forêt classée composent un territoire façonné par l’eau et les migrations.",
+} as const;
+
 export const events = [
   { title: "Fête du Trône", date: "14 août 2026", place: "Palais royal d’Illasso", type: "Cérémonie officielle", status: "À venir", image: festival, description: "Célébration annuelle réunissant la cour, les dignitaires et les familles du royaume." },
   { title: "Rencontre des artisans", date: "26 septembre 2026", place: "Place du marché royal", type: "Culture", status: "À venir", image: craft, description: "Une journée consacrée aux savoir-faire, aux textiles, à la sculpture et à leur transmission." },
@@ -18,64 +26,29 @@ export const events = [
 // import d'illustration et `paragraphs` par le contenu officiel du palais.
 export const homeSections = [
   {
-    id: "histoire",
-    eyebrow: "Chapitre 01",
-    title: "Histoire & origines",
-    image: palace,
-    imageAlt: "Palais royal d’Illasso",
-    paragraphs: [
-      "Le Royaume Mère d’Illasso puise ses racines dans les premières familles fondatrices installées sur les terres de l’actuelle commune de Sakété.",
-      "De génération en génération, la parole des anciens a fixé les alliances, les limites du territoire et les règles de la succession au trône.",
-    ],
-    points: ["Fondation par les familles d’origine", "Transmission orale de la mémoire", "Continuité du trône jusqu’à aujourd’hui"],
+    id: "histoire", eyebrow: "Chapitre 01", title: "Histoire & origines", image: palace, imageAlt: "Palais royal d’Illasso",
+    paragraphs: [aboutChapterSummaries.history],
+    points: ["Illassô, premier foyer des fondateurs", "Oba Otchoukpa et la dynastie royale", "Takété, Odo Yansa et la naissance de Sakété"],
   },
   {
-    id: "culture",
-    eyebrow: "Chapitre 02",
-    title: "Culture & traditions",
-    image: craft,
-    imageAlt: "Atelier d’artisanat royal",
-    paragraphs: [
-      "Rites, chants, tambours, textiles et sculptures composent une culture vivante, pratiquée au quotidien et non conservée sous vitrine.",
-      "Chaque cérémonie réunit les lignées et rappelle le rôle de chacun dans l’équilibre du royaume.",
-    ],
-    points: ["Tambours et chants de cour", "Artisanat textile et sculpture", "Rites de passage et cérémonies"],
+    id: "culture", eyebrow: "Chapitre 02", title: "Culture & traditions", image: craft, imageAlt: "Atelier d’artisanat royal",
+    paragraphs: [aboutChapterSummaries.culture],
+    points: ["Danses Egungun, Guèlèdè, Akpala, Batta et Bolodjo", "Cultes endogènes, Oro et traditions", "Communautés et personnalités de Sakété"],
   },
   {
-    id: "roi",
-    eyebrow: "Chapitre 03",
-    title: "Le Roi",
-    image: king,
-    imageAlt: "Portrait du Roi d’Illasso",
-    paragraphs: [
-      "Le souverain est le gardien de la parole donnée : il arbitre, protège et représente le royaume auprès des autorités et des communautés voisines.",
-      "Sa fonction est d’abord un service — celui de transmettre intact ce qu’il a reçu.",
-    ],
-    points: ["Gardien de la parole et des coutumes", "Arbitrage et conciliation", "Représentation du royaume"],
+    id: "roi", eyebrow: "Chapitre 03", title: "Le Roi", image: king, imageAlt: "Portrait du Roi d’Illasso",
+    paragraphs: [aboutChapterSummaries.king],
+    points: ["Oba Otchoukpa, fondateur de la dynastie", "Agbola et Adélu dans la mémoire royale", "Oba Adé Kpadawalé : repère historique daté de 2016"],
   },
   {
-    id: "activites",
-    eyebrow: "Chapitre 04",
-    title: "Activités & actions",
-    image: festival,
-    imageAlt: "Fête culturelle du royaume",
-    paragraphs: [
-      "Audiences, visites de villages, actions en faveur de la jeunesse et de l’éducation : la vie du royaume se déploie tout au long de l’année.",
-      "Les grandes fêtes rassemblent la cour, les dignitaires et les familles autour d’un même héritage.",
-    ],
-    points: ["Audiences et conseils", "Actions sociales et éducatives", "Fêtes et cérémonies annuelles"],
+    id: "activites", eyebrow: "Chapitre 04", title: "Activités & actions", image: festival, imageAlt: "Fête culturelle du royaume",
+    paragraphs: [aboutChapterSummaries.actions],
+    points: ["Protection de la famille et de la cité", "Mémoire de la révolte de 1905", "Rassemblements, rites et transmission"],
   },
   {
-    id: "territoire",
-    eyebrow: "Chapitre 05",
-    title: "Territoire",
-    image: territory,
-    imageAlt: "Terres et villages d’Illasso",
-    paragraphs: [
-      "Les terres d’Illasso s’étendent autour du palais : places de rassemblement, quartiers, champs et villages voisins.",
-      "Chaque lieu porte un nom, une histoire et une fonction dans l’organisation du royaume.",
-    ],
-    points: ["Palais royal et sa cour", "Places de rassemblement", "Terres agricoles et villages"],
+    id: "territoire", eyebrow: "Chapitre 05", title: "Territoire", image: territory, imageAlt: "Terres et villages d’Illasso",
+    paragraphs: [aboutChapterSummaries.territory],
+    points: ["Six arrondissements et 81 villages/quartiers", "Aguidi, Iya-Nsa et Odo Yansa", "Terres agricoles, palmeraies et forêt classée"],
   },
 ];
 

@@ -172,6 +172,15 @@ function About() {
           <dl className="mt-8 divide-y divide-gold/15">
             {[["Superficie", "700 km²"], ["Arrondissements", "6 (Aguidi, Ita-Djèbou, Sakété I, Sakété II, Takon et Yoko)"], ["Villages et quartiers", "81"], ["Distance de Cotonou", "Environ 60 km"], ["Forêt classée", "Environ 60 ha"], ["Population", "Estimée à plus de 115 000 habitants (selon le RGPH-4 de 2013)"]].map(([key, value]) => <div key={key} className="flex justify-between gap-4 py-3"><dt className="text-sm text-ink/50">{key}</dt><dd className="max-w-[70%] text-right text-sm font-semibold">{value}</dd></div>)}
           </dl>
+          <div className="mt-9 border-t border-gold/20 pt-7">
+            <h3 className="font-serif text-2xl">Royaume d’ILLASSO façonné par l’eau et les saisons</h3>
+            <p className="mt-4 text-sm leading-relaxed text-ink/65">
+              Le climat subéquatorial subit des influences soudano-guinéennes. Deux saisons pluvieuses alternent avec deux saisons sèches : la grande saison des pluies s’étend généralement de mars à juillet, la petite de septembre à novembre. L’eau façonne les paysages : l’Aguidi prend sa source à Adja-Ouèrè et traverse la commune sur près de 30 km ; l’Iya-Nsa arrose les deux arrondissements du centre. Les marigots Mamagué à Ikpédjilé, Tolossi à Iloro-Sodji et Aguidi à Aguidi-centre, les cours d’eau d’Oké Awo et de Takon ainsi que les marais d’Igba et d’Akpéchi forment un réseau remarquable.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-ink/65">
+              Au sud, les terres sont sablo-argileuses et légèrement ferralitiques ; au nord, elles sont rouges, profondes et ferralitiques ; au centre, argilo-sablonneuses et hydromorphes. L’ancienne zone forestière est aujourd’hui largement couverte de palmeraies. Une forêt classée d’environ 60 hectares y est préservée. Sakété est réputée comme la première productrice de noix de palme au Bénin.
+            </p>
+          </div>
           
         </div>
       </div>

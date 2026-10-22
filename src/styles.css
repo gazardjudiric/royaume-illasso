@@ -413,7 +413,6 @@
 }
 
 section.section-shell:not(.king-message-section) {
-  --section-royal-watermark: url("./assets/royal-palace-watermark.webp");
   --section-watermark-size: clamp(9rem, 16vw, 15rem);
 }
 section.section-shell:not(.king-message-section)::before {
@@ -422,7 +421,7 @@ section.section-shell:not(.king-message-section)::before {
   z-index: -1;
   inset: 0;
   pointer-events: none;
-  background-image: var(--section-royal-watermark);
+  background-image: url("./assets/royal-palace-watermark.webp");
   background-repeat: no-repeat;
   background-position: right -1.25rem bottom -1rem;
   background-size: var(--section-watermark-size) auto;
@@ -431,23 +430,23 @@ section.section-shell:not(.king-message-section)::before {
   animation: king-motif-drift 12s ease-in-out infinite alternate;
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n + 1) {
-  --section-royal-watermark: url("./assets/royal-throne-watermark.webp");
+  background-image: url("./assets/royal-throne-watermark.webp");
   --section-watermark-size: clamp(8rem, 14vw, 13rem);
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n + 2) {
-  --section-royal-watermark: url("./assets/royal-crown-watermark.webp");
+  background-image: url("./assets/royal-crown-watermark.webp");
   --section-watermark-size: clamp(6rem, 10vw, 9rem);
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n + 3) {
-  --section-royal-watermark: url("./assets/royal-scepter-watermark.webp");
+  background-image: url("./assets/royal-scepter-watermark.webp");
   --section-watermark-size: clamp(9rem, 17vw, 16rem);
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n + 4) {
-  --section-royal-watermark: url("./assets/royal-beads-watermark.webp");
+  background-image: url("./assets/royal-beads-watermark.webp");
   --section-watermark-size: clamp(9rem, 17vw, 15rem);
 }
 section.section-shell:not(.king-message-section):nth-of-type(5n) {
-  --section-royal-watermark: url("./assets/royal-palace-watermark.webp");
+  background-image: url("./assets/royal-palace-watermark.webp");
   --section-watermark-size: clamp(10rem, 20vw, 17rem);
 }
 section.section-shell.tone-ink::before,

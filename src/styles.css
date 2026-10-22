@@ -376,3 +376,44 @@
   .king-message-image-wrap:hover .king-message-photo { transform: none; }
   .king-message-mark, .king-message-copy { animation: none; }
 }
+
+
+.king-message-motif-layer { z-index: 0; }
+.king-message-motif {
+  position: absolute;
+  width: clamp(5.5rem, 10vw, 9rem);
+  height: auto;
+  color: var(--gold);
+  opacity: .12;
+  filter: drop-shadow(0 8px 18px color-mix(in oklab, var(--gold) 14%, transparent));
+  animation: king-motif-drift 15s ease-in-out infinite alternate;
+}
+.king-message-motif-throne {
+  left: 2.5%;
+  top: 18%;
+  width: clamp(5rem, 8vw, 7.5rem);
+  animation-delay: -5s;
+}
+.king-message-motif-crown {
+  right: 2.5%;
+  top: 12%;
+}
+.king-message-motif-palace {
+  right: 3%;
+  bottom: -1rem;
+  width: clamp(7rem, 14vw, 12rem);
+  animation-delay: -9s;
+}
+@keyframes king-motif-drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}
+@media (max-width: 767px) {
+  .king-message-motif { opacity: .075; }
+  .king-message-motif-throne { left: -1rem; top: 24%; }
+  .king-message-motif-crown { right: -1rem; top: 8%; }
+  .king-message-motif-palace { right: -1.5rem; bottom: -1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .king-message-motif { animation: none; }
+}

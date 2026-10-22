@@ -240,6 +240,30 @@
 .royal-control-media { display: block; }
 .hero-wordmark { display: flex; align-items: baseline; gap: .025em; white-space: nowrap; }
 .hero-seal { width: .78em; height: .78em; flex: none; object-fit: cover; border-radius: 50%; align-self: baseline; }
+.hero-carousel-image { opacity: 0; transition: opacity 700ms ease; }
+.hero-carousel-image.is-active { opacity: 1; }
+.hero-section .hero-carousel-control {
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  padding: 0 !important;
+  border-radius: 9999px !important;
+  background: transparent !important;
+  color: var(--action-on) !important;
+  border-color: var(--action-on) !important;
+  box-shadow: none !important;
+}
+.hero-section .hero-carousel-dot {
+  width: .55rem !important;
+  height: .55rem !important;
+  padding: 0 !important;
+  border-radius: 9999px !important;
+  background: transparent !important;
+  color: transparent !important;
+  border-color: var(--action-on) !important;
+  box-shadow: none !important;
+}
+.hero-section .hero-carousel-dot[aria-current="true"] { background: var(--action-on) !important; }
+@media (prefers-reduced-motion: reduce) { .hero-carousel-image { transition: none; } }
 @media (max-width: 374px) { .hero-wordmark { font-size: 3rem; } }
 
 .tone-ink .glass,

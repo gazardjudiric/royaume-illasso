@@ -24,6 +24,45 @@ const heroSlides = [
   { image: images.territory, alt: "Terres et villages du Royaume d’Illasso", label: "Territoire royal" },
 ] as const;
 
+const chapterCards = [
+  {
+    title: "Histoire",
+    text: "Les origines et les grandes étapes du royaume.",
+    section: "histoire",
+    image: images.palace,
+    imageAlt: "Palais royal d’Illasso",
+  },
+  {
+    title: "Culture",
+    text: "Rites, langues, artisanat et cérémonies.",
+    section: "culture",
+    image: images.craft,
+    imageAlt: "Savoir-faire artisanal d’Illasso",
+  },
+  {
+    title: "Le Roi",
+    text: "Une fonction au service de la transmission.",
+    section: "roi",
+    image: images.king,
+    imageAlt: "Portrait du Roi d’Illasso",
+  },
+  {
+    title: "Activités",
+    text: "Audiences, visites et actions sociales.",
+    section: "activites",
+    image: images.festival,
+    imageAlt: "Cérémonie culturelle du royaume",
+  },
+  {
+    title: "Territoire",
+    text: "Des lieux, villages et terres de mémoire.",
+    section: "territoire",
+    image: images.territory,
+    imageAlt: "Terres et villages d’Illasso",
+  },
+] as const;
+
+
 function HeroCarousel() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -152,9 +191,51 @@ function Index() {
       </div>
     </section>
     <section className="section-shell tone-gold section-reveal">
-      <div className="mx-auto max-w-[1344px]"><p className="eyebrow">Découvrir Illasso</p><h2 className="section-title">Les chapitres d’un patrimoine vivant</h2><div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">{[
-        ["Histoire", "Les origines et les grandes étapes du royaume."], ["Culture", "Rites, langues, artisanat et cérémonies."], ["Le Roi", "Une fonction au service de la transmission."], ["Activités", "Audiences, visites et actions sociales."], ["Territoire", "Des lieux, villages et terres de mémoire."],
-      ].map(([title = "Illasso", text = ""], index) => <Link key={title} to="/a-propos" hash={["histoire", "culture", "roi", "activites", "territoire"][index] ?? "histoire"} className="glass edge group rounded-2xl p-6"><span className="font-serif text-gold">0{index + 1}</span><h3 className="mt-8 font-serif text-xl">{title}</h3><p className="mt-3 text-sm leading-relaxed text-ink/55">{text}</p><span className="mt-6 inline-block text-sm text-gold opacity-70 transition group-hover:translate-x-1">En savoir plus →</span></Link>)}</div></div>
+      <div className="mx-auto max-w-[1344px]">
+        <div className="max-w-4xl">
+          <p className="eyebrow">Découvrir Illasso</p>
+          <h2 className="section-title">
+            Les chapitres d’un <span className="text-gold">patrimoine vivant</span>
+          </h2>
+          <p className="mt-5 max-w-2xl leading-relaxed text-ink/65">
+            Cinq regards pour parcourir l’histoire, les traditions, la royauté et les terres d’Illasso.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {chapterCards.map((chapter, index) => (
+            <article key={chapter.title} className="chapter-card glass edge group flex h-full flex-col overflow-hidden rounded-2xl">
+              <div className="chapter-card-media relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={chapter.image}
+                  alt={chapter.imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  className="chapter-card-image h-full w-full object-cover"
+                  width={1280}
+                  height={960}
+                />
+                <div className="chapter-card-shade absolute inset-0" />
+                <span className="chapter-card-number" aria-label={`Chapitre ${index + 1}`}>
+                  0{index + 1}
+                </span>
+              </div>
+              <div className="flex min-h-[205px] flex-1 flex-col p-5">
+                <h3 className="font-serif text-xl">{chapter.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink/60">{chapter.text}</p>
+                <Button
+                  asChild
+                  variant="link"
+                  className="chapter-card-cta mt-auto h-auto justify-start gap-2 px-0 pb-0 pt-6 text-gold"
+                >
+                  <Link to="/a-propos" hash={chapter.section}>
+                    Explorer le chapitre <ArrowRight size={15} />
+                  </Link>
+                </Button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
     {homeSections.map((section, index) => (
       <section key={section.id} id={section.id} className={`section-shell section-reveal ${["tone-ivory", "tone-ember", "tone-cream", "tone-ink", "tone-gold"][index] ?? "tone-ivory"}`}>

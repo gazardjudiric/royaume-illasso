@@ -155,13 +155,10 @@ function About() {
 
     <section id="territoire" className="section-shell tone-gold section-reveal scroll-mt-24">
       <div className="mx-auto grid max-w-[1344px] items-start gap-10 lg:grid-cols-[minmax(300px,500px)_1fr] lg:gap-16">
-        <div className="space-y-5">
+        <div className="w-full">
           <figure className="mx-auto w-full max-w-[500px] overflow-hidden rounded-3xl border border-gold/35 bg-cream shadow-2xl">
             <RoyalMapImage interactive />
             <figcaption className="border-t border-gold/20 bg-card px-5 py-4 text-sm text-ink/60">Touchez ou cliquez sur la carte pour l’agrandir et lire les noms des villages.</figcaption>
-          </figure>
-          <figure className="group overflow-hidden rounded-3xl border border-gold/25 shadow-xl">
-            <img src={images.territory} alt="Paysage du territoire d’Illasso et de Sakété" loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover transition duration-700 group-hover:scale-[1.04]" width={1280} height={720}/>
           </figure>
         </div>
         <div className="glass edge rounded-3xl p-7 md:p-9">

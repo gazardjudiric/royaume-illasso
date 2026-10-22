@@ -30,7 +30,7 @@ export function RoyalMapImage({ interactive = false }: { interactive?: boolean }
   return <>
     <Button type="button" variant="media" className="group relative h-auto w-full p-0" onClick={() => setOpen(true)} aria-label="Agrandir la carte officielle du Palais Royal d’Illasso">
       {image}
-      <span className="absolute bottom-4 right-4 grid size-11 place-items-center rounded-lg bg-primary text-primary-foreground shadow-sm transition" aria-hidden="true"><Maximize2 size={19} /></span>
+      <span className="royal-control royal-control-primary absolute bottom-4 right-4 grid size-11 place-items-center" aria-hidden="true"><Maximize2 size={19} /></span>
     </Button>
     {open && createPortal(<div className="map-lightbox" role="dialog" aria-modal="true" aria-label="Carte officielle agrandie">
       <TransformWrapper initialScale={1} minScale={0.8} maxScale={6} centerOnInit wheel={{ step: 0.12 }} doubleClick={{ mode: "zoomIn", step: 0.8 }}>

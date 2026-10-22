@@ -172,7 +172,6 @@
 @utility on-dark { color: var(--cream); }
 @utility nav-link { color: color-mix(in oklab, var(--ink) 70%, transparent); font-size: .82rem; transition: color .2s ease; &:hover { color: var(--gold); } }
 @utility nav-link-active { color: var(--gold); }
-@utility icon-button { display: inline-grid; width: 2.5rem; height: 2.5rem; place-items: center; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--gold) 40%, transparent); color: var(--ink); background: color-mix(in oklab, white 60%, transparent); }
 @utility eyebrow { color: var(--gold); font-size: .68rem; line-height: 1.2; text-transform: uppercase; letter-spacing: .24em; }
 @utility hero-section { position: relative; min-height: 88vh; overflow: hidden; border-bottom: 4px solid var(--gold); }
 @utility hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }

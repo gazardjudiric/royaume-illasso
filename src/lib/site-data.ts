@@ -9,7 +9,7 @@ export const images = { festival, craft, territory, king, palace };
 export const aboutChapterSummaries = {
   history: "Les fondateurs de Sakété se seraient d’abord établis à Illassô. Le Royaume Mère d’Illasso constitue ainsi l’origine historique de la dynastie d’Oba Otchoukpa, avant le départ de Takété et la découverte d’Odo Yansa.",
   culture: "L’identité Nago-Yoruba se transmet par les danses Egungun, Guèlèdè, Akpala, Batta et Bolodjo, les cultes endogènes et l’artisanat. Elle se partage avec les communautés Fon, Goun et d’autres groupes.",
-  king: "La lignée royale traverse fondation, exils et résistance. L’article du Gouvernement publié en 2020 indique l’installation d’Oba Adé Kpadawalé en mai 2016, après une longue crise au trône.",
+  king: "La lignée royale traverse fondation, exils et résistance. Après une longue période sans roi depuis 1894, Oba Adé Kpadawalé est installé en mai 2016, et son nom célèbre le retour de la couronne au bercail.",
   actions: "Rites, danses et rassemblements font vivre la mémoire collective. Les récits des rois Otchoukpa, Agbola et Adélu illustrent des choix de protection, de résistance et de défense de la cité.",
   territory: "Située au sud-ouest du Plateau, la commune couvre 700 km² et comprend six arrondissements. Rivières, palmeraies, villages et forêt classée composent un territoire façonné par l’eau et les migrations.",
 } as const;

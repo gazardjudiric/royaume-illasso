@@ -206,6 +206,8 @@ function About() {
               </article>
             ))}
           </div>
+        </div>
+      </div>
     </section>
 
     <section id="territoire" className="section-shell tone-gold section-reveal scroll-mt-24">

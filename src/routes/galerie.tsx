@@ -136,6 +136,7 @@ function Gallery() {
                 const previewMedia = videoPreview
                   ? [...imagePreviews, videoPreview]
                   : activity.media.slice(0, 5);
+                const overflowImageIndex = previewMedia.reduce((lastImage, media, index) => media.type === "image" ? index : lastImage, -1);
                 const videoCount = activity.media.filter((item) => item.type === "video").length;
                 if (previewMedia.length === 0) return null;
                 return (
@@ -151,8 +152,8 @@ function Gallery() {
                             <div key={media.id} className={`relative min-h-0 overflow-hidden rounded-xl ${tileLayout}`}>
                               <img src={previewSrc} alt={media.type === "image" ? media.alt : `Aperçu vidéo : ${media.title}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" />
                               <span className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                              {media.type === "video" && <span className="absolute inset-0 grid place-items-center text-white"><Play size={20} fill="currentColor" /></span>}
-                              {index === previewMedia.length - 1 && activity.media.length > previewMedia.length && (
+                              {media.type === "video" && <span className="absolute inset-0 grid place-items-center text-white"><span className="grid size-11 place-items-center rounded-full bg-black/65 ring-1 ring-white/60"><Play size={19} fill="currentColor" /></span></span>}
+                              {index === overflowImageIndex && activity.media.length > previewMedia.length && (
                                 <span className="absolute inset-0 grid place-items-center bg-black/55 font-serif text-2xl text-white">+{activity.media.length - previewMedia.length}</span>
                               )}
                             </div>

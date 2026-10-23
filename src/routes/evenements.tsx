@@ -1,10 +1,89 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { CalendarDays, MapPin } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { PageIntro } from "../components/site-chrome";
 import { events, images } from "../lib/site-data";
 
 export const Route = createFileRoute("/evenements")({
-  head: () => ({ meta: [{ title: "Événements — Royaume d’Illasso" }, { name: "description", content: "Calendrier des cérémonies, fêtes, visites et rencontres du Royaume d’Illasso." }, { property: "og:title", content: "Événements du Royaume d’Illasso" }, { property: "og:description", content: "Consultez l’agenda culturel et cérémoniel du royaume." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/evenements" }] }), component: Events,
+  head: () => ({
+    meta: [
+      { title: "Événements — Royaume d’Illasso" },
+      { name: "description", content: "Calendrier des cérémonies, fêtes, visites et rencontres du Royaume d’Illasso." },
+      { property: "og:title", content: "Événements du Royaume d’Illasso" },
+      { property: "og:description", content: "Consultez l’agenda culturel et cérémoniel du royaume." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/evenements" }],
+  }),
+  component: Events,
 });
-function Events() { const [filter,setFilter]=useState("Tous"); const filters=["Tous","À venir","Passé"]; const visible=filter === "Tous" ? events : events.filter((event)=>event.status===filter); return <><PageIntro eyebrow="Événements" title="Les rendez-vous du royaume." image={images.festival} imageAlt="Rassemblement lors d’une fête traditionnelle à Illasso">Cérémonies officielles, fêtes culturelles, visites et rencontres. Les dates affichées sont proposées à titre éditorial et doivent être validées.</PageIntro><section className="section-shell tone-cream section-reveal"><div className="mx-auto max-w-[1344px]"><div className="flex gap-2">{filters.map(item=><Button key={item} type="button" variant={item===filter?"default":"secondary"} aria-pressed={item===filter} onClick={()=>setFilter(item)}>{item}</Button>)}</div><div className="mt-8 grid gap-6 md:grid-cols-2">{visible.map(event=><article key={event.title} className={`edge grid overflow-hidden rounded-2xl sm:grid-cols-[190px_1fr] ${event.status === "À venir" ? "bg-card text-card-foreground" : "tone-ink"}`}><img src={event.image} alt="" loading="lazy" className="h-full min-h-52 w-full object-cover"/><div className="p-6"><div className="flex items-center justify-between gap-4"><p className="text-xs uppercase tracking-[0.15em] text-gold">{event.date}</p><span className="rounded-full border border-gold/30 px-3 py-1 text-[10px] uppercase text-gold">{event.status}</span></div><h2 className="mt-4 font-serif text-2xl">{event.title}</h2><p className="mt-2 text-xs text-ink/45">{event.place} · {event.type}</p><p className="mt-4 text-sm leading-relaxed text-ink/60">{event.description}</p></div></article>)}</div></div></section></>; }
+
+function Events() {
+  const [filter, setFilter] = useState("Tous");
+  const filters = ["Tous", "À venir", "Passé"];
+  const visible = filter === "Tous" ? events : events.filter((event) => event.status === filter);
+
+  return (
+    <>
+      <PageIntro
+        eyebrow="Événements"
+        title="Les rendez-vous du royaume."
+        image={images.festival}
+        imageAlt="Rassemblement lors d’une fête traditionnelle à Illasso"
+      >
+        Cérémonies officielles, fêtes culturelles, visites et rencontres. Les dates affichées sont proposées à titre éditorial et doivent être validées.
+      </PageIntro>
+
+      <section className="section-shell tone-cream section-reveal">
+        <div className="mx-auto max-w-[1344px]">
+          <div className="flex flex-wrap gap-2">
+            {filters.map((item) => (
+              <Button
+                key={item}
+                type="button"
+                variant={item === filter ? "default" : "secondary"}
+                aria-pressed={item === filter}
+                onClick={() => setFilter(item)}
+              >
+                {item}
+              </Button>
+            ))}
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {visible.map((event) => (
+              <article
+                key={event.title}
+                className={`edge grid overflow-hidden rounded-2xl sm:grid-cols-[190px_1fr] ${event.status === "À venir" ? "bg-card text-card-foreground" : "tone-ink"}`}
+              >
+                <div className="flex min-h-36 flex-col items-center justify-center gap-3 border-b border-gold/20 bg-gold/10 px-5 py-6 text-center sm:min-h-full sm:border-b-0 sm:border-r">
+                  <CalendarDays size={25} aria-hidden="true" className="text-gold" />
+                  <p className="font-serif text-xl leading-snug text-gold">{event.date}</p>
+                </div>
+
+                <div className="p-6">
+                  <div className="flex items-center justify-end">
+                    <span className="rounded-full border border-gold/30 px-3 py-1 text-[10px] uppercase text-gold">
+                      {event.status}
+                    </span>
+                  </div>
+                  <h2 className="mt-4 font-serif text-2xl">{event.title}</h2>
+                  <div className="mt-3 flex items-start gap-2 text-xs text-ink/55">
+                    <MapPin size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-gold" />
+                    <div>
+                      <p>{event.place}</p>
+                      <p className="mt-1 text-ink/45">{event.type}</p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-ink/60">{event.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

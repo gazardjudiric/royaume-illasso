@@ -119,7 +119,7 @@ function HeroCarousel() {
         ))}
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent p-4 pt-16">
           <div className="min-w-0">
-            <p className="truncate text-xs uppercase tracking-[0.16em] text-cream/75">{heroSlides[activeSlide].label}</p>
+            <p className="truncate text-xs uppercase tracking-[0.16em] text-cream/75">{heroSlides[activeSlide]?.label ?? ""}</p>
             <p className="mt-1 text-xs text-cream/60">{activeSlide + 1} / {heroSlides.length}</p>
           </div>
           <div className="flex items-center gap-3">

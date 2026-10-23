@@ -85,7 +85,7 @@ function Events() {
               return (
                 <article
                   key={event.title}
-                  className={\`edge grid overflow-hidden rounded-2xl sm:grid-cols-[140px_1fr] \${event.status === "À venir" ? "bg-card text-card-foreground" : "tone-ink"}\`}
+                  className={`edge grid overflow-hidden rounded-2xl sm:grid-cols-[140px_1fr] ${event.status === "À venir" ? "bg-card text-card-foreground" : "tone-ink"}`}
                 >
                   <div className="relative flex min-h-36 flex-col items-center justify-center bg-gold/10 px-5 py-5 text-center sm:min-h-full sm:px-4 sm:py-6">
                     <span className="font-serif text-5xl leading-none text-gold">{date.day}</span>

@@ -350,11 +350,11 @@
   box-shadow: 0 18px 48px color-mix(in oklab, var(--ink) 12%, transparent);
 }
 .king-message-photo {
-  transform: scale(1.001);
+  transform: translate3d(0, var(--king-scroll-offset, 0px), 0) scale(1.1);
   transition: transform 900ms cubic-bezier(.2, .65, .25, 1);
 }
 .king-message-image-wrap:hover .king-message-photo {
-  transform: scale(1.035);
+  transform: translate3d(0, var(--king-scroll-offset, 0px), 0) scale(1.14);
 }
 .king-message-image-wrap:first-child {
   animation: king-media-left-in .9s 100ms both cubic-bezier(.2, .75, .25, 1);
@@ -373,10 +373,6 @@
   from { opacity: 0; transform: translate(2rem, -1.25rem); }
   to { opacity: 1; transform: translate(0, 0); }
 }
-@keyframes king-second-image-scroll {
-  from { transform: translateY(-4%) scale(1.12); }
-  to { transform: translateY(4%) scale(1.12); }
-}
 @keyframes king-message-copy-in {
   from { opacity: 0; transform: translateY(1.5rem); }
   to { opacity: 1; transform: translateY(0); }
@@ -392,11 +388,6 @@
     animation-range: entry 10% cover 38%;
     animation-delay: 0s;
   }
-  .king-message-image-wrap:nth-child(2) .king-message-photo {
-    animation: king-second-image-scroll 1s linear both;
-    animation-timeline: view(block);
-    animation-range: cover 0% cover 100%;
-  }
   .king-message-copy {
     animation-timeline: view();
     animation-range: entry 12% cover 40%;
@@ -404,7 +395,7 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .king-message-photo { animation: none; transition: none; }
+  .king-message-photo { animation: none; transform: none; transition: none; }
   .king-message-image-wrap:hover .king-message-photo { transform: none; }
   .king-message-image-wrap, .king-message-copy { animation: none; }
 }

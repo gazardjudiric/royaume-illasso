@@ -171,11 +171,11 @@ function Index() {
   // Keep the second welcome image tied to the section's actual scroll progress.
   useEffect(() => {
     const section = document.getElementById("mot-du-roi");
-    const secondPhoto = section?.querySelector<HTMLImageElement>(
-      ".king-message-image-wrap:nth-child(2) .king-message-photo",
+    const secondFrame = section?.querySelector<HTMLElement>(
+      ".king-message-image-wrap:nth-child(2)",
     );
 
-    if (!section || !secondPhoto || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (!section || !secondFrame || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
@@ -186,8 +186,9 @@ function Index() {
         const bounds = section.getBoundingClientRect();
         const travel = window.innerHeight + bounds.height;
         const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / travel));
-        const offset = (progress - 0.5) * 36;
-        secondPhoto.style.setProperty("--king-scroll-offset", `${offset.toFixed(1)}px`);
+        const maxOffset = Math.min(120, window.innerWidth * 0.12);
+        const offset = progress * maxOffset;
+        secondFrame.style.setProperty("--king-scroll-offset", `${offset.toFixed(1)}px`);
       });
     };
 
@@ -199,7 +200,7 @@ function Index() {
       window.cancelAnimationFrame(frame);
       window.removeEventListener("scroll", updateScrollPosition);
       window.removeEventListener("resize", updateScrollPosition);
-      secondPhoto.style.removeProperty("--king-scroll-offset");
+      secondFrame.style.removeProperty("--king-scroll-offset");
     };
   }, []);
 

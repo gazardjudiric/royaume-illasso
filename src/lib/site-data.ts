@@ -10,7 +10,7 @@ export const aboutChapterSummaries = {
   history: "Les fondateurs de Sakété se seraient d’abord établis à Illassô. Le Royaume Mère d’Illasso constitue ainsi l’origine historique de la dynastie d’Oba Otchoukpa, avant le départ de Takété et la découverte d’Odo Yansa.",
   culture: "L’identité Nago-Yoruba se transmet par les danses Egungun, Guèlèdè, Akpala, Batta et Bolodjo, les cultes endogènes et l’artisanat. Elle se partage avec les communautés Fon, Goun et d’autres groupes.",
   king: "La lignée royale traverse fondation, exils et résistance. Après une longue période sans roi depuis 1894, Oba Adé Kpadawalé est installé en mai 2016, et son nom célèbre le retour de la couronne au bercail.",
-  actions: "Rites, danses et rassemblements font vivre la mémoire collective. Les récits des rois Otchoukpa, Agbola et Adélu illustrent des choix de protection, de résistance et de défense de la cité.",
+  actions: "Le Roi préside l’AOYAD (ORISA D-B), l’ASIPAP et le culte Oro de Sakété. Fondateur de la Fondation Oba Adépkadawalé, il a notamment fait un don aux orphelins de Sakété. Il est également membre du Haut Conseil des Rois.",
   territory: "Sakété se situe au sud-ouest du département du Plateau, à une soixantaine de kilomètres de Cotonou. La commune couvre environ 700 km² et compte 81 villages et quartiers répartis dans six arrondissements.",
 } as const;
 

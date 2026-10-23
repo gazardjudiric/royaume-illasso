@@ -124,21 +124,25 @@ function About() {
       <div className="mx-auto max-w-[1344px]">
         <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div>
-            <p className="eyebrow">Activités & actions</p><h2 className="section-title">Protéger, rassembler, transmettre</h2>
-            <p className="mt-6 text-lg leading-relaxed text-ink/75">{aboutChapterSummaries.actions}</p>
-            <p className="mt-5 leading-relaxed text-ink/65">Les audiences, les rites, les festivités et les rencontres font vivre le lien entre le palais et la cité. La mémoire des choix d’Otchoukpa, d’Agbola et d’Adélu rappelle aussi que servir le royaume, c’est protéger ses habitants, défendre leur dignité et transmettre leur héritage.</p>
+            <p className="eyebrow">Activités & actions</p><h2 className="section-title">Les engagements du Roi au service de la communauté</h2>
+            <p className="mt-6 text-lg leading-relaxed text-ink/75">Le Roi s’investit dans plusieurs associations, organisations et institutions traditionnelles. Il y exerce des responsabilités de président, de fondateur ou de membre, au service de la vie collective et de la continuité des traditions.</p>
+            <p className="mt-5 leading-relaxed text-ink/65">Parmi les actions concrètes mentionnées figure un don du Roi aux orphelins de Sakété. Voici les structures dans lesquelles il s’engage et les rôles qu’il y assume.</p>
           </div>
           <figure className="group overflow-hidden rounded-3xl border border-gold/20 shadow-2xl">
-            <img src={images.festival} alt="Rassemblement et célébration culturelle à Sakété" loading="lazy" decoding="async" className="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-[1.04]" width={1280} height={800}/>
+            <img src={images.festival} alt="Célébration culturelle et rassemblement des communautés de Sakété" loading="lazy" decoding="async" className="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-[1.04]" width={1280} height={800}/>
           </figure>
         </div>
-        <div className="mt-9 grid gap-5 md:grid-cols-3">
+        <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            ["Protéger", "Face aux tensions et aux incursions, Oba Otchoukpa choisit de quitter Illassô avec les siens pour rechercher un lieu plus sûr."],
-            ["Résister", "En 1905, sous le règne d’Agbola, le conflit avec l’administration coloniale devient une révolte meurtrière. Le roi se réfugie ensuite à Ibatefin."],
-            ["Transmettre", "Danses, cultes, cérémonies et récits des souverains gardent vivante la mémoire de la cité et nourrissent le lien entre les communautés."]
-          ].map(([title, text], i) => <article key={title} className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-7 text-stone-900 shadow-md">
-            <p className="text-gold">0{i + 1}</p><h3 className="mt-5 font-serif text-2xl">{title}</h3><p className="mt-4 text-sm leading-relaxed text-stone-700">{text}</p>
+            ["AOYAD — ORISA D-B", "Président", "Apapo Oba Yorouba in Africa and Diaspora – Bénin (ORISA D-B) rassemble les Oba yorubas d’Afrique et de la diaspora. Le Roi en assure la présidence."],
+            ["Fondation Oba Adépkadawalé", "Fondateur", "Créée par le Roi, la fondation porte le nom d’Oba Adépkadawalé. Le document mentionne notamment un don du Roi aux orphelins de Sakété."],
+            ["ASIPAP", "Président", "Le Roi préside l’ASIPAP et y assume les responsabilités liées à cette fonction."],
+            ["Haut Conseil des Rois", "Membre", "En tant que membre du Haut Conseil des Rois, le Roi prend part aux échanges et aux travaux de cette instance."],
+            ["Culte Oro de Sakété", "Président", "Le Roi préside le culte Oro de Sakété et contribue à la préservation des traditions rituelles de la cité."]
+          ].map(([name, role, text], i) => <article key={name} className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-6 text-stone-900 shadow-md">
+            <p className="text-xs uppercase tracking-[0.18em] text-amber-800">{role}</p>
+            <h3 className="mt-3 font-serif text-xl">{name}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-stone-700">{text}</p>
           </article>)}
         </div>
       </div>

@@ -104,7 +104,7 @@ function Gallery() {
 
   return <>
     <PageIntro eyebrow="Galerie royale" title="La mémoire du royaume en images" image={images.festival} imageAlt="Illustration culturelle du Royaume d’Illasso">
-      Parcourez les traditions, les récits et les paysages d’Illasso. Les visuels présentés sont illustratifs et pourront être remplacés par les archives officielles du royaume.
+      Parcourez les traditions, les récits et les paysages d’Illasso. Chaque activité présente quelques aperçus visuels ; sélectionnez « Voir plus » pour parcourir son album complet. Les visuels actuels sont illustratifs et pourront être remplacés par les archives officielles du royaume.
     </PageIntro>
 
     <nav className="tone-gold border-b border-gold/20 px-5 py-5 sm:px-8 lg:px-12" aria-label="Catégories de la galerie">

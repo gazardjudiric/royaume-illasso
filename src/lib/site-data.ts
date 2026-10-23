@@ -98,6 +98,7 @@ export const galleryCategories: GalleryCategory[] = [
         media: [
           { id: "danses-1", type: "image", src: images.festival, title: "Danses et rassemblements", alt: "Illustration d’un rassemblement culturel à Sakété" },
           { id: "danses-2", type: "image", src: images.craft, title: "Culture et transmission", alt: "Illustration de la transmission des traditions du royaume" },
+          { id: "danses-3", type: "image", src: images.palace, title: "Patrimoine culturel", alt: "Illustration du patrimoine culturel d’Illassô" },
         ],
       },
       {
@@ -107,6 +108,7 @@ export const galleryCategories: GalleryCategory[] = [
         media: [
           { id: "artisanat-1", type: "image", src: images.craft, title: "Les gestes de l’artisanat", alt: "Illustration de l’artisanat et des savoir-faire locaux" },
           { id: "artisanat-2", type: "image", src: images.territory, title: "Un patrimoine vivant", alt: "Illustration du territoire et du patrimoine de Sakété" },
+          { id: "artisanat-3", type: "image", src: images.festival, title: "Gestes et matières", alt: "Illustration des savoir-faire et de la vie culturelle" },
         ],
       },
     ],
@@ -123,6 +125,7 @@ export const galleryCategories: GalleryCategory[] = [
         media: [
           { id: "illasso-1", type: "image", src: images.palace, title: "Mémoire du palais", alt: "Illustration du patrimoine royal d’Illassô" },
           { id: "illasso-2", type: "image", src: images.territory, title: "Terre de fondation", alt: "Illustration du territoire lié à l’histoire d’Illassô" },
+          { id: "illasso-3", type: "image", src: images.king, title: "Mémoire des fondateurs", alt: "Illustration de la mémoire royale d’Illassô" },
         ],
       },
       {
@@ -132,6 +135,7 @@ export const galleryCategories: GalleryCategory[] = [
         media: [
           { id: "dynastie-1", type: "image", src: images.king, title: "La mémoire royale", alt: "Illustration de la mémoire de la dynastie royale d’Illasso" },
           { id: "dynastie-2", type: "image", src: images.palace, title: "Le palais et la mémoire", alt: "Illustration du patrimoine royal du royaume" },
+          { id: "dynastie-3", type: "image", src: images.festival, title: "Traditions du royaume", alt: "Illustration des traditions du royaume d’Illassô" },
         ],
       },
     ],
@@ -148,6 +152,7 @@ export const galleryCategories: GalleryCategory[] = [
         media: [
           { id: "territoire-1", type: "image", src: images.territory, title: "Le territoire de Sakété", alt: "Illustration des paysages du territoire de Sakété" },
           { id: "territoire-2", type: "image", src: images.palace, title: "Patrimoine du royaume", alt: "Illustration du patrimoine royal dans le territoire de Sakété" },
+          { id: "territoire-3", type: "image", src: images.craft, title: "Vie locale et patrimoine", alt: "Illustration du patrimoine culturel de Sakété" },
         ],
       },
       {
@@ -157,6 +162,7 @@ export const galleryCategories: GalleryCategory[] = [
         media: [
           { id: "spiritualite-1", type: "image", src: images.palace, title: "Traditions spirituelles", alt: "Illustration des traditions spirituelles de Sakété" },
           { id: "spiritualite-2", type: "image", src: images.festival, title: "Traditions vivantes", alt: "Illustration des traditions vivantes du royaume" },
+          { id: "spiritualite-3", type: "image", src: images.craft, title: "Mémoire spirituelle", alt: "Illustration de la mémoire spirituelle et culturelle de Sakété" },
         ],
       },
     ],

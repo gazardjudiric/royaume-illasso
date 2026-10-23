@@ -350,11 +350,14 @@
   box-shadow: 0 18px 48px color-mix(in oklab, var(--ink) 12%, transparent);
 }
 .king-message-photo {
-  transform: translate3d(0, var(--king-scroll-offset, 0px), 0) scale(1.1);
-  transition: none;
+  transform: scale(1.001);
+  transition: transform 900ms cubic-bezier(.2, .65, .25, 1);
 }
 .king-message-image-wrap:hover .king-message-photo {
-  transform: translate3d(0, var(--king-scroll-offset, 0px), 0) scale(1.14);
+  transform: scale(1.035);
+}
+.king-message-image-wrap:nth-child(2) {
+  translate: 0 var(--king-scroll-offset, 0px);
 }
 .king-message-image-wrap:first-child {
   animation: king-media-left-in .9s 100ms both cubic-bezier(.2, .75, .25, 1);
@@ -396,6 +399,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .king-message-photo { animation: none; transform: none; transition: none; }
+  .king-message-image-wrap:nth-child(2) { translate: none; }
   .king-message-image-wrap:hover .king-message-photo { transform: none; }
   .king-message-image-wrap, .king-message-copy { animation: none; }
 }

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { CalendarDays, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { PageIntro } from "../components/site-chrome";
 import { events, images } from "../lib/site-data";
@@ -19,6 +19,28 @@ export const Route = createFileRoute("/evenements")({
   }),
   component: Events,
 });
+
+const monthAbbreviations: Record<string, string> = {
+  janvier: "JANV.",
+  février: "FÉVR.",
+  mars: "MARS",
+  avril: "AVR.",
+  mai: "MAI",
+  juin: "JUIN",
+  juillet: "JUIL.",
+  août: "AOÛT",
+  septembre: "SEPT.",
+  octobre: "OCT.",
+  novembre: "NOV.",
+  décembre: "DÉC.",
+};
+
+function eventDateParts(date: string) {
+  const match = date.match(/^(\\d{1,2})\\s+(.+?)\\s+(\\d{4})$/);
+  if (!match) return { day: date, month: "", year: "" };
+  const [, day, month, year] = match;
+  return { day, month: monthAbbreviations[month.toLocaleLowerCase("fr-FR")] ?? month.toLocaleUpperCase("fr-FR"), year };
+}
 
 function Events() {
   const [filter, setFilter] = useState("Tous");
@@ -56,11 +78,20 @@ function Events() {
             {visible.map((event) => (
               <article
                 key={event.title}
-                className={`edge grid overflow-hidden rounded-2xl sm:grid-cols-[190px_1fr] ${event.status === "À venir" ? "bg-card text-card-foreground" : "tone-ink"}`}
+                className={`edge grid overflow-hidden rounded-2xl sm:grid-cols-[140px_1fr] ${event.status === "À venir" ? "bg-card text-card-foreground" : "tone-ink"}`}
               >
-                <div className="flex min-h-36 flex-col items-center justify-center gap-3 border-b border-gold/20 bg-gold/10 px-5 py-6 text-center sm:min-h-full sm:border-b-0 sm:border-r">
-                  <CalendarDays size={25} aria-hidden="true" className="text-gold" />
-                  <p className="font-serif text-xl leading-snug text-gold">{event.date}</p>
+                <div className="relative flex min-h-36 flex-col items-center justify-center bg-gold/10 px-5 py-5 text-center sm:min-h-full sm:px-4 sm:py-6">
+                  {(() => {
+                    const date = eventDateParts(event.date);
+                    return (
+                      <>
+                        <span className="font-serif text-5xl leading-none text-gold">{date.day}</span>
+                        {date.month && <span className="mt-3 text-xs font-medium uppercase tracking-[0.12em] text-ink/70">{date.month}</span>}
+                        {date.year && <span className="mt-1 text-sm text-ink/60">{date.year}</span>}
+                      </>
+                    );
+                  })()}
+                  <span aria-hidden="true" className="absolute bottom-5 right-0 top-5 w-px bg-gold/30 sm:bottom-7 sm:top-7" />
                 </div>
 
                 <div className="p-6">

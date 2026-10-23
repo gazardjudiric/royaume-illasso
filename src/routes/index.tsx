@@ -230,6 +230,12 @@ function Index() {
         <img src={crownWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-crown" />
         <img src={palaceWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-palace" />
       </div>
+      <div className="king-message-heading relative z-10 mx-auto mb-8 max-w-[1344px]">
+        <p className="eyebrow">Mot d’accueil</p>
+        <h2 className="mt-4 max-w-4xl font-serif text-3xl leading-tight sm:text-4xl">
+          Bienvenue sur le site officiel du Royaume ILLASO
+        </h2>
+      </div>
       <div className="king-message-layout relative z-10 mx-auto grid max-w-[1344px] items-center gap-9 md:grid-cols-2 md:gap-14 lg:gap-20">
         <div className="king-message-image-pair mx-auto grid w-full grid-cols-2 items-center gap-3" role="group" aria-label="Portrait du Roi et palais royal">
           <figure className="king-message-image-wrap relative top-5 overflow-hidden rounded-2xl">
@@ -240,17 +246,13 @@ function Index() {
           </figure>
         </div>
         <div className="king-message-copy max-w-[900px] self-center">
-          <p className="eyebrow">Mot d’accueil</p>
-          <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl">
-            Bienvenue sur le site officiel du Royaume ILLASO
-          </h2>
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-ink/75">
+          <div className="mt-0 space-y-4 text-base leading-relaxed text-ink/75">
             <p>C’est avec un grand plaisir que nous vous souhaitons la bienvenue sur le site officiel du Royaume ILLASO.</p>
-            <p>Cet espace est une porte ouverte sur notre histoire, notre culture, notre mémoire et notre identité. Il est consacré à la découverte d’un patrimoine riche, constitué de notre histoire royale, de nos palais, de nos traditions, de nos savoirs, de nos valeurs et de tous ces témoignages qui, au fil des générations, ont façonné l’identité de notre communauté.</p>
+            <p>Cet espace est une porte ouverte consacré à la découverte de notre histoire royale, notre culture, notre mémoire, notre identité, nos palais, nos traditions, nos savoirs et nos valeurs. Un patrimoine riche.</p>
             <p>Le Royaume ILLASO est profondément attaché à la préservation et à la transmission de cet héritage, tout en restant résolument tourné vers l’avenir. Nous sommes convaincus que la connaissance de notre histoire et la valorisation de notre patrimoine peuvent contribuer à renforcer la cohésion des communautés, à transmettre des repères aux jeunes générations et à promouvoir le rayonnement culturel de notre territoire.</p>
             <p>À travers ce site, nous souhaitons également faire connaître les initiatives et les actions qui contribuent au développement de nos communautés, au bien-être des populations, à l’autonomisation des femmes et à la valorisation des potentialités locales.</p>
             <p>La Fondation OBA ADE KPADAWALE, qui s’inscrit dans cette dynamique, constitue notamment un cadre d’engagement et d’action au service des communautés et de la valorisation du patrimoine culturel.</p>
-            <p>Nous vous invitons à parcourir les différentes rubriques de ce site afin de découvrir l’histoire du Royaume ILLASO, ses figures emblématiques, ses palais et lieux de mémoire, ses traditions, son patrimoine culturel ainsi que ses initiatives en faveur du développement et du bien-être des communautés.</p>
+            <p>Nous vous invitons à parcourir les différentes rubriques afin de découvrir l’histoire du Royaume ILLASO, ses figures emblématiques, les lieux de mémoire, son patrimoine culturel ainsi que ses initiatives en faveur du développement et du bien-être des communautés.</p>
             <p>Bienvenue au Royaume ILLASO, un royaume de mémoire, de culture, de valeurs et d’avenir.</p>
             <p className="font-medium text-ink">Connaître notre histoire, préserver notre héritage et construire ensemble l’avenir.</p>
           </div>

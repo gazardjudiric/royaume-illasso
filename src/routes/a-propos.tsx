@@ -125,8 +125,8 @@ function About() {
         <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div>
             <p className="eyebrow">Activités & actions</p>
-            <h2 className="section-title">Organisations et actions du Roi</h2>
-            <p className="mt-6 text-lg leading-relaxed text-ink/75">Le Roi exerce des responsabilités au sein de plusieurs associations, organisations et institutions traditionnelles. Cette rubrique présente chacune de ces structures, son rôle et les actions du Roi qui y sont documentées.</p>
+            <h2 className="section-title">Organisations et responsabilités du Roi</h2>
+            <p className="mt-6 text-lg leading-relaxed text-ink/75">Cette rubrique présente les associations, organisations et institutions traditionnelles auxquelles le Roi est associé, ainsi que les fonctions qu’il y remplit.</p>
             <p className="mt-5 leading-relaxed text-ink/65">Les missions officielles, sièges et coordonnées qui restent à confirmer sont indiqués comme tels. Les fiches seront complétées à mesure que ces informations seront validées.</p>
           </div>
           <figure className="group overflow-hidden rounded-3xl border border-gold/20 shadow-2xl">
@@ -154,7 +154,7 @@ function About() {
                 name: "Fondation Oba Adépkadawalé",
                 type: "Fondation",
                 role: "Fondateur",
-                objective: "Mission statutaire à préciser. Une action de solidarité envers les orphelins de Sakété est recensée ci-dessous.",
+                objective: "Mission statutaire à préciser.",
                 seat: "À préciser.",
                 contact: "À préciser."
               },
@@ -206,28 +206,6 @@ function About() {
               </article>
             ))}
           </div>
-        </div>
-
-        <div className="mt-14">
-          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="eyebrow">Suivi évolutif</p>
-              <h3 className="section-title mt-2">Actions menées par le Roi</h3>
-              <p className="mt-3 max-w-2xl leading-relaxed text-ink/70">Les initiatives sont recensées ici. La liste sera enrichie après chaque activité menée et confirmée.</p>
-            </div>
-            <span className="w-fit rounded-full border border-gold/35 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold">Mise à jour progressive</span>
-          </div>
-          <ul className="grid gap-5 md:grid-cols-2">
-            <li className="edge rounded-2xl border-l-4 border-gold bg-[#f6eee4] p-6 text-stone-900 shadow-md">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <span className="rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-amber-800">Action de solidarité</span>
-                <span className="text-xs text-stone-600">Date à préciser</span>
-              </div>
-              <h4 className="mt-4 font-serif text-xl">Don aux orphelins de Sakété</h4>
-              <p className="mt-2 text-sm leading-relaxed text-stone-700">Le Roi a fait un don aux orphelins de Sakété. Cette action solidaire est recensée parmi les engagements associés à la Fondation Oba Adépkadawalé.</p>
-              <p className="mt-4 border-t border-gold/20 pt-3 text-xs font-medium text-stone-600">Structure concernée : Fondation Oba Adépkadawalé</p>
-            </li>
-          </ul>
         </div>
       </div>
     </section>

@@ -108,7 +108,7 @@ function Gallery() {
     </PageIntro>
 
     <nav className="tone-gold border-b border-gold/20 px-5 py-5 sm:px-8 lg:px-12" aria-label="Catégories de la galerie">
-      <div className="mx-auto flex max-w-[1344px] gap-3 overflow-x-auto pb-1">
+      <div className="mx-auto flex max-w-[1344px] flex-wrap justify-center gap-3">
         <Button type="button" variant={activeCategory === "toutes" ? "default" : "secondary"} aria-pressed={activeCategory === "toutes"} onClick={() => setActiveCategory("toutes")} className="shrink-0">
           Toutes les catégories
         </Button>

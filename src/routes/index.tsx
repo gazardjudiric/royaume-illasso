@@ -292,11 +292,11 @@ function Index() {
         </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {gallery.slice(0, 4).map((item) => (
-            <Link key={item.title} to="/galerie" className="edge group overflow-hidden rounded-2xl border border-gold/25 bg-white text-stone-900 shadow-lg transition-shadow hover:shadow-xl">
+            <Link key={item.title} to="/galerie" className="edge group overflow-hidden rounded-2xl border border-gold/25 bg-[#f6eee4] text-stone-900 shadow-lg transition-shadow hover:shadow-xl">
               <figure className="overflow-hidden">
                 <img src={item.image} alt={`${item.title} — ${item.meta}`} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.05]" width={1280} height={960} />
               </figure>
-              <div className="bg-white p-5">
+              <div className="bg-[#f6eee4] p-5">
                 <p className="text-xs uppercase tracking-[0.18em] text-gold">{item.category}</p>
                 <h3 className="mt-2 font-serif text-lg">{item.title}</h3>
                 <p className="mt-1 text-sm text-stone-600">{item.meta}</p>

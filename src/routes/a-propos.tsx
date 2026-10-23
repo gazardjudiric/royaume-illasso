@@ -94,13 +94,13 @@ function About() {
                 ["Spiritualité", "Cultes endogènes, Oro et traditions vivantes."],
                 ["Savoir-faire", "Textiles, sculptures et artisanat local."],
                 ["Transmission", "Des gestes et des récits transmis entre générations."]
-              ].map(([title, text]) => <article key={title} className="edge rounded-2xl border border-gold/25 bg-white p-5 text-stone-900 shadow-md"><h3 className="font-serif text-lg">{title}</h3><p className="mt-2 text-sm leading-relaxed text-stone-700">{text}</p></article>)}
+              ].map(([title, text]) => <article key={title} className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-5 text-stone-900 shadow-md"><h3 className="font-serif text-lg">{title}</h3><p className="mt-2 text-sm leading-relaxed text-stone-700">{text}</p></article>)}
             </div>
           </div>
         </div>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <article className="edge rounded-2xl border border-gold/25 bg-white p-6 text-stone-900 shadow-md"><h3 className="font-serif text-xl">Des communautés plurielles</h3><p className="mt-3 text-sm leading-relaxed text-stone-700">Nago, Yoruba, Fon, Goun, Mina, Ibo et Adja composent la mosaïque des communautés de Sakété, enrichie par les migrations à l’intérieur du Bénin et depuis le Nigeria voisin.</p></article>
-          <article className="edge rounded-2xl border border-gold/25 bg-white p-6 text-stone-900 shadow-md"><h3 className="font-serif text-xl">Des personnalités qui rayonnent</h3><p className="mt-3 text-sm leading-relaxed text-stone-700">Rafiatou Karimou, Salimane Karimou, Souradjou Kamala, François Abiola et les juristes Bastien et Ibrahim Salami illustrent le rayonnement de la commune.</p></article>
+          <article className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-6 text-stone-900 shadow-md"><h3 className="font-serif text-xl">Des communautés plurielles</h3><p className="mt-3 text-sm leading-relaxed text-stone-700">Nago, Yoruba, Fon, Goun, Mina, Ibo et Adja composent la mosaïque des communautés de Sakété, enrichie par les migrations à l’intérieur du Bénin et depuis le Nigeria voisin.</p></article>
+          <article className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-6 text-stone-900 shadow-md"><h3 className="font-serif text-xl">Des personnalités qui rayonnent</h3><p className="mt-3 text-sm leading-relaxed text-stone-700">Rafiatou Karimou, Salimane Karimou, Souradjou Kamala, François Abiola et les juristes Bastien et Ibrahim Salami illustrent le rayonnement de la commune.</p></article>
         </div>
       </div>
     </section>
@@ -137,7 +137,7 @@ function About() {
             ["Protéger", "Face aux tensions et aux incursions, Oba Otchoukpa choisit de quitter Illassô avec les siens pour rechercher un lieu plus sûr."],
             ["Résister", "En 1905, sous le règne d’Agbola, le conflit avec l’administration coloniale devient une révolte meurtrière. Le roi se réfugie ensuite à Ibatefin."],
             ["Transmettre", "Danses, cultes, cérémonies et récits des souverains gardent vivante la mémoire de la cité et nourrissent le lien entre les communautés."]
-          ].map(([title, text], i) => <article key={title} className="edge rounded-2xl border border-gold/25 bg-white p-7 text-stone-900 shadow-md">
+          ].map(([title, text], i) => <article key={title} className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-7 text-stone-900 shadow-md">
             <p className="text-gold">0{i + 1}</p><h3 className="mt-5 font-serif text-2xl">{title}</h3><p className="mt-4 text-sm leading-relaxed text-stone-700">{text}</p>
           </article>)}
         </div>

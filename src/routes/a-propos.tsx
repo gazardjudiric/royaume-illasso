@@ -135,9 +135,9 @@ function About() {
         </div>
 
         <div className="mt-12">
-          <div className="mb-6 text-center">
-            <p className="eyebrow">Organisations et responsabilités</p>
-            <h3 className="section-title mt-2">Les structures auxquelles le Roi contribue</h3>
+          <div className="mb-6">
+            <p className="eyebrow text-center">Organisations et responsabilités</p>
+            <h3 className="section-title mt-2 !text-center">Les structures auxquelles le Roi contribue</h3>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[

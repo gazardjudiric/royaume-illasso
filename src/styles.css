@@ -385,7 +385,7 @@
   display: block;
   height: auto;
   object-fit: contain;
-  opacity: .105;
+  opacity: .6;
   mix-blend-mode: multiply;
   filter: saturate(.72);
   animation: king-motif-drift 4.2s ease-in-out infinite alternate;
@@ -422,7 +422,7 @@ section.section-shell:not(.king-message-section)::before {
   background-repeat: no-repeat;
   background-position: left 1rem top 1rem, right 1rem top 1rem, left 1rem bottom 1rem, right 1rem bottom 1rem;
   background-size: clamp(5rem, 8vw, 8.5rem) auto, clamp(5rem, 8vw, 8.5rem) auto, clamp(5rem, 8vw, 8.5rem) auto, clamp(5rem, 8vw, 8.5rem) auto;
-  opacity: .065;
+  opacity: .6;
   mix-blend-mode: multiply;
   animation: king-motif-drift 4.2s ease-in-out infinite alternate;
 }
@@ -449,22 +449,22 @@ section.section-shell:not(.king-message-section):nth-of-type(5n + 5)::before {
 section.section-shell.tone-ink::before,
 section.section-shell.tone-ember::before,
 section.section-shell.tone-photo::before {
-  opacity: .11;
+  opacity: .6;
   mix-blend-mode: screen;
   filter: brightness(1.35) saturate(.65);
 }
 @media (max-width: 767px) {
-  .king-message-watermark { opacity: .075; }
+  .king-message-watermark { opacity: .6; }
   .king-message-watermark-throne { left: -2.75rem; top: 16%; width: 9rem; }
   .king-message-watermark-crown { right: -.5rem; top: 8%; }
   .king-message-watermark-palace { right: -1.5rem; bottom: -.5rem; width: clamp(8rem, 36vw, 11rem); }
   section.section-shell:not(.king-message-section)::before {
     background-size: clamp(3.5rem, 13vw, 5rem) auto, clamp(3.5rem, 13vw, 5rem) auto, clamp(3.5rem, 13vw, 5rem) auto, clamp(3.5rem, 13vw, 5rem) auto;
-    opacity: .065;
+    opacity: .6;
   }
   section.section-shell.tone-ink::before,
   section.section-shell.tone-ember::before,
-  section.section-shell.tone-photo::before { opacity: .09; }
+  section.section-shell.tone-photo::before { opacity: .6; }
 }
 @media (prefers-reduced-motion: reduce) {
   .king-message-watermark,
@@ -479,7 +479,7 @@ section.page-banner::after {
   z-index: 1;
   pointer-events: none;
   background-repeat: no-repeat;
-  opacity: .09;
+  opacity: .6;
   mix-blend-mode: screen;
   filter: saturate(.65);
   animation: king-motif-drift 4.2s ease-in-out infinite alternate;
@@ -508,12 +508,12 @@ section.page-banner::after {
     top: 15%;
     width: 6rem;
     height: 60%;
-    opacity: .06;
+    opacity: .6;
   }
   section.page-banner::after {
     right: -1rem;
     width: 9rem;
     height: 48%;
-    opacity: .06;
+    opacity: .6;
   }
 }

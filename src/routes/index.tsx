@@ -194,7 +194,7 @@ function Index() {
         <img src={palaceWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-palace" />
       </div>
       <div className="king-message-layout relative z-10 mx-auto grid max-w-[1344px] items-start gap-9 md:grid-cols-[minmax(300px,380px)_1fr] md:gap-14 lg:gap-20">
-        <div className="king-message-image-pair mx-auto grid w-full max-w-[380px] grid-cols-2 items-center gap-3 md:max-w-none">
+        <div className="king-message-image-pair mx-auto grid w-full max-w-[380px] grid-cols-2 items-center gap-3 md:max-w-none" role="group" aria-label="Portrait du Roi et palais royal">
           <figure className="king-message-image-wrap relative top-5 overflow-hidden rounded-2xl">
             <img src={images.king} alt="Portrait éditorial du Roi d’Illasso" loading="lazy" decoding="async" className="king-message-photo aspect-[4/5] w-full object-cover" width={1024} height={1280} />
           </figure>

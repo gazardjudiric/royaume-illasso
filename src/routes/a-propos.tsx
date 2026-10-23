@@ -72,7 +72,12 @@ function About() {
           </figure>
           <div>
             <p className="eyebrow">Culture & traditions</p><h2 className="section-title">Une identité portée par les rites et les danses</h2>
-            <p className="mt-6 text-lg leading-relaxed text-ink/75">{aboutChapterSummaries.culture}</p>
+            <p className="mt-6 text-lg leading-relaxed text-ink/75">
+              La population est issue de migrations venues du Bénin et du Nigeria voisin. En 2020, les communautés Nago et Yoruba y étaient majoritaires (environ 72,3 %), devant les Fon et les Goun (25,9 %). Les Mina, Ibo et Adja composent également la diversité locale.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-ink/75">
+              Avant la colonisation, les cultes endogènes structuraient la vie spirituelle. Ils demeurent présents aux côtés du christianisme et de l’islam. Le culte d’Oro, entité purificatrice de la cité, conserve une place particulière avec ses interdits et ses traditions. Les danses Egungun, Guèlèdè, Akpala, Batta et Bolodjo accompagnent les réjouissances. Originaire de Sakété, le Bolodjo a été mis en valeur par la chanteuse Zeynab.
+            </p>
             <div className="mt-7 grid grid-cols-2 gap-4">
               {[
                 ["Danses", "Egungun, Guèlèdè, Akpala, Batta et Bolodjo."],

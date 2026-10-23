@@ -99,6 +99,7 @@ export const galleryCategories: GalleryCategory[] = [
           { id: "danses-1", type: "image", src: images.festival, title: "Danses et rassemblements", alt: "Illustration d’un rassemblement culturel à Sakété" },
           { id: "danses-2", type: "image", src: images.craft, title: "Culture et transmission", alt: "Illustration de la transmission des traditions du royaume" },
           { id: "danses-3", type: "image", src: images.palace, title: "Patrimoine culturel", alt: "Illustration du patrimoine culturel d’Illassô" },
+          { id: "danses-video-test", type: "video", src: "https://www.youtube.com/watch?v=aqz-KE-bpKQ", title: "Vidéo de démonstration temporaire — à remplacer", alt: "Vidéo de test, sans lien avec les archives du Royaume d’Illasso" },
         ],
       },
       {

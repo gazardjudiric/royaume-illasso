@@ -124,26 +124,110 @@ function About() {
       <div className="mx-auto max-w-[1344px]">
         <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div>
-            <p className="eyebrow">Activités & actions</p><h2 className="section-title">Les engagements du Roi au service de la communauté</h2>
-            <p className="mt-6 text-lg leading-relaxed text-ink/75">Le Roi s’investit dans plusieurs associations, organisations et institutions traditionnelles. Il y exerce des responsabilités de président, de fondateur ou de membre, au service de la vie collective et de la continuité des traditions.</p>
-            <p className="mt-5 leading-relaxed text-ink/65">Parmi les actions concrètes mentionnées figure un don du Roi aux orphelins de Sakété. Voici les structures dans lesquelles il s’engage et les rôles qu’il y assume.</p>
+            <p className="eyebrow">Activités & actions</p>
+            <h2 className="section-title">Les engagements du Roi au service de la communauté</h2>
+            <p className="mt-6 text-lg leading-relaxed text-ink/75">Le Roi exerce des responsabilités au sein de plusieurs associations, organisations et institutions traditionnelles. Cette rubrique présente chacune de ces structures, son rôle et les actions du Roi qui y sont documentées.</p>
+            <p className="mt-5 leading-relaxed text-ink/65">Les missions officielles, sièges et coordonnées qui restent à confirmer sont indiqués comme tels. Les fiches seront complétées à mesure que ces informations seront validées.</p>
           </div>
           <figure className="group overflow-hidden rounded-3xl border border-gold/20 shadow-2xl">
             <img src={images.festival} alt="Célébration culturelle et rassemblement des communautés de Sakété" loading="lazy" decoding="async" className="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-[1.04]" width={1280} height={800}/>
           </figure>
         </div>
-        <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            ["AOYAD — ORISA D-B", "Président", "Apapo Oba Yorouba in Africa and Diaspora – Bénin (ORISA D-B) rassemble les Oba yorubas d’Afrique et de la diaspora. Le Roi en assure la présidence."],
-            ["Fondation Oba Adépkadawalé", "Fondateur", "Créée par le Roi, la fondation porte le nom d’Oba Adépkadawalé. Le document mentionne notamment un don du Roi aux orphelins de Sakété."],
-            ["ASIPAP", "Président", "Le Roi préside l’ASIPAP et y assume les responsabilités liées à cette fonction."],
-            ["Haut Conseil des Rois", "Membre", "En tant que membre du Haut Conseil des Rois, le Roi prend part aux échanges et aux travaux de cette instance."],
-            ["Culte Oro de Sakété", "Président", "Le Roi préside le culte Oro de Sakété et contribue à la préservation des traditions rituelles de la cité."]
-          ].map(([name, role, text], i) => <article key={name} className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-6 text-stone-900 shadow-md">
-            <p className="text-xs uppercase tracking-[0.18em] text-amber-800">{role}</p>
-            <h3 className="mt-3 font-serif text-xl">{name}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-stone-700">{text}</p>
-          </article>)}
+
+        <div className="mt-12">
+          <div className="mb-6">
+            <p className="eyebrow">Organisations et responsabilités</p>
+            <h3 className="section-title mt-2">Les structures auxquelles le Roi contribue</h3>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                name: "Apapo Oba Yorouba in Africa and Diaspora – Bénin (AOYAD / ORISA D-B)",
+                type: "Association de rois yorubas",
+                role: "Président",
+                objective: "Réunir et représenter les Oba yorubas d’Afrique et de la diaspora (mission à confirmer selon les statuts).",
+                seat: "Bénin (siège précis à confirmer).",
+                contact: "orisadbenin@gmail.com",
+                contactHref: "mailto:orisadbenin@gmail.com"
+              },
+              {
+                name: "Fondation Oba Adépkadawalé",
+                type: "Fondation",
+                role: "Fondateur",
+                objective: "Mission statutaire à préciser. Une action de solidarité envers les orphelins de Sakété est recensée ci-dessous.",
+                seat: "À préciser.",
+                contact: "À préciser."
+              },
+              {
+                name: "ASIPAP",
+                type: "Association ou organisation",
+                role: "Président",
+                objective: "À préciser à partir des informations officielles de l’organisation.",
+                seat: "À préciser.",
+                contact: "À préciser."
+              },
+              {
+                name: "Haut Conseil des Rois",
+                type: "Instance de concertation des rois",
+                role: "Membre",
+                objective: "Représenter les préoccupations des rois et contribuer au dialogue avec les institutions."
+                seat: "À préciser.",
+                contact: "À préciser."
+              },
+              {
+                name: "Culte Oro de Sakété",
+                type: "Culte traditionnel et spirituel",
+                role: "Président",
+                objective: "Faire vivre les rites et les traditions du culte Oro à Sakété."
+                seat: "Sakété (lieu de siège à préciser).",
+                contact: "À préciser."
+              }
+            ].map((organization) => (
+              <article key={organization.name} className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-6 text-stone-900 shadow-md">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <p className="text-xs uppercase tracking-[0.16em] text-amber-800">{organization.type}</p>
+                  <span className="rounded-full border border-gold/30 bg-white/70 px-3 py-1 text-xs font-medium text-stone-800">{organization.role}</span>
+                </div>
+                <h4 className="mt-4 font-serif text-xl leading-snug">{organization.name}</h4>
+                <dl className="mt-5 space-y-3 border-t border-gold/20 pt-4 text-sm">
+                  <div>
+                    <dt className="font-semibold text-stone-900">Objectif</dt>
+                    <dd className="mt-1 leading-relaxed text-stone-700">{organization.objective}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-stone-900">Siège</dt>
+                    <dd className="mt-1 leading-relaxed text-stone-700">{organization.seat}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-stone-900">Contact</dt>
+                    <dd className="mt-1 leading-relaxed text-stone-700">{organization.contactHref ? <a className="underline decoration-gold underline-offset-4 hover:text-amber-800" href={organization.contactHref}>{organization.contact}</a> : organization.contact}</dd>
+                  </div>
+                </dl>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-14">
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="eyebrow">Suivi évolutif</p>
+              <h3 className="section-title mt-2">Actions menées par le Roi</h3>
+              <p className="mt-3 max-w-2xl leading-relaxed text-ink/70">Les initiatives sont recensées ici. La liste sera enrichie après chaque activité menée et confirmée.</p>
+            </div>
+            <span className="w-fit rounded-full border border-gold/35 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold">Mise à jour progressive</span>
+          </div>
+          <ul className="grid gap-5 md:grid-cols-2">
+            <li className="edge rounded-2xl border-l-4 border-gold bg-[#f6eee4] p-6 text-stone-900 shadow-md">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-amber-800">Action de solidarité</span>
+                <span className="text-xs text-stone-600">Date à préciser</span>
+              </div>
+              <h4 className="mt-4 font-serif text-xl">Don aux orphelins de Sakété</h4>
+              <p className="mt-2 text-sm leading-relaxed text-stone-700">Le Roi a fait un don aux orphelins de Sakété. Cette action solidaire est recensée parmi les engagements associés à la Fondation Oba Adépkadawalé.</p>
+              <p className="mt-4 border-t border-gold/20 pt-3 text-xs font-medium text-stone-600">Structure concernée : Fondation Oba Adépkadawalé</p>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

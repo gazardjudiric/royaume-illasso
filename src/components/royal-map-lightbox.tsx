@@ -47,7 +47,7 @@ function buildMapPdf(jpeg: Uint8Array, width: number, height: number) {
     appendText(`${String(offsets[id]).padStart(10, "0")} 00000 n \n`);
   }
   appendText(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`);
-  return new Blob(chunks, { type: "application/pdf" });
+  return new Blob(chunks as unknown as BlobPart[], { type: "application/pdf" });
 }
 
 export function RoyalMapImage({ interactive = false }: { interactive?: boolean }) {

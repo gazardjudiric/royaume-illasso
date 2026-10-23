@@ -1,59 +1,194 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { X } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Film, Image as ImageIcon, Play, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { PageIntro } from "../components/site-chrome";
-import { gallery, galleryEvents, images } from "../lib/site-data";
+import { galleryCategories, images, type GalleryActivity, type GalleryMedia } from "../lib/site-data";
 
 export const Route = createFileRoute("/galerie")({
-  head: () => ({ meta: [{ title: "Galerie — Royaume d’Illasso" }, { name: "description", content: "Images, cérémonies, culture et territoire du Royaume Mère d’Illasso." }, { property: "og:title", content: "Galerie du Royaume d’Illasso" }, { property: "og:description", content: "Un regard photographique sur le patrimoine vivant d’Illasso." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/galerie" }] }), component: Gallery,
+  head: () => ({
+    meta: [
+      { title: "Galerie — Royaume d’Illasso" },
+      { name: "description", content: "Explorez les catégories, activités, images et vidéos du Royaume Mère d’Illasso." },
+      { property: "og:title", content: "Galerie du Royaume d’Illasso" },
+      { property: "og:description", content: "Un regard sur la culture, la mémoire royale et le territoire d’Illasso." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/galerie" }],
+  }),
+  component: Gallery,
 });
 
+type GalleryViewerState = { activity: GalleryActivity; mediaIndex: number };
+
+function videoEmbedUrl(src: string) {
+  try {
+    const url = new URL(src);
+    const host = url.hostname.replace(/^www\./, "");
+    if (host === "youtu.be") {
+      const id = url.pathname.slice(1);
+      return id ? `https://www.youtube-nocookie.com/embed/${id}` : src;
+    }
+    if (host === "youtube.com" || host === "m.youtube.com" || host === "youtube-nocookie.com") {
+      const id = url.searchParams.get("v");
+      if (id) return `https://www.youtube-nocookie.com/embed/${id}`;
+      if (url.pathname.startsWith("/embed/")) return src;
+    }
+    if (host === "vimeo.com") {
+      const id = url.pathname.split("/").filter(Boolean).pop();
+      return id ? `https://player.vimeo.com/video/${id}` : src;
+    }
+  } catch {
+    return src;
+  }
+  return src;
+}
+
+function mediaCounts(media: GalleryMedia[]) {
+  const imagesCount = media.filter((item) => item.type === "image").length;
+  const videosCount = media.filter((item) => item.type === "video").length;
+  return [
+    imagesCount > 0 ? `${imagesCount} photo${imagesCount > 1 ? "s" : ""}` : "",
+    videosCount > 0 ? `${videosCount} vidéo${videosCount > 1 ? "s" : ""}` : "",
+  ].filter(Boolean).join(" · ");
+}
+
 function Gallery() {
-  const [selected, setSelected] = useState<(typeof gallery)[number] | null>(null);
+  const [activeCategory, setActiveCategory] = useState("toutes");
+  const [viewer, setViewer] = useState<GalleryViewerState | null>(null);
+
+  const visibleCategories = activeCategory === "toutes"
+    ? galleryCategories
+    : galleryCategories.filter((category) => category.id === activeCategory);
+
+  const activeMedia = viewer?.activity.media[viewer.mediaIndex];
 
   useEffect(() => {
-    if (!selected) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelected(null);
+    if (!viewer) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeys = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setViewer(null);
+      if (event.key === "ArrowLeft") {
+        setViewer((current) => current ? {
+          ...current,
+          mediaIndex: (current.mediaIndex - 1 + current.activity.media.length) % current.activity.media.length,
+        } : null);
+      }
+      if (event.key === "ArrowRight") {
+        setViewer((current) => current ? {
+          ...current,
+          mediaIndex: (current.mediaIndex + 1) % current.activity.media.length,
+        } : null);
+      }
     };
-    document.addEventListener("keydown", closeOnEscape);
-    return () => document.removeEventListener("keydown", closeOnEscape);
-  }, [selected]);
+
+    document.addEventListener("keydown", handleKeys);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeys);
+    };
+  }, [viewer]);
+
+  const changeMedia = (direction: -1 | 1) => {
+    setViewer((current) => {
+      if (!current) return null;
+      const total = current.activity.media.length;
+      return { ...current, mediaIndex: (current.mediaIndex + direction + total) % total };
+    });
+  };
+
+  const openActivity = (activity: GalleryActivity) => setViewer({ activity, mediaIndex: 0 });
 
   return <>
-    <PageIntro eyebrow="Galerie" title="Les événements en images." image={images.craft} imageAlt="Scène d’artisanat et de patrimoine du Royaume d’Illasso">Chaque album rassemble les photographies d’un moment de la vie du royaume. Un court récit en précise le lieu, la date et les circonstances.</PageIntro>
-    <nav className="tone-gold border-b border-gold/20 px-6 py-5 lg:px-12" aria-label="Albums de la galerie">
-      <div className="mx-auto flex max-w-[1344px] gap-2 overflow-x-auto pb-1">
-        {galleryEvents.map((event) => <Button asChild variant="secondary" key={event.id} className="shrink-0"><a href={`#${event.id}`}>{event.title}</a></Button>)}
-      </div>
-    </nav>
-    <div className="bg-background">
-      <div>
-        {galleryEvents.map((event, eventIndex) => (
-          <section key={event.id} id={event.id} className={`section-shell section-reveal scroll-mt-28 ${["tone-cream", "tone-ink", "tone-gold"][eventIndex] ?? "tone-ivory"}`}>
-            <div className="mx-auto max-w-[1344px]"><header className="mb-10 max-w-3xl">
-              <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 text-xs font-semibold uppercase text-gold sm:flex">
-                <span className="min-w-0 truncate">{event.date}</span><span className="size-1 shrink-0 rounded-full bg-gold/50"/><span className="min-w-0 text-right sm:text-left">{event.place}</span>
-              </div>
-              <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-5xl">{event.title}</h2>
-              <p className="mt-5 text-base leading-relaxed text-ink/65 sm:text-lg">{event.description}</p>
-            </header>
-            <div className={eventIndex === 0 ? "grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4" : "grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-6"}>
-              {event.photos.map((photo, photoIndex) => {
-                if (!photo) return null;
-                const firstAlbumClass = photoIndex === 0 ? "col-span-2 row-span-2 aspect-square" : photoIndex === 3 ? "col-span-2 aspect-[2/1]" : "aspect-square";
-                const laterAlbumClass = photoIndex === 0 ? "col-span-2 aspect-[4/3] lg:col-span-3" : photoIndex === 1 ? "col-span-1 aspect-[3/4] lg:col-span-1" : "col-span-1 aspect-[3/4] lg:col-span-2";
-                return <Button key={`${event.id}-${photo.title}`} type="button" variant="media" onClick={() => setSelected(photo)} aria-label={`Agrandir : ${photo.title}`} className={`gallery-mosaic group relative h-auto overflow-hidden p-0 ${eventIndex === 0 ? firstAlbumClass : laterAlbumClass}`}>
-                  <img src={photo.image} alt={photo.title} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" />
-                  <span className="absolute inset-x-0 bottom-0 bg-ink/70 p-4 text-left text-cream opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100"><span className="block font-serif text-base">{photo.title}</span><span className="mt-1 block text-xs text-cream/70">{photo.meta}</span></span>
-                </Button>;
-              })}
-            </div></div>
-          </section>
+    <PageIntro eyebrow="Galerie royale" title="La mémoire du royaume en images" image={images.festival} imageAlt="Illustration culturelle du Royaume d’Illasso">
+      Parcourez les traditions, les récits et les paysages d’Illasso. Les visuels présentés sont illustratifs et pourront être remplacés par les archives officielles du royaume.
+    </PageIntro>
+
+    <nav className="tone-gold border-b border-gold/20 px-5 py-5 sm:px-8 lg:px-12" aria-label="Catégories de la galerie">
+      <div className="mx-auto flex max-w-[1344px] gap-3 overflow-x-auto pb-1">
+        <Button type="button" variant={activeCategory === "toutes" ? "default" : "secondary"} aria-pressed={activeCategory === "toutes"} onClick={() => setActiveCategory("toutes")} className="shrink-0">
+          Toutes les catégories
+        </Button>
+        {galleryCategories.map((category) => (
+          <Button key={category.id} type="button" variant={activeCategory === category.id ? "default" : "secondary"} aria-pressed={activeCategory === category.id} onClick={() => setActiveCategory(category.id)} className="shrink-0">
+            {category.title}
+          </Button>
         ))}
       </div>
-    </div>
-    {selected && <div className="lightbox" role="dialog" aria-modal="true" aria-label={selected.title} onClick={() => setSelected(null)}><Button type="button" variant="outline" size="icon" className="absolute right-5 top-5" title="Fermer" aria-label="Fermer" onClick={() => setSelected(null)}><X size={20}/></Button><div className="max-w-5xl" onClick={(event) => event.stopPropagation()}><img src={selected.image} alt={selected.title} className="max-h-[75vh] w-full object-contain"/><h2 className="mt-5 font-serif text-2xl text-cream">{selected.title}</h2><p className="mt-2 text-sm text-cream/65">{selected.meta}</p></div></div>}
+    </nav>
+
+    <main className="bg-background">
+      {visibleCategories.map((category, categoryIndex) => (
+        <section key={category.id} id={category.id} className={`section-shell section-reveal scroll-mt-28 ${["tone-cream", "tone-ivory", "tone-gold"][categoryIndex % 3]}`}>
+          <div className="mx-auto max-w-[1344px]">
+            <header className="mb-8 max-w-3xl">
+              <p className="eyebrow">Catégorie {String(categoryIndex + 1).padStart(2, "0")}</p>
+              <h2 className="section-title mt-3">{category.title}</h2>
+              <p className="mt-4 max-w-2xl leading-relaxed text-ink/65">{category.description}</p>
+            </header>
+            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {category.activities.map((activity) => {
+                const cover = activity.media[0];
+                const coverImage = cover.type === "image" ? cover.src : cover.poster ?? images.festival;
+                const videoCount = activity.media.filter((item) => item.type === "video").length;
+                return (
+                  <article key={activity.id} className="edge group overflow-hidden rounded-3xl border border-gold/25 bg-[#f6eee4] text-stone-900 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <button type="button" onClick={() => openActivity(activity)} aria-label={`Ouvrir les médias de ${activity.title}`} className="relative block aspect-[16/10] w-full overflow-hidden text-left">
+                      <img src={coverImage} alt={cover.type === "image" ? cover.alt : `Aperçu vidéo : ${activity.title}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" />
+                      <span className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+                      <span className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-white/25 bg-black/45 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
+                        <ImageIcon size={15} aria-hidden="true" /> {mediaCounts(activity.media)}
+                      </span>
+                      {videoCount > 0 && <span className="absolute right-4 top-4 grid size-10 place-items-center rounded-full bg-black/55 text-white"><Play size={16} fill="currentColor" aria-hidden="true" /></span>}
+                    </button>
+                    <div className="p-6">
+                      <h3 className="font-serif text-2xl leading-tight">{activity.title}</h3>
+                      <p className="mt-3 min-h-20 text-sm leading-relaxed text-stone-700">{activity.description}</p>
+                      <Button type="button" variant="secondary" onClick={() => openActivity(activity)} className="mt-5 w-full justify-between">
+                        <span className="flex items-center gap-2"><Film size={16} /> Ouvrir l’album</span>
+                        <ArrowRight size={16} />
+                      </Button>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      ))}
+    </main>
+
+    {viewer && activeMedia && (
+      <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95 p-4 text-white backdrop-blur-sm sm:p-7" role="dialog" aria-modal="true" aria-label={`${viewer.activity.title}, média ${viewer.mediaIndex + 1} sur ${viewer.activity.media.length}`} onClick={() => setViewer(null)}>
+        <Button type="button" variant="outline" size="icon" title="Fermer" aria-label="Fermer la visionneuse" onClick={() => setViewer(null)} className="absolute right-4 top-4 z-20 border-white/70 text-white sm:right-7 sm:top-7">
+          <X size={20} />
+        </Button>
+        <div className="relative flex w-full max-w-6xl items-center justify-center gap-2 sm:gap-5" onClick={(event) => event.stopPropagation()}>
+          <Button type="button" variant="outline" size="icon" title="Média précédent" aria-label="Média précédent" onClick={() => changeMedia(-1)} className="absolute left-0 top-1/2 z-20 -translate-y-1/2 border-white/70 bg-black/50 text-white sm:static sm:translate-y-0">
+            <ChevronLeft size={22} />
+          </Button>
+          <div className="flex min-h-[45vh] w-full max-w-5xl items-center justify-center overflow-hidden rounded-xl sm:min-h-[62vh]">
+            {activeMedia.type === "image" ? (
+              <img src={activeMedia.src} alt={activeMedia.alt} className="max-h-[68vh] w-full object-contain" />
+            ) : /\.(mp4|webm|ogg)(\?.*)?$/i.test(activeMedia.src) ? (
+              <video key={activeMedia.id} src={activeMedia.src} poster={activeMedia.poster} controls playsInline className="max-h-[68vh] w-full rounded-xl bg-black" />
+            ) : (
+              <iframe key={activeMedia.id} src={videoEmbedUrl(activeMedia.src)} title={activeMedia.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" className="aspect-video w-full max-h-[68vh] rounded-xl bg-black" />
+            )}
+          </div>
+          <Button type="button" variant="outline" size="icon" title="Média suivant" aria-label="Média suivant" onClick={() => changeMedia(1)} className="absolute right-0 top-1/2 z-20 -translate-y-1/2 border-white/70 bg-black/50 text-white sm:static sm:translate-y-0">
+            <ChevronRight size={22} />
+          </Button>
+        </div>
+        <div className="mt-4 max-w-4xl px-12 text-center" onClick={(event) => event.stopPropagation()}>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{viewer.activity.title} · {viewer.mediaIndex + 1}/{viewer.activity.media.length}</p>
+          <h2 className="mt-2 font-serif text-xl sm:text-2xl">{activeMedia.title}</h2>
+          <p className="mt-1 text-sm text-white/65">{activeMedia.type === "video" ? "Vidéo" : "Image"} de la galerie</p>
+        </div>
+      </div>
+    )}
   </>;
 }

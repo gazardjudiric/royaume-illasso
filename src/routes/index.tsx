@@ -168,6 +168,7 @@ function HeroCarousel() {
 
 // IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  // Keep the second welcome image tied to the section's actual scroll progress.
   useEffect(() => {
     const section = document.getElementById("mot-du-roi");
     const secondPhoto = section?.querySelector<HTMLImageElement>(

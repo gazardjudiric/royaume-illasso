@@ -170,7 +170,7 @@ function About() {
                 name: "Haut Conseil des Rois",
                 type: "Instance de concertation des rois",
                 role: "Membre",
-                objective: "Représenter les préoccupations des rois et contribuer au dialogue avec les institutions."
+                objective: "Représenter les préoccupations des rois et contribuer au dialogue avec les institutions.",
                 seat: "À préciser.",
                 contact: "À préciser."
               },
@@ -178,7 +178,7 @@ function About() {
                 name: "Culte Oro de Sakété",
                 type: "Culte traditionnel et spirituel",
                 role: "Président",
-                objective: "Faire vivre les rites et les traditions du culte Oro à Sakété."
+                objective: "Faire vivre les rites et les traditions du culte Oro à Sakété.",
                 seat: "Sakété (lieu de siège à préciser).",
                 contact: "À préciser."
               }

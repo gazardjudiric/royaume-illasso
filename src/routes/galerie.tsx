@@ -137,12 +137,12 @@ function Gallery() {
                 return (
                   <article key={activity.id} className="edge group overflow-hidden rounded-3xl border border-gold/25 bg-[#f6eee4] text-stone-900 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">
                     <button type="button" onClick={() => openActivity(activity)} aria-label={`Voir l’album de ${activity.title} : ${mediaCounts(activity.media)}`} className="relative block aspect-[16/10] w-full overflow-hidden text-left">
-                      <div className="absolute inset-0 grid grid-cols-12 grid-rows-2 gap-1.5 p-1.5">
+                      <div className="absolute inset-0 grid grid-cols-6 grid-rows-2 gap-1.5 p-1.5">
                         {previewMedia.map((media, index) => {
                           const previewSrc = media.type === "image" ? media.src : media.poster ?? images.festival;
-                          const tileLayout = index === 0
-                            ? (previewMedia.length === 1 ? "col-span-12 row-span-2" : "col-span-6 row-span-2")
-                            : previewMedia.length === 2 ? "col-span-6 row-span-2" : "col-span-3 row-span-1";
+                          const tileLayout = previewMedia.length < 4
+                            ? index === 0 ? "col-span-6 row-span-2" : "col-span-3 row-span-1"
+                            : index < 3 ? "col-span-2 row-span-1" : "col-span-3 row-span-1";
                           return (
                             <div key={media.id} className={`relative min-h-0 overflow-hidden rounded-xl ${tileLayout}`}>
                               <img src={previewSrc} alt={media.type === "image" ? media.alt : `Aperçu vidéo : ${media.title}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" />

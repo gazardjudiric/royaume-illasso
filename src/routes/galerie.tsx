@@ -136,7 +136,7 @@ function Gallery() {
                 if (previewMedia.length === 0) return null;
                 return (
                   <article key={activity.id} className="edge group overflow-hidden rounded-3xl border border-gold/25 bg-[#f6eee4] text-stone-900 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-                    <button type="button" onClick={() => openActivity(activity)} aria-label={`Voir plus : ${activity.title}`} className="relative block aspect-[16/10] w-full overflow-hidden text-left">
+                    <button type="button" onClick={() => openActivity(activity)} aria-label={`Voir l’album de ${activity.title} : ${mediaCounts(activity.media)}`} className="relative block aspect-[16/10] w-full overflow-hidden text-left">
                       <div className="absolute inset-0 grid grid-cols-12 grid-rows-2 gap-1.5 p-1.5">
                         {previewMedia.map((media, index) => {
                           const previewSrc = media.type === "image" ? media.src : media.poster ?? images.festival;

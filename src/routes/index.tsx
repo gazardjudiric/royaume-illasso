@@ -186,6 +186,7 @@ function Index() {
         const bounds = section.getBoundingClientRect();
         const travel = window.innerHeight + bounds.height;
         const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / travel));
+        // Keep the drift visible on desktop and restrained on narrow screens.
         const maxOffset = Math.min(120, window.innerWidth * 0.12);
         const offset = progress * maxOffset;
         secondFrame.style.setProperty("--king-scroll-offset", `${offset.toFixed(1)}px`);

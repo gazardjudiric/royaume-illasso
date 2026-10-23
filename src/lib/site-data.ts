@@ -60,31 +60,105 @@ export const gallery = [
   { image: territory, title: "Terres d’Illasso", category: "Territoire", meta: "Commune de Sakété · vue aérienne" },
 ];
 
-// Albums événementiels de la galerie. Les descriptions racontent le contexte
-// de prise de vue et peuvent être remplacées avec les archives officielles.
-export const galleryEvents = [
+export type GalleryMedia = {
+  id: string;
+  type: "image" | "video";
+  src: string;
+  title: string;
+  alt: string;
+  poster?: string;
+};
+
+export type GalleryActivity = {
+  id: string;
+  title: string;
+  description: string;
+  media: GalleryMedia[];
+};
+
+export type GalleryCategory = {
+  id: string;
+  title: string;
+  description: string;
+  activities: GalleryActivity[];
+};
+
+// Les visuels actuels sont des illustrations temporaires. Ajoutez des vidéos
+// en ajoutant un élément { type: "video", src: "URL YouTube, Vimeo ou fichier vidéo" }.
+export const galleryCategories: GalleryCategory[] = [
   {
-    id: "fete-du-trone",
-    title: "Fête du Trône",
-    date: "14 août 2026",
-    place: "Palais royal d’Illasso",
-    description: "Ces images ont été réalisées pendant les préparatifs et les temps forts de la Fête du Trône. Elles suivent l’arrivée des dignitaires, les tambours de cour et le rassemblement des familles autour du palais.",
-    photos: [gallery[2], gallery[0], gallery[1], gallery[4]],
+    id: "culture-traditions",
+    title: "Culture & traditions",
+    description: "Danses, rites et savoir-faire qui font vivre l’identité culturelle de Sakété.",
+    activities: [
+      {
+        id: "danses-expressions",
+        title: "Danses et expressions culturelles",
+        description: "Egungun, Guèlèdè, Akpala, Batta et Bolodjo accompagnent les réjouissances et participent à la transmission des traditions locales.",
+        media: [
+          { id: "danses-1", type: "image", src: images.festival, title: "Danses et rassemblements", alt: "Illustration d’un rassemblement culturel à Sakété" },
+          { id: "danses-2", type: "image", src: images.craft, title: "Culture et transmission", alt: "Illustration de la transmission des traditions du royaume" },
+        ],
+      },
+      {
+        id: "artisanat-savoir-faire",
+        title: "Artisanat et savoir-faire",
+        description: "Les textiles, la sculpture et l’artisanat local témoignent de gestes et de connaissances transmis entre générations.",
+        media: [
+          { id: "artisanat-1", type: "image", src: images.craft, title: "Les gestes de l’artisanat", alt: "Illustration de l’artisanat et des savoir-faire locaux" },
+          { id: "artisanat-2", type: "image", src: images.territory, title: "Un patrimoine vivant", alt: "Illustration du territoire et du patrimoine de Sakété" },
+        ],
+      },
+    ],
   },
   {
-    id: "rencontre-des-artisans",
-    title: "Rencontre des artisans",
-    date: "26 septembre 2026",
-    place: "Place du marché royal",
-    description: "Cette série documente une journée de transmission consacrée aux gestes, aux matières et aux motifs d’Illasso. Les photographies ont été prises au fil des démonstrations et des échanges avec les artisans.",
-    photos: [gallery[3], gallery[1], gallery[2]],
+    id: "histoire-royale",
+    title: "Histoire & mémoire royale",
+    description: "Les récits fondateurs et la mémoire de la dynastie du Royaume Mère d’Illasso.",
+    activities: [
+      {
+        id: "illasso-berceau",
+        title: "Illassô, berceau du royaume",
+        description: "La mémoire des fondateurs de Sakété remonte à Illassô, premier foyer de la dynastie d’Oba Otchoukpa et origine historique du Royaume Mère.",
+        media: [
+          { id: "illasso-1", type: "image", src: images.palace, title: "Mémoire du palais", alt: "Illustration du patrimoine royal d’Illassô" },
+          { id: "illasso-2", type: "image", src: images.territory, title: "Terre de fondation", alt: "Illustration du territoire lié à l’histoire d’Illassô" },
+        ],
+      },
+      {
+        id: "memoire-dynastie",
+        title: "Mémoire de la dynastie royale",
+        description: "Les récits du royaume évoquent Oba Otchoukpa, fondateur de la dynastie, ainsi que les règnes d’Agbola et d’Adélu, associés à la mémoire et à la résistance.",
+        media: [
+          { id: "dynastie-1", type: "image", src: images.king, title: "La mémoire royale", alt: "Illustration de la mémoire de la dynastie royale d’Illasso" },
+          { id: "dynastie-2", type: "image", src: images.palace, title: "Le palais et la mémoire", alt: "Illustration du patrimoine royal du royaume" },
+        ],
+      },
+    ],
   },
   {
-    id: "journee-du-territoire",
-    title: "Journée du territoire",
-    date: "18 octobre 2026",
-    place: "Illasso et villages voisins",
-    description: "Prises lors d’une visite des terres du royaume, ces images retracent le parcours entre le palais, les espaces de rassemblement et les villages voisins, en présence des sages et des communautés.",
-    photos: [gallery[4], gallery[0], gallery[3]],
+    id: "territoire-patrimoine",
+    title: "Territoire & patrimoine",
+    description: "Des repères sur Sakété et les paysages qui composent le territoire de la commune.",
+    activities: [
+      {
+        id: "reperes-sakete",
+        title: "Repères sur la commune de Sakété",
+        description: "La commune couvre environ 700 km² et compte six arrondissements ainsi que 81 villages et quartiers de ville. Elle se situe dans le département du Plateau, à une soixantaine de kilomètres de Cotonou.",
+        media: [
+          { id: "territoire-1", type: "image", src: images.territory, title: "Le territoire de Sakété", alt: "Illustration des paysages du territoire de Sakété" },
+          { id: "territoire-2", type: "image", src: images.palace, title: "Patrimoine du royaume", alt: "Illustration du patrimoine royal dans le territoire de Sakété" },
+        ],
+      },
+      {
+        id: "rites-spiritualite",
+        title: "Rites et spiritualité",
+        description: "Les cultes endogènes demeurent présents aux côtés du christianisme et de l’islam. Le culte d’Oro conserve une place particulière dans la mémoire spirituelle de Sakété.",
+        media: [
+          { id: "spiritualite-1", type: "image", src: images.palace, title: "Traditions spirituelles", alt: "Illustration des traditions spirituelles de Sakété" },
+          { id: "spiritualite-2", type: "image", src: images.festival, title: "Traditions vivantes", alt: "Illustration des traditions vivantes du royaume" },
+        ],
+      },
+    ],
   },
 ];

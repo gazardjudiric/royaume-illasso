@@ -135,7 +135,7 @@ function About() {
         </div>
 
         <div className="mt-12">
-          <div className="mb-6">
+          <div className="mb-6 text-center">
             <p className="eyebrow">Organisations et responsabilités</p>
             <h3 className="section-title mt-2">Les structures auxquelles le Roi contribue</h3>
           </div>

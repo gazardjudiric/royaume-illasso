@@ -41,25 +41,35 @@ function About() {
           </article>)}
         </div>
 
-        <div className="mt-10 rounded-3xl border border-gold/20 bg-white/75 p-7 md:p-9">
-          <p className="eyebrow">Mémoire et résistance</p>
-          <h3 className="mt-3 font-serif text-2xl md:text-3xl">La révolte de 1905 et les déplacements du palais</h3>
-          <p className="mt-5 leading-relaxed text-ink/65">
-            À Imoro, quartier situé à environ 300 mètres de la résidence de l’administrateur colonial, des festivités funéraires sont organisées en l’honneur d’un riche notable. Le vacarme conduit l’administrateur à en ordonner l’interruption par la force. Le 25 février 1905, les heurts entre habitants et soldats du cercle font des blessés et des morts. Le sanctuaire d’Oshugbé est détruit, puis les attaques contre les bâtiments administratifs s’intensifient. La bataille qui s’ensuit se termine dans le sang. Le roi Agbola prend alors la route d’Ibatefin, son village natal, au Nigeria.
-          </p>
-          <p className="mt-4 leading-relaxed text-ink/65">
-            Après ces affrontements, les souverains qui lui succèdent restent insoumis. Adélu (Adélakun), opposé aux recrutements militaires forcés, est déporté à Port-Étienne, aujourd’hui Nouadhibou, en Mauritanie. Gbékun, terre dédiée au palais royal, est ensuite abandonné au profit d’Odéla. L’ancien emplacement du palais est cédé à l’administration coloniale, qui y bâtit l’école « Ilè iwé oba », aujourd’hui l’École urbaine Centre.
-          </p>
+        <div className="mt-10 grid overflow-hidden rounded-3xl border border-gold/20 bg-white/75 lg:grid-cols-[0.9fr_1.1fr]">
+          <figure className="group relative min-h-[260px] overflow-hidden lg:min-h-[360px]">
+            <img src={images.territory} alt="Paysage du territoire d’Illassô, marqué par l’histoire du royaume" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" width={1280} height={960}/>
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent px-6 pb-5 pt-16 font-serif text-lg text-cream">Mémoire et résistance</figcaption>
+          </figure>
+          <div className="p-7 md:p-9">
+            <p className="eyebrow">Mémoire et résistance</p>
+            <h3 className="mt-3 font-serif text-2xl md:text-3xl">La révolte de 1905 et les déplacements du palais</h3>
+            <p className="mt-5 leading-relaxed text-ink/65">
+              À Imoro, quartier situé à environ 300 mètres de la résidence de l’administrateur colonial, des festivités funéraires sont organisées en l’honneur d’un riche notable. Le vacarme conduit l’administrateur à en ordonner l’interruption par la force. Le 25 février 1905, les heurts entre habitants et soldats du cercle font des blessés et des morts. Le sanctuaire d’Oshugbé est détruit, puis les attaques contre les bâtiments administratifs s’intensifient. La bataille qui s’ensuit se termine dans le sang. Le roi Agbola prend alors la route d’Ibatefin, son village natal, au Nigeria.
+            </p>
+            <p className="mt-4 leading-relaxed text-ink/65">
+              Après ces affrontements, les souverains qui lui succèdent restent insoumis. Adélu (Adélakun), opposé aux recrutements militaires forcés, est déporté à Port-Étienne, aujourd’hui Nouadhibou, en Mauritanie. Gbékun, terre dédiée au palais royal, est ensuite abandonné au profit d’Odéla. L’ancien emplacement du palais est cédé à l’administration coloniale, qui y bâtit l’école « Ilè iwé oba », aujourd’hui l’École urbaine Centre.
+            </p>
+          </div>
         </div>
 
-
-
-        <div className="mt-10 rounded-3xl bg-ink px-7 py-8 text-cream md:px-9">
-          <p className="eyebrow">Des femmes et des hommes de rayonnement</p>
-          <h3 className="mt-3 font-serif text-2xl">Sakété, terre de talents</h3>
-          <p className="mt-4 max-w-5xl text-sm leading-relaxed text-cream/75">
-            La mémoire de Sakété est aussi portée par celles et ceux qui ont marqué la vie publique, intellectuelle et juridique du Bénin : Rafiatou Karimou, première femme ministre du pays, son frère Salimane Karimou, Souradjou Kamala, ancien directeur de cabinet du général Mathieu Kérékou, le professeur et ancien ministre François Abiola, ainsi que les juristes Bastien et Ibrahim Salami.
-          </p>
+        <div className="mt-10 grid overflow-hidden rounded-3xl bg-ink text-cream lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="px-7 py-8 md:px-9 md:py-10">
+            <p className="eyebrow">Des femmes et des hommes de rayonnement</p>
+            <h3 className="mt-3 font-serif text-2xl md:text-3xl">Sakété, terre de talents</h3>
+            <p className="mt-4 max-w-5xl text-sm leading-relaxed text-cream/75">
+              La mémoire de Sakété est aussi portée par celles et ceux qui ont marqué la vie publique, intellectuelle et juridique du Bénin : Rafiatou Karimou, première femme ministre du pays, son frère Salimane Karimou, Souradjou Kamala, ancien directeur de cabinet du général Mathieu Kérékou, le professeur et ancien ministre François Abiola, ainsi que les juristes Bastien et Ibrahim Salami.
+            </p>
+          </div>
+          <figure className="group relative min-h-[240px] overflow-hidden lg:min-h-[300px]">
+            <img src={images.festival} alt="Rassemblement culturel à Sakété illustrant la vie et le rayonnement de la commune" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" width={1280} height={800}/>
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent px-6 pb-5 pt-16 font-serif text-lg text-cream">Des femmes et des hommes qui font rayonner Sakété</figcaption>
+          </figure>
         </div>
       </div>
     </section>

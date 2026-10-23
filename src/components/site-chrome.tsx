@@ -63,7 +63,7 @@ export function PageIntro({ eyebrow, title, image, imageAlt, children }: { eyebr
   return <section className="page-banner on-dark">
     <img src={image} alt={imageAlt} className="page-banner-image" width={1600} height={900} />
     <div className="page-banner-shade" />
-    <div className="relative z-10 mx-auto flex min-h-[inherit] max-w-[1344px] flex-col justify-end px-6 pb-10 pt-32 lg:px-12 lg:pb-14">
+    <div className="relative z-10 mx-auto flex h-full max-w-[1344px] flex-col justify-end px-6 pb-10 pt-32 lg:px-12 lg:pb-14">
       <p className="eyebrow">{eyebrow}</p>
       <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight sm:text-6xl">{title}</h1>
       <div className="mt-4 max-w-2xl text-sm leading-relaxed text-cream/80 sm:text-base">{children}</div>

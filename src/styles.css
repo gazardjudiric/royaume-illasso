@@ -190,7 +190,7 @@
 @utility section-reveal { animation: section-rise .75s both ease-out; animation-timeline: view(); animation-range: entry 8% cover 28%; }
 @utility parallax-media { overflow: hidden; & img { min-height: 112%; transform: translateY(-3%); transition: transform .7s ease; } &:hover img { transform: translateY(-3%) scale(1.035); } }
 @utility section-title { margin-top: 1rem; max-width: 50rem; font-family: var(--font-serif); font-size: 2.25rem; line-height: 1.2; @media (min-width: 640px) { font-size: 3rem; } }
-@utility page-banner { position: relative; min-height: clamp(24rem, 48vh, 34rem); overflow: hidden; border-bottom: 3px solid var(--gold); background: var(--ink); }
+@utility page-banner { position: relative; height: 36rem; min-height: 36rem; overflow: hidden; border-bottom: 3px solid var(--gold); background: var(--ink); }
 @utility page-banner-image { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; animation: banner-breathe 12s ease-out both; }
 @utility page-banner-shade { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in oklab, var(--ink) 88%, transparent), color-mix(in oklab, var(--ink) 48%, transparent) 65%, color-mix(in oklab, var(--ink) 64%, transparent)), linear-gradient(0deg, color-mix(in oklab, var(--ink) 72%, transparent), transparent 62%); }
 @utility filter-active { border-color: var(--action-gold); background: var(--action-gold); color: var(--action-on); }
@@ -333,7 +333,7 @@
 }
 
 @media (max-width: 767px) {
-  .page-banner { min-height: 27rem; }
+  .page-banner { height: 29rem; min-height: 29rem; }
   .page-banner-image { inset: 0; width: 100%; height: 100%; }
   .tone-photo { background-attachment: scroll; }
   .parallax-media img { min-height: 100%; transform: none; }

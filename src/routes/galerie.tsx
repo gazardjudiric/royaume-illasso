@@ -131,7 +131,11 @@ function Gallery() {
             </header>
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {category.activities.map((activity) => {
-                const previewMedia = activity.media.slice(0, 5);
+                const videoPreview = activity.media.find((item) => item.type === "video");
+                const imagePreviews = activity.media.filter((item) => item.type === "image").slice(0, videoPreview ? 4 : 5);
+                const previewMedia = videoPreview
+                  ? [...imagePreviews, videoPreview]
+                  : activity.media.slice(0, 5);
                 const videoCount = activity.media.filter((item) => item.type === "video").length;
                 if (previewMedia.length === 0) return null;
                 return (

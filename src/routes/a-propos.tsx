@@ -74,7 +74,7 @@ function About() {
       </div>
     </section>
 
-    <section id="culture" className="section-shell tone-ink section-reveal">
+    <section id="culture" className="section-shell tone-ember section-reveal">
       <div className="mx-auto max-w-[1344px]">
         <div className="grid items-center gap-8 md:grid-cols-[0.9fr_1.1fr]">
           <figure className="group overflow-hidden rounded-3xl border border-gold/20 shadow-2xl">

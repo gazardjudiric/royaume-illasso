@@ -124,7 +124,7 @@ function About() {
       <div className="mx-auto max-w-[1344px]">
         <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div>
-            <p className="eyebrow">Activités & actions</p>
+            <p className="eyebrow">Organisations du Roi</p>
             <h2 className="section-title">Organisations et responsabilités du Roi</h2>
             <p className="mt-6 text-lg leading-relaxed text-ink/75">Cette rubrique présente les associations, organisations et institutions traditionnelles auxquelles le Roi est associé, ainsi que les fonctions qu’il y remplit.</p>
             <p className="mt-5 leading-relaxed text-ink/65">Les missions officielles, sièges et coordonnées qui restent à confirmer sont indiqués comme tels. Les fiches seront complétées à mesure que ces informations seront validées.</p>

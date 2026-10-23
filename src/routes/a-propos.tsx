@@ -10,8 +10,8 @@ export const Route = createFileRoute("/a-propos")({
 
 function About() {
   return <>
-    <PageIntro eyebrow="À propos" title="Pour comprendre Sakété, revenons à Illassô." image={images.territory} imageAlt="Paysage du territoire du Royaume d’Illasso">
-      Le Royaume Mère d’Illasso est le premier foyer de l’histoire des fondateurs de Sakété. Des migrations fondatrices aux traditions qui demeurent, cette terre porte la mémoire d’un peuple, d’une dynastie et d’un territoire.
+    <PageIntro eyebrow="À propos" title="Le Royaume Mère d’Illasso est le premier foyer de l’histoire des fondateurs de Sakété." image={images.territory} imageAlt="Paysage du territoire du Royaume d’Illasso">
+      Des migrations fondatrices aux traditions qui demeurent, cette terre porte la mémoire d’un peuple, d’une dynastie et d’un territoire.
     </PageIntro>
 
     <section id="histoire" className="section-shell tone-cream section-reveal">

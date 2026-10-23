@@ -193,10 +193,15 @@ function Index() {
         <img src={crownWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-crown" />
         <img src={palaceWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-palace" />
       </div>
-      <div className="king-message-layout relative z-10 mx-auto grid max-w-[1344px] items-center gap-9 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-14 lg:gap-20">
-        <figure className="king-message-image-wrap mx-auto w-full max-w-[300px] overflow-hidden rounded-2xl">
-          <img src={images.king} alt="Portrait éditorial du Roi d’Illasso" loading="lazy" decoding="async" className="king-message-photo aspect-[4/5] w-full object-cover" width={1024} height={1280} />
-        </figure>
+      <div className="king-message-layout relative z-10 mx-auto grid max-w-[1344px] items-start gap-9 md:grid-cols-[minmax(300px,380px)_1fr] md:gap-14 lg:gap-20">
+        <div className="king-message-image-pair mx-auto grid w-full max-w-[380px] grid-cols-2 items-center gap-3 md:max-w-none">
+          <figure className="king-message-image-wrap relative top-5 overflow-hidden rounded-2xl">
+            <img src={images.king} alt="Portrait éditorial du Roi d’Illasso" loading="lazy" decoding="async" className="king-message-photo aspect-[4/5] w-full object-cover" width={1024} height={1280} />
+          </figure>
+          <figure className="king-message-image-wrap relative -top-5 overflow-hidden rounded-2xl">
+            <img src={images.palace} alt="Palais royal du Royaume ILLASO" loading="lazy" decoding="async" className="king-message-photo aspect-[4/5] w-full object-cover" width={1024} height={1280} />
+          </figure>
+        </div>
         <div className="king-message-copy max-w-[900px] self-center">
           <p className="eyebrow">Mot d’accueil</p>
           <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl">

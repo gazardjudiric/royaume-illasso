@@ -131,7 +131,7 @@ function Gallery() {
             </header>
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {category.activities.map((activity) => {
-                const previewMedia = activity.media.slice(0, 3);
+                const previewMedia = activity.media.slice(0, 5);
                 const videoCount = activity.media.filter((item) => item.type === "video").length;
                 if (previewMedia.length === 0) return null;
                 return (
@@ -141,8 +141,8 @@ function Gallery() {
                         {previewMedia.map((media, index) => {
                           const previewSrc = media.type === "image" ? media.src : media.poster ?? images.festival;
                           const tileLayout = index === 0
-                            ? (previewMedia.length === 1 ? "col-span-12 row-span-2" : "col-span-7 row-span-2")
-                            : previewMedia.length === 2 ? "col-span-5 row-span-2" : "col-span-5 row-span-1";
+                            ? (previewMedia.length === 1 ? "col-span-12 row-span-2" : "col-span-6 row-span-2")
+                            : previewMedia.length === 2 ? "col-span-6 row-span-2" : "col-span-3 row-span-1";
                           return (
                             <div key={media.id} className={`relative min-h-0 overflow-hidden rounded-xl ${tileLayout}`}>
                               <img src={previewSrc} alt={media.type === "image" ? media.alt : `Aperçu vidéo : ${media.title}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" />

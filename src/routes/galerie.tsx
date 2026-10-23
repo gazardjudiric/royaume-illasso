@@ -120,7 +120,7 @@ function Gallery() {
       </div>
     </nav>
 
-    <main className="bg-background">
+    <div className="bg-background">
       {visibleCategories.map((category, categoryIndex) => (
         <section key={category.id} id={category.id} className={`section-shell section-reveal scroll-mt-28 ${["tone-cream", "tone-ivory", "tone-gold"][categoryIndex % 3]}`}>
           <div className="mx-auto max-w-[1344px]">
@@ -159,7 +159,7 @@ function Gallery() {
           </div>
         </section>
       ))}
-    </main>
+    </div>
 
     {viewer && activeMedia && (
       <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95 p-4 text-white backdrop-blur-sm sm:p-7" role="dialog" aria-modal="true" aria-label={`${viewer.activity.title}, média ${viewer.mediaIndex + 1} sur ${viewer.activity.media.length}`} onClick={() => setViewer(null)}>

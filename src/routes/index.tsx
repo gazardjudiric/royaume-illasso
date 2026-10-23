@@ -179,7 +179,7 @@ function Index() {
             <h1 aria-label="ILLASSO" className="hero-wordmark mt-5 font-serif text-6xl leading-none sm:text-8xl"><span aria-hidden="true">ILLASS</span><img src={logoAsset.url} alt="" aria-hidden="true" className="hero-seal" width={96} height={96} /></h1>
             <p className="mt-5 font-serif text-2xl italic text-gold sm:text-3xl">Un trône, une mémoire, une terre à vivre.</p>
             <p className="mt-7 max-w-2xl text-base leading-relaxed text-cream/80 sm:text-lg">Au cœur de Sakété, le Royaume Mère d’Illasso veille sur une mémoire vivante faite de transmission, de culture et de communauté.</p>
-            <div className="mt-9 flex flex-wrap gap-3"><Button asChild><Link to="/a-propos">Découvrir le royaume <ArrowRight size={16} /></Link></Button><Button asChild variant="secondary"><a href="#mot-du-roi">Le mot du Roi</a></Button></div>
+            <div className="mt-9 flex flex-wrap gap-3"><Button asChild><Link to="/a-propos">Découvrir le royaume <ArrowRight size={16} /></Link></Button><Button asChild variant="secondary"><a href="#mot-du-roi">Mot d’accueil</a></Button></div>
           </div>
           <div className="mx-auto w-full max-w-[260px] lg:max-w-none">
             <HeroCarousel />
@@ -198,12 +198,20 @@ function Index() {
           <img src={images.king} alt="Portrait éditorial du Roi d’Illasso" loading="lazy" decoding="async" className="king-message-photo aspect-[4/5] w-full object-cover" width={1024} height={1280} />
         </figure>
         <div className="king-message-copy max-w-[900px] self-center">
-          <span className="king-message-mark block h-12 font-serif text-7xl leading-[.8] text-gold/40" aria-hidden="true">“</span>
-          <p className="eyebrow mt-4">Le mot du Roi</p>
-          <blockquote className="king-message-quote mt-5 font-serif text-[clamp(1.65rem,3.15vw,2.75rem)] leading-[1.45]">
-            Que la sagesse de nos aïeux guide chaque pas sur cette terre bénie. Nous n’héritons pas d’Illasso — nous le recevons, et nous le transmettons.
-          </blockquote>
-          <p className="mt-6 text-sm leading-relaxed text-ink/60">Sa Majesté, Roi d’Illasso — Gardien de la parole et du territoire</p>
+          <p className="eyebrow">Mot d’accueil</p>
+          <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl">
+            Bienvenue sur le site officiel du Royaume ILLASO
+          </h2>
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-ink/75">
+            <p>C’est avec un grand plaisir que nous vous souhaitons la bienvenue sur le site officiel du Royaume ILLASO.</p>
+            <p>Cet espace est une porte ouverte sur notre histoire, notre culture, notre mémoire et notre identité. Il est consacré à la découverte d’un patrimoine riche, constitué de notre histoire royale, de nos palais, de nos traditions, de nos savoirs, de nos valeurs et de tous ces témoignages qui, au fil des générations, ont façonné l’identité de notre communauté.</p>
+            <p>Le Royaume ILLASO est profondément attaché à la préservation et à la transmission de cet héritage, tout en restant résolument tourné vers l’avenir. Nous sommes convaincus que la connaissance de notre histoire et la valorisation de notre patrimoine peuvent contribuer à renforcer la cohésion des communautés, à transmettre des repères aux jeunes générations et à promouvoir le rayonnement culturel de notre territoire.</p>
+            <p>À travers ce site, nous souhaitons également faire connaître les initiatives et les actions qui contribuent au développement de nos communautés, au bien-être des populations, à l’autonomisation des femmes et à la valorisation des potentialités locales.</p>
+            <p>La Fondation OBA ADE KPADAWALE, qui s’inscrit dans cette dynamique, constitue notamment un cadre d’engagement et d’action au service des communautés et de la valorisation du patrimoine culturel.</p>
+            <p>Nous vous invitons à parcourir les différentes rubriques de ce site afin de découvrir l’histoire du Royaume ILLASO, ses figures emblématiques, ses palais et lieux de mémoire, ses traditions, son patrimoine culturel ainsi que ses initiatives en faveur du développement et du bien-être des communautés.</p>
+            <p>Bienvenue au Royaume ILLASO, un royaume de mémoire, de culture, de valeurs et d’avenir.</p>
+            <p className="font-medium text-ink">Connaître notre histoire, préserver notre héritage et construire ensemble l’avenir.</p>
+          </div>
         </div>
       </div>
     </section>

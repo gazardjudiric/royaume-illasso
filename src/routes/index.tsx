@@ -168,6 +168,40 @@ function HeroCarousel() {
 
 // IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  useEffect(() => {
+    const section = document.getElementById("mot-du-roi");
+    const secondPhoto = section?.querySelector<HTMLImageElement>(
+      ".king-message-image-wrap:nth-child(2) .king-message-photo",
+    );
+
+    if (!section || !secondPhoto || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    let frame = 0;
+    const updateScrollPosition = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const bounds = section.getBoundingClientRect();
+        const travel = window.innerHeight + bounds.height;
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / travel));
+        const offset = (progress - 0.5) * 36;
+        secondPhoto.style.setProperty("--king-scroll-offset", `${offset.toFixed(1)}px`);
+      });
+    };
+
+    updateScrollPosition();
+    window.addEventListener("scroll", updateScrollPosition, { passive: true });
+    window.addEventListener("resize", updateScrollPosition);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateScrollPosition);
+      window.removeEventListener("resize", updateScrollPosition);
+      secondPhoto.style.removeProperty("--king-scroll-offset");
+    };
+  }, []);
+
   return <>
     <section className="hero-section">
       <img src={images.palace} alt="Cour royale lors d’une cérémonie à Illasso" className="hero-image" width={1920} height={1080} />
@@ -193,7 +227,7 @@ function Index() {
         <img src={crownWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-crown" />
         <img src={palaceWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-palace" />
       </div>
-      <div className="king-message-layout relative z-10 mx-auto grid max-w-[1344px] items-start gap-9 md:grid-cols-2 md:gap-14 lg:gap-20">
+      <div className="king-message-layout relative z-10 mx-auto grid max-w-[1344px] items-center gap-9 md:grid-cols-2 md:gap-14 lg:gap-20">
         <div className="king-message-image-pair mx-auto grid w-full grid-cols-2 items-center gap-3" role="group" aria-label="Portrait du Roi et palais royal">
           <figure className="king-message-image-wrap relative top-5 overflow-hidden rounded-2xl">
             <img src={images.king} alt="Portrait éditorial du Roi d’Illasso" loading="lazy" decoding="async" className="king-message-photo aspect-[4/5] w-full object-cover" width={1024} height={1280} />

@@ -44,7 +44,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
         )}
       </header>
       <main>{children}</main>
-      <footer className="tone-ink border-t border-gold/20 px-6 py-12 lg:px-12">
+      <footer className="tone-ember border-t border-gold/20 px-6 py-12 lg:px-12">
         <div className="mx-auto grid max-w-[1344px] gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div className="flex items-start gap-4">
             <img src={logoAsset.url} alt="Emblème royal" loading="lazy" className="size-16 rounded-full object-cover" width={64} height={64} />

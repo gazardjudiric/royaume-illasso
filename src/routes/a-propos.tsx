@@ -41,8 +41,8 @@ function About() {
       </PageIntro>
 
       <section id="roi" className="section-shell bg-white text-ink section-reveal">
-        <div className="mx-auto grid max-w-[1344px] items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <figure className="group overflow-hidden rounded-3xl border border-gold/25 shadow-2xl">
+        <div className="mx-auto grid max-w-[1344px] items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+          <figure className="group overflow-hidden rounded-3xl border border-gold/25 shadow-2xl lg:order-2">
             <img
               src={images.king}
               alt="Portrait éditorial du Roi d’Illasso"
@@ -53,7 +53,7 @@ function About() {
               height={1280}
             />
           </figure>
-          <div className="self-center">
+          <div className="self-center lg:order-1">
             <h2 className="eyebrow">Le Mot du Roi</h2>
             <p className="mt-4 max-w-[50rem] font-serif text-[25px] leading-[1.2]">
               Chers visiteurs, chers amis du Royaume ILLASO

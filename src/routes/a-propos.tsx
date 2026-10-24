@@ -252,39 +252,37 @@ function About() {
             />
           </figure>
           <div className="self-center">
-            <p className="eyebrow">Le Mot du Roi</p>
-            <h2 className="section-title">Chers visiteurs, chers amis du Royaume ILLASO</h2>
-            <p className="mt-5 leading-relaxed text-ink/65">
-              C’est avec un grand honneur que je vous souhaite la bienvenue sur le site officiel du
-              Royaume ILLASO, une invitation à découvrir notre histoire, notre culture, nos
-              traditions, nos palais et nos lieux de mémoire, qui forment une part essentielle de
-              notre identité.
+            <h2 className="eyebrow">Le Mot du Roi</h2>
+            <p className="mt-4 max-w-[50rem] font-serif text-[25px] leading-[1.2]">
+              Chers visiteurs, chers amis du Royaume ILLASO
             </p>
             <p className="mt-5 leading-relaxed text-ink/65">
-              Gardiens de cet héritage, nous avons le devoir de le préserver, de le faire vivre et
-              de le transmettre, pour bâtir une communauté plus forte, plus solidaire et plus
-              confiante en son avenir.
+              C’est avec un grand honneur et une profonde considération que je vous souhaite la
+              bienvenue sur le site officiel du Royaume ILLASO. Ce site est une invitation à
+              découvrir notre histoire, notre culture, nos traditions, nos lieux de mémoire et
+              palais.
             </p>
             <p className="mt-5 leading-relaxed text-ink/65">
-              Notre vision va plus loin : elle vise le bien-être et le développement de nos
-              communautés. Nous encourageons les initiatives concrètes qui réduisent la pauvreté et
-              améliorent les conditions de vie, surtout en milieu rural. La santé des populations
-              est essentielle, car aucune communauté ne se développe sans des femmes, des hommes et
-              des enfants en bonne santé. Le renforcement des compétences, les activités
-              génératrices de revenus et la valorisation du rôle des femmes en milieu rural sont des
+              En tant que gardiens de cet héritage, nous avons le devoir de le préserver, de le
+              faire vivre et de le transmettre aux générations futures.
+            </p>
+            <p className="mt-5 leading-relaxed text-ink/65">
+              Notre vision embrasse le bien-être de nos communautés. Nous encourageons les
+              initiatives concrètes qui réduisent la pauvreté et améliorent les conditions de vie,
+              surtout en milieu rural, car aucune communauté ne se développe sans des femmes, des
+              hommes et des enfants en bonne santé. Le renforcement des compétences, les activités
+              génératrices de revenus et la valorisation du rôle des femmes, sont à nos yeux, des
               leviers d’un développement inclusif et durable.
             </p>
             <p className="mt-5 leading-relaxed text-ink/65">
-              Notre patrimoine est source de fierté, de cohésion et d’inspiration pour l’avenir.
-              Nous soutenons donc les initiatives qui font dialoguer tradition et modernité, mémoire
-              et développement, identité et ouverture au monde. La Fondation OBA ADE KPADAWALE en
-              est le cadre d’engagement, au service des communautés et de la valorisation de notre
-              patrimoine.
-            </p>
-            <p className="mt-5 leading-relaxed text-ink/65">
-              Que notre histoire demeure vivante, que nos communautés prospèrent et que nos
+              Notre patrimoine est source de fierté et d’inspiration pour l’avenir. Aussi
+              soutenons-nous les initiatives qui font dialoguer tradition et modernité, identité et
+              ouverture au monde. La Fondation OBA ADE KPADAWALE en est le cadre d’engagement, au
+              service des communautés et de la valorisation de notre patrimoine.
+              <br /> Que notre histoire demeure vivante, que nos communautés prospèrent et que nos
               générations futures reçoivent un héritage dont elles seront fières.
             </p>
+            <p className="mt-5 leading-relaxed text-ink/65"></p>
 
             <blockquote className="mt-8 border-l-2 border-gold pl-6 font-serif text-2xl italic leading-relaxed text-gold">
               OBA ADE KPADAWALE « Roi du Royaume ILLASO »

@@ -200,24 +200,24 @@ function About() {
                 réjouissances. Originaire de Sakété, le Bolodjo a été mis en valeur par la chanteuse
                 Zeynab.
               </p>
-              <div className="mt-7 grid grid-cols-2 gap-4">
-                {[
-                  ["Danses", "Egungun, Guèlèdè, Akpala, Batta et Bolodjo."],
-                  ["Spiritualité", "Cultes endogènes, Oro et traditions vivantes."],
-                  ["Savoir-faire", "Textiles, sculptures et artisanat local."],
-                  ["Transmission", "Des gestes et des récits transmis entre générations."],
-                ].map(([title, text]) => (
-                  <article
-                    key={title}
-                    className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-5 text-stone-900 shadow-md"
-                  >
-                    <h3 className="font-serif text-lg">{title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-stone-700">{text}</p>
-                  </article>
-                ))}
-              </div>
             </div>
           </div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                ["Danses", "Egungun, Guèlèdè, Akpala, Batta et Bolodjo."],
+                ["Spiritualité", "Cultes endogènes, Oro et traditions vivantes."],
+                ["Savoir-faire", "Textiles, sculptures et artisanat local."],
+                ["Transmission", "Des gestes et des récits transmis entre générations."],
+              ].map(([title, text]) => (
+                <article
+                  key={title}
+                  className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-5 text-stone-900 shadow-md"
+                >
+                  <h3 className="font-serif text-lg">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-stone-700">{text}</p>
+                </article>
+              ))}
+            </div>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             <article className="edge rounded-2xl border border-gold/25 bg-[#f6eee4] p-6 text-stone-900 shadow-md">
               <h3 className="font-serif text-xl">Des communautés plurielles</h3>

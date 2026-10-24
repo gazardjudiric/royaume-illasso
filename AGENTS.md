@@ -11,3 +11,4 @@
 
 - Use the shared Button component for site actions, including links via asChild; shared CSS action tokens keep controls consistent across section themes.
 - Keep contribution navigation in a single browser-safe configuration so an official payment destination can replace the contact step without rewriting navigation.
+- Keep French event-date formatting in the browser-safe shared event-date module so the homepage agenda and events page use the same presentation logic.

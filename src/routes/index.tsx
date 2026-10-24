@@ -230,22 +230,22 @@ function Index() {
         <img src={crownWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-crown" />
         <img src={palaceWatermark} alt="" aria-hidden="true" loading="lazy" className="king-message-watermark king-message-watermark-palace" />
       </div>
-      <div className="king-message-heading relative z-10 mx-auto mb-3 grid w-full max-w-[1344px] gap-0 md:grid-cols-2 md:gap-14 lg:gap-20">
-        <div className="min-w-0">
-          <p className="eyebrow">Mot d’accueil</p>
-          <h2 className="mt-2 max-w-full break-words font-serif text-3xl leading-tight sm:text-4xl">
-            Bienvenue sur le site officiel du Royaume ILLASO
-          </h2>
-        </div>
-      </div>
       <div className="king-message-layout relative z-10 mx-auto grid max-w-[1344px] items-center gap-9 md:grid-cols-2 md:gap-14 lg:gap-20">
-        <div className="king-message-image-pair mx-auto grid w-full grid-cols-2 items-center gap-3" role="group" aria-label="Portrait du Roi et palais royal">
+        <div className="min-w-0">
+          <div className="king-message-heading mb-3 md:mb-6">
+            <p className="eyebrow">Mot d’accueil</p>
+            <h2 className="mt-2 max-w-full break-words font-serif text-3xl leading-tight sm:text-4xl">
+              Bienvenue sur le site officiel du Royaume ILLASO
+            </h2>
+          </div>
+          <div className="king-message-image-pair mx-auto grid w-full grid-cols-2 items-center gap-3" role="group" aria-label="Portrait du Roi et palais royal">
           <figure className="king-message-image-wrap relative top-5 overflow-hidden rounded-2xl">
             <img src={images.king} alt="Portrait éditorial du Roi d’Illasso" loading="lazy" decoding="async" className="king-message-photo aspect-[4/5] w-full object-cover" width={1024} height={1280} />
           </figure>
           <figure className="king-message-image-wrap relative -top-5 overflow-hidden rounded-2xl">
             <img src={images.palace} alt="Palais royal du Royaume ILLASO" loading="lazy" decoding="async" className="king-message-photo aspect-[4/5] w-full object-cover" width={1024} height={1280} />
           </figure>
+        </div>
         </div>
         <div className="king-message-copy max-w-[900px] self-center">
           <div className="mt-0 space-y-4 text-base leading-relaxed text-ink/75">

@@ -38,7 +38,9 @@ const monthAbbreviations: Record<string, string> = {
 function eventDateParts(date: string) {
   const match = date.match(/^(\d{1,2})\s+(.+?)\s+(\d{4})$/);
   if (!match) return { day: date, month: "", year: "" };
-  const [, day, month, year] = match;
+  const day = match[1] ?? "";
+  const month = match[2] ?? "";
+  const year = match[3] ?? "";
   const monthKey = month.toLocaleLowerCase("fr-FR");
   return {
     day,

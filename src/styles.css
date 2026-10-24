@@ -281,41 +281,12 @@
   box-shadow: 0 18px 44px color-mix(in oklab, var(--ink) 16%, transparent);
 }
 .chapter-card:focus-within { outline: 2px solid var(--action-gold); outline-offset: 4px; }
-.chapter-card-media { background: color-mix(in oklab, var(--ink) 12%, var(--parchment)); }
-.chapter-card-image { transform: scale(1.001); transition: transform .8s cubic-bezier(.2, .65, .25, 1); }
-.chapter-card:hover .chapter-card-image { transform: scale(1.06); }
-.chapter-card-shade {
-  background: linear-gradient(180deg, color-mix(in oklab, var(--ink) 18%, transparent), transparent 42%, color-mix(in oklab, var(--ink) 36%, transparent));
-  pointer-events: none;
-}
-.chapter-card-number {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: grid;
-  min-width: 2.75rem;
-  height: 2.25rem;
-  place-items: center;
-  padding-inline: .7rem;
-  border: 1px solid color-mix(in oklab, var(--action-on) 75%, transparent);
-  border-radius: 9999px;
-  background: color-mix(in oklab, var(--ink) 68%, transparent);
-  color: var(--action-on);
-  font-family: var(--font-serif);
-  font-size: .82rem;
-  backdrop-filter: blur(10px);
-}
-.chapter-card-cta { color: var(--gold); }
-.chapter-card-cta svg { transition: transform .25s ease; }
-.chapter-card:hover .chapter-card-cta svg { transform: translateX(4px); }
 @keyframes chapter-card-enter {
   from { opacity: .35; transform: translateY(1rem); }
   to { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
   .chapter-card { animation: none; transition: none; }
-  .chapter-card-image, .chapter-card-cta svg { transition: none; }
-  .chapter-card:hover .chapter-card-image, .chapter-card:hover .chapter-card-cta svg { transform: none; }
 }
 @media (max-width: 374px) { .hero-wordmark { font-size: 3rem; } }
 

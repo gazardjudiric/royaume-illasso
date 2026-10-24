@@ -32,36 +32,26 @@ const chapterCards = [
     title: "Histoire",
     text: aboutChapterSummaries.history,
     section: "histoire",
-    image: images.palace,
-    imageAlt: "Palais royal d’Illasso",
   },
   {
     title: "Culture",
     text: aboutChapterSummaries.culture,
     section: "culture",
-    image: images.craft,
-    imageAlt: "Savoir-faire artisanal d’Illasso",
   },
   {
     title: "Le Roi",
     text: aboutChapterSummaries.king,
     section: "roi",
-    image: images.king,
-    imageAlt: "Portrait du Roi d’Illasso",
   },
   {
     title: "Activités",
     text: aboutChapterSummaries.actions,
     section: "activites",
-    image: images.festival,
-    imageAlt: "Cérémonie culturelle du royaume",
   },
   {
     title: "Territoire",
     text: aboutChapterSummaries.territory,
     section: "territoire",
-    image: images.territory,
-    imageAlt: "Terres et villages d’Illasso",
   },
 ] as const;
 
@@ -274,36 +264,14 @@ function Index() {
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {chapterCards.map((chapter, index) => (
-            <article key={chapter.title} className="chapter-card glass edge group flex h-full flex-col overflow-hidden rounded-2xl">
-              <div className="chapter-card-media relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={chapter.image}
-                  alt={chapter.imageAlt}
-                  loading="lazy"
-                  decoding="async"
-                  className="chapter-card-image h-full w-full object-cover"
-                  width={1280}
-                  height={960}
-                />
-                <div className="chapter-card-shade absolute inset-0" />
-                <span className="chapter-card-number" aria-label={`Chapitre ${index + 1}`}>
-                  0{index + 1}
-                </span>
-              </div>
-              <div className="flex min-h-[205px] flex-1 flex-col p-5">
-                <h3 className="font-serif text-xl">{chapter.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink/60">{chapter.text}</p>
-                <Button
-                  asChild
-                  variant="link"
-                  className="chapter-card-cta mt-auto h-auto justify-start gap-2 px-0 pb-0 pt-6 text-gold"
-                >
-                  <Link to="/a-propos" hash={chapter.section}>
-                    Explorer le chapitre <ArrowRight size={15} />
-                  </Link>
-                </Button>
-              </div>
-            </article>
+            <Link key={chapter.title} to="/a-propos" hash={chapter.section} className="chapter-card glass edge group flex h-full flex-col rounded-2xl p-6">
+              <span className="font-serif text-gold">0{index + 1}</span>
+              <h3 className="mt-8 font-serif text-xl">{chapter.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink/60">{chapter.text}</p>
+              <span className="mt-auto inline-block pt-6 text-sm text-gold opacity-70 transition group-hover:translate-x-1">
+                Explorer le chapitre →
+              </span>
+            </Link>
           ))}
         </div>
       </div>

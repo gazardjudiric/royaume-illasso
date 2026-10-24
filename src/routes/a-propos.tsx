@@ -421,7 +421,7 @@ function About() {
         </div>
       </section>
 
-      <section id="territoire" className="section-shell tone-cream section-reveal scroll-mt-24">
+      <section id="territoire" className="section-shell tone-cream section-reveal scroll-mt-24 border-t-4 border-gold/50">
         <div className="mx-auto grid max-w-[1344px] items-start gap-10 lg:grid-cols-[minmax(300px,500px)_1fr] lg:gap-16">
           <div className="w-full">
             <figure className="mx-auto w-full max-w-[500px] overflow-hidden rounded-3xl border border-gold/35 bg-cream shadow-2xl">

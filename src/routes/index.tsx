@@ -261,6 +261,52 @@ function Index() {
         </div>
       </div>
     </section>
+    <section id="video-presentation" className="section-shell tone-ink section-reveal overflow-hidden">
+      <div className="mx-auto grid max-w-[1344px] items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:gap-16">
+        <div className="min-w-0">
+          <p className="eyebrow">L’âme d’Illasso en images</p>
+          <h2 className="section-title text-cream">Découvrez le Royaume ILLASO en vidéo</h2>
+          <p className="mt-5 max-w-2xl leading-relaxed text-cream/75">
+            Plongez au cœur de notre histoire, de notre patrimoine royal et de nos traditions. Cette présentation audiovisuelle invite à découvrir la mémoire vivante du Royaume ILLASO et les valeurs transmises de génération en génération.
+          </p>
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <a
+              href="https://vimeo.com/612966829"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-gold/70 bg-gold px-6 py-3 text-sm font-medium text-ink transition duration-300 hover:-translate-y-0.5 hover:border-cream hover:bg-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            >
+              Voir la vidéo <ArrowRight size={16} />
+            </a>
+            <span className="text-xs tracking-wide text-cream/55">Histoire · Culture · Transmission</span>
+          </div>
+        </div>
+        <a
+          href="https://vimeo.com/612966829"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Ouvrir la vidéo sur l’histoire d’un royaume du Bénin"
+          className="group relative block min-w-0 overflow-hidden rounded-3xl border border-gold/35 bg-ink shadow-2xl transition duration-500 hover:-translate-y-1 hover:border-gold/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+        >
+          <img
+            src={images.palace}
+            alt="Aperçu du patrimoine royal du Royaume ILLASO"
+            loading="lazy"
+            decoding="async"
+            className="aspect-video w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+            width={1280}
+            height={720}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-ink/10 transition duration-500 group-hover:from-ink/70" />
+          <span className="absolute inset-0 flex items-center justify-center">
+            <span className="flex size-16 items-center justify-center rounded-full border border-cream/70 bg-ink/55 text-cream shadow-xl backdrop-blur-sm transition duration-300 group-hover:scale-110 group-hover:bg-gold group-hover:text-ink sm:size-20">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="ml-1 size-7 sm:size-8"><path d="M8 5.5v13l10-6.5z" /></svg>
+            </span>
+          </span>
+          <span className="absolute inset-x-0 bottom-0 p-5 text-sm font-medium text-cream sm:p-7">Explorer l’histoire des royaumes du Bénin <span aria-hidden="true">↗</span></span>
+        </a>
+      </div>
+    </section>
     <section className="section-shell tone-gold section-reveal">
       <div className="mx-auto max-w-[1344px]">
         <div className="max-w-4xl">

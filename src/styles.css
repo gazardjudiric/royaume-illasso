@@ -493,6 +493,11 @@ section.section-shell.tone-photo::before {
   section.section-shell.tone-ember::before,
   section.section-shell.tone-photo::before { opacity: .6; }
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .king-message-watermark-throne { left: -2.75rem; top: 16%; width: 9rem; }
+  .king-message-watermark-crown { right: -.5rem; top: 8%; }
+  .king-message-watermark-palace { right: -1.5rem; bottom: -.5rem; width: clamp(8rem, 36vw, 11rem); }
+}
 @media (prefers-reduced-motion: reduce) {
   .king-message-watermark,
   section.section-shell:not(.king-message-section)::before { animation: none; }

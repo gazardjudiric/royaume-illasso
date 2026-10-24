@@ -8,6 +8,7 @@ import crownWatermark from "../assets/royal-crown-watermark.webp";
 import palaceWatermark from "../assets/royal-palace-watermark.webp";
 import { RoyalMapImage } from "../components/royal-map-lightbox";
 import { aboutChapterSummaries, events, gallery, homeSections, images } from "../lib/site-data";
+import { eventDateParts } from "../lib/event-date";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -354,7 +355,49 @@ function Index() {
       </div>
     </section>
     <section className="section-shell tone-cream section-reveal">
-      <div className="mx-auto max-w-[1344px]"><div className="flex items-end justify-between gap-4"><div><p className="eyebrow">Agenda royal</p><h2 className="section-title">Prochains événements</h2></div><Link to="/evenements" className="hidden text-sm text-gold sm:block">Voir tous les événements →</Link></div><div className="mt-10 grid gap-6 md:grid-cols-3">{events.slice(0,3).map((event) => <article key={event.title} className="glass edge overflow-hidden rounded-2xl"><img src={event.image} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover" width={1280} height={800} /><div className="p-6"><p className="text-xs uppercase tracking-[0.18em] text-gold">{event.date}</p><h3 className="mt-3 font-serif text-xl">{event.title}</h3><p className="mt-3 text-sm leading-relaxed text-ink/55">{event.description}</p></div></article>)}</div><Button asChild className="mt-8 sm:hidden"><Link to="/evenements">Tous les événements</Link></Button></div>
+      <div className="mx-auto max-w-[1344px]">
+        <div>
+          <p className="eyebrow">Agenda royal</p>
+          <h2 className="section-title">Prochains événements</h2>
+        </div>
+        <ul className="edge mt-10 overflow-hidden rounded-2xl border border-gold/25 bg-card text-card-foreground">
+          {events.slice(0, 4).map((event) => {
+            const date = eventDateParts(event.date);
+            return (
+              <li
+                key={event.title}
+                className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-x-5 gap-y-2 border-b border-gold/20 px-5 py-4 last:border-b-0 even:bg-gold/10 md:grid-cols-[7rem_minmax(0,1fr)_minmax(0,1.4fr)] md:gap-x-8 md:px-8 md:py-5"
+              >
+                <div className="text-center">
+                  <span className="block font-serif text-4xl leading-none text-gold md:text-5xl">{date.day}</span>
+                  <span className="mt-1 block text-xs font-medium uppercase tracking-[0.12em] text-ink/70">
+                    {date.month} {date.year}
+                  </span>
+                </div>
+                <div className="min-w-0">
+                  <h3 className="flex flex-wrap items-center gap-2 font-serif text-lg md:text-xl">
+                    {event.title}
+                    {event.status === "Passé" && (
+                      <span className="rounded-full border border-gold/30 px-2 py-0.5 font-sans text-[10px] uppercase text-gold">
+                        {event.status}
+                      </span>
+                    )}
+                  </h3>
+                  <p className="mt-1 text-xs text-ink/55">{event.place}</p>
+                </div>
+                <p className="col-span-2 text-sm leading-relaxed text-ink/60 md:col-span-1">{event.description}</p>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="mt-8 flex justify-center">
+          <Button asChild>
+            <Link to="/evenements">
+              Plus d’événements <ArrowRight size={16} />
+            </Link>
+          </Button>
+        </div>
+      </div>
     </section>
   </>;
 }

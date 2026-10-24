@@ -261,30 +261,6 @@ function Index() {
         </div>
       </div>
     </section>
-    <section id="video-presentation" className="section-shell tone-cream section-reveal overflow-hidden">
-      <div className="mx-auto max-w-[1344px]">
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-10">
-          <p className="eyebrow">L’âme d’Illasso en images</p>
-          <h2 className="section-title">Découvrez le Royaume ILLASO en vidéo</h2>
-          <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-ink/70">
-            Plongez au cœur de notre histoire, de notre patrimoine royal et de nos traditions. Découvrez la mémoire vivante du Royaume ILLASO et les valeurs transmises de génération en génération.
-          </p>
-        </div>
-        <div className="relative w-full overflow-hidden rounded-2xl border border-gold/35 bg-ink shadow-2xl sm:rounded-3xl">
-          <div className="aspect-video w-full">
-            <iframe
-              className="h-full w-full"
-              src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
-              title="Vidéo de présentation du Royaume ILLASO"
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      </div>
-    </section>
     <section className="section-shell tone-gold section-reveal">
       <div className="mx-auto max-w-[1344px]">
         <div className="max-w-4xl">
@@ -359,6 +335,30 @@ function Index() {
           <p className="mt-6 text-lg leading-relaxed text-ink/70">Le Palais Royal d’Illasso se situe dans l’arrondissement de Yoko, au cœur de la commune de Sakété, dans le département du Plateau au Bénin.</p>
           <p className="mt-5 leading-relaxed text-ink/60">La carte officielle retrace les villages, les voies et les repères qui relient Illasso à son territoire historique.</p>
           <Button asChild className="mt-8"><Link to="/a-propos" hash="territoire">Découvrir le territoire <ArrowRight size={16} /></Link></Button>
+        </div>
+      </div>
+    </section>
+        <section id="video-presentation" className="section-shell tone-ember section-reveal overflow-hidden">
+      <div className="mx-auto max-w-[1344px]">
+        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-10">
+          <p className="eyebrow">L’âme d’Illasso en images</p>
+          <h2 className="section-title">Découvrez le Royaume ILLASO en vidéo</h2>
+          <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-ink/70">
+            Plongez au cœur de notre histoire, de notre patrimoine royal et de nos traditions. Découvrez la mémoire vivante du Royaume ILLASO et les valeurs transmises de génération en génération.
+          </p>
+        </div>
+        <div className="relative w-full overflow-hidden rounded-2xl border border-gold/35 bg-ink shadow-2xl sm:rounded-3xl">
+          <div className="aspect-video w-full">
+            <iframe
+              className="h-full w-full"
+              src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+              title="Vidéo de présentation du Royaume ILLASO"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
         </div>
       </div>
     </section>

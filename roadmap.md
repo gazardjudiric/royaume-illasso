@@ -2,4 +2,4 @@
 - [x] Unifier les boutons et intégrer le sceau au titre d’accueil.
 - [x] Ajouter une démarche de contribution honnête sur Contact.
 - [x] Vérifier les pages, le zoom, la version mobile et les erreurs.- [x] Déplacer les 4 boîtes de la section Culture sous l'image et le texte.
-- [ ] Aligner les fonds : Organisations du Roi en tone-gold, Territoire en tone-ivory sans filet doré.
+- [x] Aligner les fonds : Organisations du Roi en tone-gold, Territoire en tone-ivory sans filet doré.

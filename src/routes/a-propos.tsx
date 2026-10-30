@@ -40,59 +40,6 @@ function About() {
         peuple, d’une dynastie et d’un territoire.
       </PageIntro>
 
-      <section id="roi" className="section-shell bg-white text-ink section-reveal">
-        <div className="mx-auto grid max-w-[1344px] items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <figure className="group overflow-hidden rounded-3xl border border-gold/25 shadow-2xl">
-            <img
-              src={images.king}
-              alt="Portrait éditorial du Roi d’Illasso"
-              loading="lazy"
-              decoding="async"
-              className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.035]"
-              width={1024}
-              height={1280}
-            />
-          </figure>
-          <div className="self-center">
-            <h2 className="eyebrow">Le Mot du Roi</h2>
-            <p className="mt-4 max-w-[50rem] font-serif text-[25px] leading-[1.2]">
-              Chers visiteurs, chers amis du Royaume ILLASO
-            </p>
-            <p className="mt-5 leading-relaxed text-ink/65">
-              C’est avec un grand honneur et une profonde considération que je vous souhaite la
-              bienvenue sur le site officiel du Royaume ILLASO. Ce site est une invitation à
-              découvrir notre histoire, notre culture, nos traditions, nos lieux de mémoire et
-              palais.
-            </p>
-            <p className="mt-5 leading-relaxed text-ink/65">
-              En tant que gardiens de cet héritage, nous avons le devoir de le préserver, de le
-              faire vivre et de le transmettre aux générations futures.
-            </p>
-            <p className="mt-5 leading-relaxed text-ink/65">
-              Notre vision embrasse le bien-être de nos communautés. Nous encourageons les
-              initiatives concrètes qui réduisent la pauvreté et améliorent les conditions de vie,
-              surtout en milieu rural, car aucune communauté ne se développe sans des femmes, des
-              hommes et des enfants en bonne santé. Le renforcement des compétences, les activités
-              génératrices de revenus et la valorisation du rôle des femmes, sont à nos yeux, des
-              leviers d’un développement inclusif et durable.
-            </p>
-            <p className="mt-5 leading-relaxed text-ink/65">
-              Notre patrimoine est source de fierté et d’inspiration pour l’avenir. Aussi
-              soutenons-nous les initiatives qui font dialoguer tradition et modernité, identité et
-              ouverture au monde. La Fondation OBA ADE KPADAWALE en est le cadre d’engagement, au
-              service des communautés et de la valorisation de notre patrimoine.
-              <br /> Que notre histoire demeure vivante, que nos communautés prospèrent et que nos
-              générations futures reçoivent un héritage dont elles seront fières.
-            </p>
-            <p className="mt-5 leading-relaxed text-ink/65"></p>
-
-            <blockquote className="mt-8 border-l-2 border-gold pl-6 font-serif text-2xl italic leading-relaxed text-gold">
-              OBA ADE KPADAWALE « Roi du Royaume ILLASO »
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
       <section id="histoire" className="section-shell tone-cream section-reveal">
         <div className="mx-auto max-w-[1344px]">
           <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
@@ -291,6 +238,59 @@ function About() {
         </div>
       </section>
 
+      <section id="roi" className="section-shell tone-ivory section-reveal">
+        <div className="mx-auto grid max-w-[1344px] items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <figure className="group overflow-hidden rounded-3xl border border-gold/25 shadow-2xl">
+            <img
+              src={images.king}
+              alt="Portrait éditorial du Roi d’Illasso"
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.035]"
+              width={1024}
+              height={1280}
+            />
+          </figure>
+          <div className="self-center">
+            <h2 className="eyebrow">Le Mot du Roi</h2>
+            <p className="mt-4 max-w-[50rem] font-serif text-[25px] leading-[1.2]">
+              Chers visiteurs, chers amis du Royaume ILLASO
+            </p>
+            <p className="mt-5 leading-relaxed text-ink/65">
+              C’est avec un grand honneur et une profonde considération que je vous souhaite la
+              bienvenue sur le site officiel du Royaume ILLASO. Ce site est une invitation à
+              découvrir notre histoire, notre culture, nos traditions, nos lieux de mémoire et
+              palais.
+            </p>
+            <p className="mt-5 leading-relaxed text-ink/65">
+              En tant que gardiens de cet héritage, nous avons le devoir de le préserver, de le
+              faire vivre et de le transmettre aux générations futures.
+            </p>
+            <p className="mt-5 leading-relaxed text-ink/65">
+              Notre vision embrasse le bien-être de nos communautés. Nous encourageons les
+              initiatives concrètes qui réduisent la pauvreté et améliorent les conditions de vie,
+              surtout en milieu rural, car aucune communauté ne se développe sans des femmes, des
+              hommes et des enfants en bonne santé. Le renforcement des compétences, les activités
+              génératrices de revenus et la valorisation du rôle des femmes, sont à nos yeux, des
+              leviers d’un développement inclusif et durable.
+            </p>
+            <p className="mt-5 leading-relaxed text-ink/65">
+              Notre patrimoine est source de fierté et d’inspiration pour l’avenir. Aussi
+              soutenons-nous les initiatives qui font dialoguer tradition et modernité, identité et
+              ouverture au monde. La Fondation OBA ADE KPADAWALE en est le cadre d’engagement, au
+              service des communautés et de la valorisation de notre patrimoine.
+              <br /> Que notre histoire demeure vivante, que nos communautés prospèrent et que nos
+              générations futures reçoivent un héritage dont elles seront fières.
+            </p>
+            <p className="mt-5 leading-relaxed text-ink/65"></p>
+
+            <blockquote className="mt-8 border-l-2 border-gold pl-6 font-serif text-2xl italic leading-relaxed text-gold">
+              OBA ADE KPADAWALE « Roi du Royaume ILLASO »
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
       <section id="activites" className="section-shell tone-gold section-reveal">
         <div className="mx-auto max-w-[1344px]">
           <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
@@ -421,7 +421,7 @@ function About() {
         </div>
       </section>
 
-      <section id="territoire" className="section-shell tone-cream section-reveal scroll-mt-24 border-t-4 border-gold/50">
+      <section id="territoire" className="section-shell tone-ivory section-reveal scroll-mt-24">
         <div className="mx-auto grid max-w-[1344px] items-start gap-10 lg:grid-cols-[minmax(300px,500px)_1fr] lg:gap-16">
           <div className="w-full">
             <figure className="mx-auto w-full max-w-[500px] overflow-hidden rounded-3xl border border-gold/35 bg-cream shadow-2xl">

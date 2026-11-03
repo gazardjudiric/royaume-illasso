@@ -30,11 +30,13 @@ function Events() {
     <>
       <PageIntro
         eyebrow="Événements"
+        eyebrowClassName="!text-white"
         title="Les rendez-vous du royaume."
+        titleClassName="text-4xl sm:text-6xl text-gold"
         image={images.festival}
         imageAlt="Rassemblement lors d’une fête traditionnelle à Illasso"
       >
-        Cérémonies officielles, fêtes culturelles, visites et rencontres. Les dates affichées sont proposées à titre éditorial et doivent être validées.
+        Cérémonies officielles, fêtes culturelles, visites et rencontres.
       </PageIntro>
 
       <section className="section-shell tone-cream section-reveal">
@@ -59,7 +61,7 @@ function Events() {
               return (
                 <article
                   key={event.title}
-                  className={`edge grid overflow-hidden rounded-2xl sm:grid-cols-[140px_1fr] ${event.status === "À venir" ? "bg-card text-card-foreground" : "tone-ink"}`}
+                  className={`edge grid overflow-hidden rounded-2xl sm:grid-cols-[140px_1fr] ${event.status === "À venir" ? "bg-[#fffdf9] text-card-foreground" : "tone-ink"}`}
                 >
                   <div className="relative flex min-h-36 flex-col items-center justify-center bg-gold/10 px-5 py-5 text-center sm:min-h-full sm:px-4 sm:py-6">
                     <span className="font-serif text-5xl leading-none text-gold">{date.day}</span>
@@ -82,7 +84,7 @@ function Events() {
                         <p className="mt-1 text-ink/45">{event.type}</p>
                       </div>
                     </div>
-                    <p className="mt-4 text-sm leading-relaxed text-ink/60">{event.description}</p>
+                    <p className="mt-4 text-justify text-sm leading-relaxed text-ink/60">{event.description}</p>
                   </div>
                 </article>
               );

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Download, Maximize2, Minus, Plus, RotateCcw, X } from "lucide-react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
-import mapAsset from "../assets/carte-palais-illasso-web.png.asset.json";
+import mapUrl from "../assets/carte-palais-illasso-web.png";
 import { Button } from "./ui/button";
 
 const mapAlt = "Carte officielle du Palais Royal d’Illasso dans l’arrondissement de Yoko, commune de Sakété";
@@ -72,7 +72,7 @@ export function RoyalMapImage({ interactive = false }: { interactive?: boolean }
     setIsDownloading(true);
     setDownloadError("");
     try {
-      const response = await fetch(mapAsset.url);
+      const response = await fetch(mapUrl);
       if (!response.ok) throw new Error("La carte n’a pas pu être chargée.");
       const imageBitmap = await createImageBitmap(await response.blob());
       const canvas = document.createElement("canvas");
@@ -104,7 +104,7 @@ export function RoyalMapImage({ interactive = false }: { interactive?: boolean }
     }
   };
 
-  const image = <img src={mapAsset.url} alt={mapAlt} className="block h-auto w-full object-contain" width={440} height={680} />;
+  const image = <img src={mapUrl} alt={mapAlt} className="block h-auto w-full object-contain" width={440} height={680} />;
   const preview = interactive ? (
     <Button type="button" variant="media" className="group relative h-auto w-full p-0" onClick={() => setOpen(true)} aria-label="Agrandir la carte officielle du Palais Royal d’Illasso">
       {image}
@@ -132,7 +132,7 @@ export function RoyalMapImage({ interactive = false }: { interactive?: boolean }
           </div>
           <Button type="button" variant="outline" size="icon" className="absolute right-4 top-4 z-20" onClick={() => setOpen(false)} title="Fermer la carte" aria-label="Fermer la carte"><X size={20} /></Button>
           <TransformComponent wrapperClass="map-zoom-wrapper" contentClass="map-zoom-content">
-            <img src={mapAsset.url} alt={mapAlt} className="block h-auto max-h-[92vh] w-auto max-w-none object-contain" width={440} height={680} draggable={false} />
+            <img src={mapUrl} alt={mapAlt} className="block h-auto max-h-[92vh] w-auto max-w-none object-contain" width={440} height={680} draggable={false} />
           </TransformComponent>
         </>}
       </TransformWrapper>

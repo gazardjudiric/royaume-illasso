@@ -174,10 +174,10 @@
 @utility on-dark { color: var(--cream); }
 @utility nav-link { color: color-mix(in oklab, var(--ink) 70%, transparent); font-size: .82rem; transition: color .2s ease; &:hover { color: var(--gold); } }
 @utility nav-link-active { color: var(--gold); }
-@utility eyebrow { color: var(--gold); font-size: .68rem; line-height: 1.2; text-transform: uppercase; letter-spacing: .24em; }
+@utility eyebrow { color: var(--eyebrow-color, var(--gold)); font-size: .68rem; line-height: 1.2; text-transform: uppercase; letter-spacing: .24em; }
 @utility hero-section { position: relative; min-height: 88vh; overflow: hidden; border-bottom: 4px solid var(--gold); }
 @utility hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-@utility hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in oklab, var(--ink) 88%, transparent) 0%, color-mix(in oklab, var(--ink) 62%, transparent) 55%, color-mix(in oklab, var(--ink) 20%, transparent) 100%), linear-gradient(0deg, color-mix(in oklab, var(--ink) 80%, transparent), transparent 42%); }
+@utility hero-shade { position: absolute; inset: 0; box-shadow: inset 0 1px 0 oklch(1 0 0 / 12%); background: linear-gradient(135deg, oklch(1 0 0 / 9%) 0%, transparent 38%), linear-gradient(90deg, color-mix(in oklab, var(--ink) 88%, transparent) 0%, color-mix(in oklab, var(--ink) 62%, transparent) 55%, color-mix(in oklab, var(--ink) 20%, transparent) 100%), linear-gradient(0deg, color-mix(in oklab, var(--ink) 80%, transparent), transparent 42%); }
 @utility hero-hem { position: absolute; inset-inline: 0; bottom: 0; height: 5rem; background: linear-gradient(0deg, var(--parchment) 12%, color-mix(in oklab, var(--parchment) 55%, transparent) 55%, transparent); }
 @utility section-shell { position: relative; isolation: isolate; padding: 5rem 1.5rem; @media (min-width: 1024px) { padding-left: 3rem; padding-right: 3rem; } }
 @utility section-alt { background: color-mix(in oklab, var(--cream) 65%, white); border-block: 1px solid color-mix(in oklab, var(--gold) 20%, transparent); }
@@ -187,9 +187,9 @@
 @utility tone-ember { --ink: oklch(0.96 0.025 84); background: linear-gradient(135deg, oklch(0.42 0.11 42), oklch(0.31 0.07 53)); color: var(--ink); }
 @utility tone-ink { --ink: oklch(0.96 0.025 84); background: linear-gradient(140deg, oklch(0.19 0.018 72), oklch(0.28 0.045 59)); color: var(--ink); }
 @utility tone-photo { --ink: oklch(0.97 0.025 84); background: linear-gradient(100deg, oklch(0.18 0.02 72 / 94%), oklch(0.27 0.05 52 / 88%)), url("./assets/illasso-palace-hero.jpg") center / cover fixed; color: var(--ink); }
-@utility section-reveal { animation: section-rise .75s both ease-out; animation-timeline: view(); animation-range: entry 8% cover 28%; }
+@utility section-reveal { animation: section-rise .75s both ease-out; animation-timeline: view(); animation-range: entry 0% entry 60%; }
 @utility parallax-media { overflow: hidden; & img { min-height: 112%; transform: translateY(-3%); transition: transform .7s ease; } &:hover img { transform: translateY(-3%) scale(1.035); } }
-@utility section-title { margin-top: 1rem; max-width: 50rem; font-family: var(--font-serif); font-size: 2.25rem; line-height: 1.2; @media (min-width: 640px) { font-size: 3rem; } }
+@utility section-title { margin-top: 1rem; max-width: 50rem; font-family: var(--font-serif); font-size: 1.75rem; line-height: 1.2; @media (min-width: 640px) { font-size: 3rem; } }
 @utility page-banner { position: relative; height: 36rem; min-height: 36rem; overflow: hidden; border-bottom: 3px solid var(--gold); background: var(--ink); }
 @utility page-banner-image { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; animation: banner-breathe 12s ease-out both; }
 @utility page-banner-shade { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in oklab, var(--ink) 88%, transparent), color-mix(in oklab, var(--ink) 48%, transparent) 65%, color-mix(in oklab, var(--ink) 64%, transparent)), linear-gradient(0deg, color-mix(in oklab, var(--ink) 72%, transparent), transparent 62%); }
@@ -234,7 +234,7 @@
 .on-dark .royal-control-secondary:hover, .hero-section .royal-control-secondary:hover,
 .tone-ink .royal-control-secondary:hover, .tone-ember .royal-control-secondary:hover,
 .tone-photo .royal-control-secondary:hover, .lightbox .royal-control-secondary:hover,
-.map-lightbox .royal-control-secondary:hover { background: oklch(0.12 0.01 75 / 72%); color: var(--action-on); border-color: var(--action-on); }
+.map-lightbox .royal-control-secondary:hover { background: transparent; color: var(--action-on); border-color: var(--action-on); }
 .royal-control-media, .royal-control-link { box-shadow: none; }
 @media (prefers-reduced-motion: reduce) { .royal-control, .royal-control:hover, .royal-control:active { transform: none !important; } }
 .royal-control-media { display: block; }
@@ -290,6 +290,10 @@
 }
 @media (max-width: 374px) { .hero-wordmark { font-size: 3rem; } }
 
+/* Hors bannières, le titre qui suit un eyebrow reprend sa couleur ; sur fond blanc, les deux passent en noir. */
+.bg-white, .bg-white\/75 { --eyebrow-color: #000; }
+.eyebrow + :is(h1, h2, h3):not(:is(.page-banner, .hero-section) *) { color: var(--eyebrow-color, var(--gold)); }
+
 .tone-ink .glass,
 .tone-ember .glass,
 .tone-photo .glass {
@@ -304,7 +308,8 @@
 }
 
 @media (max-width: 767px) {
-  .page-banner { height: 29rem; min-height: 29rem; }
+  /* Hauteur souple : un texte long agrandit le banner au lieu de remonter sous le menu. */
+  .page-banner { height: auto; min-height: 29rem; display: flex; flex-direction: column; justify-content: flex-end; }
   .page-banner-image { inset: 0; width: 100%; height: 100%; }
   .tone-photo { background-attachment: scroll; }
   .parallax-media img { min-height: 100%; transform: none; }
@@ -450,6 +455,33 @@ section.section-shell.tone-photo::before {
   opacity: .6;
   mix-blend-mode: screen;
   filter: brightness(1.35) saturate(.65);
+}
+/* Pied de page : mêmes filigranes que les sections sombres. */
+footer.site-footer::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("./assets/royal-drum-watermark.webp"), url("./assets/royal-dancers-watermark.webp"), url("./assets/royal-palace-watermark.webp"), url("./assets/royal-beads-watermark.webp");
+  background-repeat: no-repeat;
+  /* Placés dans les zones libres ; le tam-tam s'aligne sur le bord gauche du contenu, sous le logo. */
+  background-position: left max(3rem, calc(50vw - 672px)) bottom 3.5rem, right 1rem top 1.5rem, left 42% bottom 1rem, right 1rem bottom 1.5rem;
+  background-size: clamp(5rem, 8vw, 8.5rem) auto, clamp(5rem, 8vw, 8.5rem) auto, clamp(5rem, 8vw, 8.5rem) auto, clamp(5rem, 8vw, 8.5rem) auto;
+  opacity: .6;
+  mix-blend-mode: screen;
+  filter: brightness(1.35) saturate(.65);
+  animation: king-motif-drift 4.2s ease-in-out infinite alternate;
+}
+@media (max-width: 767px) {
+  footer.site-footer::before {
+    /* Colonne unique alignée à gauche : les motifs restent sur le bord droit, libre. */
+    background-position: right 1rem top 38%, right 1rem top 1.5rem, right 1rem top 62%, right 1rem bottom 1.5rem;
+    background-size: clamp(3.5rem, 13vw, 5rem) auto, clamp(3.5rem, 13vw, 5rem) auto, clamp(3.5rem, 13vw, 5rem) auto, clamp(3.5rem, 13vw, 5rem) auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  footer.site-footer::before { animation: none; }
 }
 @media (max-width: 767px) {
   .king-message-watermark { opacity: .6; }

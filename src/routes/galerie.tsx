@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, ChevronLeft, ChevronRight, Film, Image as ImageIcon, Play, X } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { PageIntro } from "../components/site-chrome";
@@ -21,6 +21,22 @@ export const Route = createFileRoute("/galerie")({
 });
 
 type GalleryViewerState = { activity: GalleryActivity; mediaIndex: number };
+
+// Mots de liaison laissés en minuscules, selon l’usage français des titres.
+const titleLinkWords = new Set(["et", "ou", "de", "du", "des", "la", "le", "les", "à", "au", "aux", "en", "sur", "pour", "par"]);
+
+function toTitleCase(title: string) {
+  return title
+    .split(" ")
+    .map((word, index) => {
+      if (index > 0 && titleLinkWords.has(word.toLowerCase())) return word;
+      // « d’intronisation » → « d’Intronisation » : la majuscule suit l’élision.
+      const [, prefix, rest] = word.match(/^([dlDL][’'])(.+)$/) ?? [];
+      if (prefix && rest) return prefix + rest.charAt(0).toUpperCase() + rest.slice(1);
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
 
 function videoEmbedUrl(src: string) {
   try {
@@ -52,6 +68,15 @@ function mediaCounts(media: GalleryMedia[]) {
     imagesCount > 0 ? `${imagesCount} photo${imagesCount > 1 ? "s" : ""}` : "",
     videosCount > 0 ? `${videosCount} vidéo${videosCount > 1 ? "s" : ""}` : "",
   ].filter(Boolean).join(" · ");
+}
+
+// Mosaïque sur 2 colonnes × 6 rangées, remplie colonne par colonne :
+// colonne gauche puis colonne droite (1 → 1+0, 2 → 1+1, 3 → 1+2, 4 → 1+3, 5 → 2+3).
+function previewTileLayout(count: number, index: number) {
+  if (count === 1) return "col-span-2 row-span-6";
+  const leftCount = count === 5 ? 2 : 1;
+  const tilesInColumn = index < leftCount ? leftCount : count - leftCount;
+  return { 1: "row-span-6", 2: "row-span-3", 3: "row-span-2" }[tilesInColumn];
 }
 
 function Gallery() {
@@ -100,15 +125,16 @@ function Gallery() {
     });
   };
 
-  const openActivity = (activity: GalleryActivity) => setViewer({ activity, mediaIndex: 0 });
+  const openActivity = (activity: GalleryActivity, mediaIndex = 0) => setViewer({ activity, mediaIndex });
 
   return <>
-    <PageIntro eyebrow="Galerie royale" title="La mémoire du royaume en images" image={images.festival} imageAlt="Illustration culturelle du Royaume d’Illasso">
-      Parcourez les traditions, les récits et les paysages d’Illasso. Chaque activité présente quelques aperçus visuels ; sélectionnez « Voir plus » pour parcourir son album complet. Les visuels actuels sont illustratifs et pourront être remplacés par les archives officielles du royaume.
+    <PageIntro eyebrow="Galerie royale" eyebrowClassName="!text-white" title="La mémoire du royaume en images" titleClassName="text-4xl sm:text-6xl text-gold" image={images.festival} imageAlt="Illustration culturelle du Royaume d’Illasso">
+      Parcourez les traditions, les récits et les paysages d’Illasso.
     </PageIntro>
 
     <nav className="tone-gold border-b border-gold/20 px-5 py-5 sm:px-8 lg:px-12" aria-label="Catégories de la galerie">
-      <div className="mx-auto flex max-w-[1344px] flex-wrap justify-center gap-3">
+      {/* Mobile et tablette : une seule ligne qui défile horizontalement, jusqu’aux bords de l’écran. */}
+      <div className="-mx-5 -my-2 flex snap-x gap-3 overflow-x-auto scroll-px-5 px-5 py-2 [scrollbar-width:none] sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:mx-auto lg:my-0 lg:max-w-[1344px] lg:flex-wrap lg:justify-center lg:overflow-visible lg:px-0 lg:py-0 [&::-webkit-scrollbar]:hidden [&>*]:snap-start">
         <Button type="button" variant={activeCategory === "toutes" ? "default" : "secondary"} aria-pressed={activeCategory === "toutes"} onClick={() => setActiveCategory("toutes")} className="shrink-0">
           Toutes les catégories
         </Button>
@@ -122,53 +148,42 @@ function Gallery() {
 
     <div className="bg-background">
       {visibleCategories.map((category, categoryIndex) => (
-        <section key={category.id} id={category.id} className={`section-shell section-reveal scroll-mt-28 ${["tone-cream", "tone-ivory", "tone-gold"][categoryIndex % 3]}`}>
+        <section key={category.id} id={category.id} className={`section-shell section-reveal scroll-mt-28 ${["tone-ivory", "tone-gold"][categoryIndex % 2]}`}>
           <div className="mx-auto max-w-[1344px]">
             <header className="mb-8 max-w-3xl">
-              <p className="eyebrow">Catégorie {String(categoryIndex + 1).padStart(2, "0")}</p>
-              <h2 className="section-title mt-3">{category.title}</h2>
-              <p className="mt-4 max-w-2xl leading-relaxed text-ink/65">{category.description}</p>
+              <h2 className="section-title mt-0 text-gold">{toTitleCase(category.title)}</h2>
+              <p className="mt-4 text-justify max-w-2xl leading-relaxed text-ink/65">{category.description}</p>
             </header>
-            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2">
               {category.activities.map((activity) => {
-                const videoPreview = activity.media.find((item) => item.type === "video");
-                const imagePreviews = activity.media.filter((item) => item.type === "image").slice(0, videoPreview ? 4 : 5);
-                const previewMedia = videoPreview
-                  ? [...imagePreviews, videoPreview]
-                  : activity.media.slice(0, 5);
-                const overflowImageIndex = previewMedia.reduce((lastImage, media, index) => media.type === "image" ? index : lastImage, -1);
-                const videoCount = activity.media.filter((item) => item.type === "video").length;
+                // L’aperçu reprend les 5 premiers médias, dans l’ordre du tableau `media`.
+                const previewMedia = activity.media.slice(0, 5);
+                const hiddenCount = activity.media.length - previewMedia.length;
                 if (previewMedia.length === 0) return null;
                 return (
-                  <article key={activity.id} className="edge group overflow-hidden rounded-3xl border border-gold/25 bg-[#f6eee4] text-stone-900 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-                    <button type="button" onClick={() => openActivity(activity)} aria-label={`Voir l’album de ${activity.title} : ${mediaCounts(activity.media)}`} className="relative block aspect-[16/10] w-full overflow-hidden text-left">
-                      <div className="absolute inset-0 grid grid-cols-6 grid-rows-2 gap-1.5 p-1.5">
-                        {previewMedia.map((media, index) => {
-                          const previewSrc = media.type === "image" ? media.src : media.poster ?? images.festival;
-                          const tileLayout = previewMedia.length < 4
-                            ? index === 0 ? "col-span-6 row-span-2" : "col-span-3 row-span-1"
-                            : index < 3 ? "col-span-2 row-span-1" : "col-span-3 row-span-1";
-                          return (
-                            <div key={media.id} className={`relative min-h-0 overflow-hidden rounded-xl ${tileLayout}`}>
-                              <img src={previewSrc} alt={media.type === "image" ? media.alt : `Aperçu vidéo : ${media.title}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" />
-                              <span className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                              {media.type === "video" && <span className="absolute inset-0 grid place-items-center text-white"><span className="grid size-11 place-items-center rounded-full bg-black/65 ring-1 ring-white/60"><Play size={19} fill="currentColor" /></span></span>}
-                              {index === overflowImageIndex && activity.media.length > previewMedia.length && (
-                                <span className="absolute inset-0 grid place-items-center bg-black/55 font-serif text-2xl text-white">+{activity.media.length - previewMedia.length}</span>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                      <span className="absolute bottom-3 left-3 flex items-center gap-2 rounded-full border border-white/25 bg-black/55 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
-                        <ImageIcon size={15} aria-hidden="true" /> {mediaCounts(activity.media)}
-                      </span>
-                      {videoCount > 0 && <span className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-black/55 text-white"><Film size={15} aria-hidden="true" /></span>}
-                    </button>
-                    <div className="p-6">
-                      <h3 className="font-serif text-2xl leading-tight">{activity.title}</h3>
-                      <p className="mt-3 min-h-20 text-sm leading-relaxed text-stone-700">{activity.description}</p>
-                      <Button type="button" variant="secondary" onClick={() => openActivity(activity)} className="mt-5 w-full justify-between">
+                  <article key={activity.id} id={activity.id} className="edge group scroll-mt-28 flex flex-col overflow-hidden rounded-3xl border border-gold/25 bg-[#fffdf9] text-stone-900 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div className="p-6 pb-4">
+                      <h3 className="font-serif text-2xl leading-tight text-gold">{activity.title}</h3>
+                      <p className="mt-3 text-justify text-sm leading-relaxed text-stone-700">{activity.description}</p>
+                    </div>
+                    {/* Tablette : la mosaïque s’étire pour combler l’écart laissé par une description plus courte que la carte voisine. */}
+                    <div className="mt-auto grid aspect-[4/5] sm:max-lg:flex-1 lg:aspect-[5/4] w-full grid-flow-col grid-cols-2 grid-rows-6 gap-1 px-1">
+                      {previewMedia.map((media, index) => {
+                        const previewSrc = media.type === "image" ? media.src : media.poster ?? images.festival;
+                        const isOverflowTile = hiddenCount > 0 && index === previewMedia.length - 1;
+                        return (
+                          <button key={media.id} type="button" onClick={() => openActivity(activity, index)} aria-label={isOverflowTile ? `Voir les ${hiddenCount} autres médias de ${activity.title}` : `Ouvrir : ${media.title}`} className={`relative min-h-0 overflow-hidden ${previewTileLayout(previewMedia.length, index)}`}>
+                            <img src={previewSrc} alt={media.type === "image" ? media.alt : `Aperçu vidéo : ${media.title}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 hover:scale-[1.04]" />
+                            {media.type === "video" && !isOverflowTile && <span className="absolute inset-0 grid place-items-center text-white"><span className="grid size-11 place-items-center rounded-full bg-black/65 ring-1 ring-white/60"><Play size={19} fill="currentColor" /></span></span>}
+                            {isOverflowTile && (
+                              <span className="absolute inset-0 grid place-items-center bg-black/55 font-serif text-3xl text-white">+{hiddenCount}</span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="flex justify-center p-6 pt-4">
+                      <Button type="button" variant="secondary" onClick={() => openActivity(activity)} className="gap-3">
                         <span className="flex items-center gap-2">Voir plus <span className="text-xs opacity-70">({mediaCounts(activity.media)})</span></span>
                         <ArrowRight size={16} />
                       </Button>

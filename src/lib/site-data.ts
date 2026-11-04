@@ -3,6 +3,7 @@ import craft from "../assets/illasso-craft.jpg";
 import territory from "../assets/illasso-territory.jpg";
 import king from "../assets/illasso-king-portrait.jpg";
 import palace from "../assets/illasso-palace-hero.jpg";
+import videoImmersionPoster from "../assets/video-immersion-illasso.jpg";
 
 export const images = { festival, craft, territory, king, palace };
 
@@ -104,7 +105,7 @@ export const galleryCategories: GalleryCategory[] = [
           { id: "danses-1", type: "image", src: images.festival, title: "Danses et rassemblements", alt: "Illustration d’un rassemblement culturel à Sakété" },
           { id: "danses-2", type: "image", src: images.craft, title: "Culture et transmission", alt: "Illustration de la transmission des traditions du royaume" },
           { id: "danses-3", type: "image", src: images.palace, title: "Patrimoine culturel", alt: "Illustration du patrimoine culturel d’Illassô" },
-          { id: "danses-video-1", type: "video", src: "https://youtu.be/jSu_f-unzZg", title: "Immersion dans l’histoire du Royaume d’Illasso", alt: "Vidéo : immersion dans l’histoire du Royaume d’Illasso" },
+          { id: "danses-video-1", type: "video", src: "https://youtu.be/jSu_f-unzZg", poster: videoImmersionPoster, title: "Immersion dans l’histoire du Royaume d’Illasso", alt: "Vidéo : immersion dans l’histoire du Royaume d’Illasso" },
           { id: "danses-4", type: "image", src: images.territory, title: "Rassemblement culturel — autre aperçu", alt: "Illustration supplémentaire de Rassemblement culturel" },
           { id: "danses-5", type: "image", src: images.king, title: "Rassemblement culturel — détail complémentaire", alt: "Autre illustration de Rassemblement culturel" },
         ],

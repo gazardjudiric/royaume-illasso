@@ -562,11 +562,11 @@ function Index() {
               génération en génération.
             </p>
           </div>
-          <div className="relative w-full overflow-hidden rounded-2xl border border-gold/35 bg-ink shadow-2xl sm:rounded-3xl">
+          <div className="relative mx-auto w-full overflow-hidden rounded-2xl border border-gold/35 bg-ink shadow-2xl sm:rounded-3xl lg:max-w-[1040px]">
             <div className="aspect-video w-full">
               <iframe
                 className="h-full w-full"
-                src="https://www.youtube-nocookie.com/embed/Zi_XLOBDo_Y"
+                src="https://www.youtube-nocookie.com/embed/jSu_f-unzZg"
                 title="Vidéo de présentation du Royaume ILLASO"
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"

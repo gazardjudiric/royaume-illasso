@@ -4,7 +4,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import logoUrl from "../assets/logo-illasso.jpeg";
 // Flou intégré au fichier : il reste solidaire de l'image au défilement, y compris sur mobile.
-import heroBackground from "../assets/illasso-palace-hero-blur.jpg";
+import heroBackground from "../assets/photos/royaume-illasso-cour-palais-royal-img36-flou.jpg";
 import throneWatermark from "../assets/royal-throne-watermark.webp";
 import crownWatermark from "../assets/royal-crown-watermark.webp";
 import palaceWatermark from "../assets/royal-palace-watermark.webp";
@@ -35,21 +35,22 @@ export const Route = createFileRoute("/")({
 });
 
 const heroSlides = [
-  { image: images.king, alt: "Portrait du Roi d’Illasso", label: "Le Roi" },
+  { image: images.carouselKing, alt: "Le Roi d’Illasso assis sur son trône", label: "Le Roi" },
   {
-    image: images.festival,
-    alt: "Célébration culturelle du Royaume d’Illasso",
-    label: "Cérémonies royales",
+    image: images.carouselStatue,
+    alt: "Statue d’une mère et de son enfant dans la cour du palais",
+    label: "La cour du palais",
   },
   {
-    image: images.craft,
-    alt: "Artisanat et savoir-faire d’Illasso",
-    label: "Culture & traditions",
+    image: images.carouselHall,
+    alt: "Salle de réception du palais royal d’Illasso",
+    label: "La salle de réception",
   },
   {
-    image: images.territory,
-    alt: "Terres et villages du Royaume d’Illasso",
-    label: "Territoire royal",
+    image: images.carouselDignitaries,
+    alt: "Statues de dignitaires assis devant le palais",
+    label: "Les statues des dignitaires",
+    position: "object-[85%_center]",
   },
 ] as const;
 
@@ -182,6 +183,7 @@ function HeroCarousel() {
             alt={slide.alt}
             className={[
               "hero-carousel-image absolute inset-0 h-full w-full object-cover",
+              "position" in slide ? slide.position : "",
               index === activeSlide ? "is-active" : "",
             ]
               .filter(Boolean)
@@ -280,7 +282,7 @@ function Index() {
       <section className="hero-section">
         <img
           src={heroBackground}
-          alt="Cour royale lors d’une cérémonie à Illasso"
+          alt="Vue extérieure du palais royal d’Illasso"
           className="hero-image"
           width={1920}
           height={1080}
@@ -372,12 +374,12 @@ function Index() {
             <div
               className="king-message-image-pair mx-auto mb-10 grid w-full max-w-xl grid-cols-2 items-center gap-3 lg:mb-0 lg:max-w-none"
               role="group"
-              aria-label="Portrait du Roi et palais royal"
+              aria-label="Portraits du Roi d’Illasso"
             >
               <figure className="king-message-image-wrap relative top-0 overflow-hidden rounded-2xl">
                 <img
-                  src={images.king}
-                  alt="Portrait éditorial du Roi d’Illasso"
+                  src={images.kingOnThrone}
+                  alt="Le Roi d’Illasso en tenue traditionnelle, assis sur son trône doré"
                   loading="lazy"
                   decoding="async"
                   className="king-message-photo aspect-[4/5] w-full object-cover"
@@ -387,8 +389,8 @@ function Index() {
               </figure>
               <figure className="king-message-image-wrap relative top-10 overflow-hidden rounded-2xl">
                 <img
-                  src={images.palace}
-                  alt="Palais royal du Royaume ILLASO"
+                  src={images.kingStanding}
+                  alt="Le Roi d’Illasso debout devant le palais"
                   loading="lazy"
                   decoding="async"
                   className="king-message-photo aspect-[4/5] w-full object-cover"
@@ -506,7 +508,7 @@ function Index() {
                     src={section.image}
                     alt={section.imageAlt}
                     loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.03]"
+                    className={`aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.03] ${section.imageClassName ?? ""}`}
                     width={1280}
                     height={960}
                   />
@@ -649,7 +651,7 @@ function Index() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {galleryPreviews.map(({ activity, category, cover }) => {
               const coverSrc =
-                cover.type === "image" ? cover.src : (cover.poster ?? images.festival);
+                cover.type === "image" ? cover.src : (cover.poster ?? images.videoPoster);
               return (
                 <Link
                   key={activity.id}

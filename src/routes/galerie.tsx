@@ -128,7 +128,7 @@ function Gallery() {
   const openActivity = (activity: GalleryActivity, mediaIndex = 0) => setViewer({ activity, mediaIndex });
 
   return <>
-    <PageIntro eyebrow="Galerie royale" eyebrowClassName="!text-white" title="La mémoire du royaume en images" titleClassName="text-4xl sm:text-6xl text-gold" image={images.festival} imageAlt="Illustration culturelle du Royaume d’Illasso">
+    <PageIntro eyebrow="Galerie royale" eyebrowClassName="!text-white" title="La mémoire du royaume en images" titleClassName="text-4xl sm:text-6xl text-gold" image={images.bannerGallery} imageAlt="Emblème du Royaume d’Illasso dans une salle du palais">
       Parcourez les traditions, les récits et les paysages d’Illasso.
     </PageIntro>
 
@@ -166,14 +166,15 @@ function Gallery() {
                       <h3 className="font-serif text-2xl leading-tight text-gold">{activity.title}</h3>
                       <p className="mt-3 text-justify text-sm leading-relaxed text-stone-700">{activity.description}</p>
                     </div>
-                    {/* Tablette : la mosaïque s’étire pour combler l’écart laissé par une description plus courte que la carte voisine. */}
+                    {/* Tablette : la mosaïque s’étire pour combler l’écart laissé par une description plus courte que la carte voisine.
+                        Images en position absolue : une photo verticale ne doit pas agrandir la mosaïque. */}
                     <div className="mt-auto grid aspect-[4/5] sm:max-lg:flex-1 lg:aspect-[5/4] w-full grid-flow-col grid-cols-2 grid-rows-6 gap-1 px-1">
                       {previewMedia.map((media, index) => {
-                        const previewSrc = media.type === "image" ? media.src : media.poster ?? images.festival;
+                        const previewSrc = media.type === "image" ? media.src : media.poster ?? images.videoPoster;
                         const isOverflowTile = hiddenCount > 0 && index === previewMedia.length - 1;
                         return (
                           <button key={media.id} type="button" onClick={() => openActivity(activity, index)} aria-label={isOverflowTile ? `Voir les ${hiddenCount} autres médias de ${activity.title}` : `Ouvrir : ${media.title}`} className={`relative min-h-0 overflow-hidden ${previewTileLayout(previewMedia.length, index)}`}>
-                            <img src={previewSrc} alt={media.type === "image" ? media.alt : `Aperçu vidéo : ${media.title}`} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 hover:scale-[1.04]" />
+                            <img src={previewSrc} alt={media.type === "image" ? media.alt : `Aperçu vidéo : ${media.title}`} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-[1.04]" />
                             {media.type === "video" && !isOverflowTile && <span className="absolute inset-0 grid place-items-center text-white"><span className="grid size-11 place-items-center rounded-full bg-black/65 ring-1 ring-white/60"><Play size={19} fill="currentColor" /></span></span>}
                             {isOverflowTile && (
                               <span className="absolute inset-0 grid place-items-center bg-black/55 font-serif text-3xl text-white">+{hiddenCount}</span>

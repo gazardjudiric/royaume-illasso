@@ -33,8 +33,8 @@ function Events() {
         eyebrowClassName="!text-white"
         title="Les rendez-vous du royaume."
         titleClassName="text-4xl sm:text-6xl text-gold"
-        image={images.festival}
-        imageAlt="Rassemblement lors d’une fête traditionnelle à Illasso"
+        image={images.bannerEvents}
+        imageAlt="Cour du palais royal d’Illasso et ses murs décorés"
       >
         Cérémonies officielles, fêtes culturelles, visites et rencontres.
       </PageIntro>

@@ -93,11 +93,11 @@ export function SiteChrome({ children }: { children: ReactNode }) {
   );
 }
 
-export function PageIntro({ eyebrow, title, image, imageAlt, children, titleClassName, eyebrowClassName }: { eyebrow: string; title: string; image: string; imageAlt: string; children: ReactNode; titleClassName?: string; eyebrowClassName?: string }) {
+export function PageIntro({ eyebrow, title, image, imageAlt, children, titleClassName, eyebrowClassName, contentClassName }: { eyebrow: string; title: string; image: string; imageAlt: string; children: ReactNode; titleClassName?: string; eyebrowClassName?: string; contentClassName?: string }) {
   return <section className="page-banner on-dark">
     <img src={image} alt={imageAlt} className="page-banner-image" width={1600} height={900} />
     <div className="page-banner-shade" />
-    <div className="relative z-10 mx-auto flex h-full max-w-[1344px] flex-col justify-end px-6 pb-10 pt-32 lg:px-12 lg:pb-14">
+    <div className={`relative z-10 mx-auto flex h-full max-w-[1344px] flex-col justify-end px-6 pb-10 pt-32 lg:px-12 lg:pb-14 ${contentClassName ?? ""}`}>
       <p className={`eyebrow ${eyebrowClassName ?? ""}`}>{eyebrow}</p>
       <h1 className={`mt-4 max-w-4xl font-serif leading-tight ${titleClassName ?? "text-4xl sm:text-6xl"}`}>{title}</h1>
       <div className="mt-4 max-w-2xl text-justify text-sm leading-relaxed text-cream/80 sm:text-base">{children}</div>

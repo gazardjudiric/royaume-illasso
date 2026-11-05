@@ -32,10 +32,11 @@ function About() {
       <PageIntro
         eyebrow="À propos"
         title="Illasso le Royaume Mère de Sakété"
-        titleClassName="text-[40px] text-gold"
+        titleClassName="text-[2.125rem] sm:text-[40px] text-gold"
+        contentClassName="max-sm:pt-40"
         eyebrowClassName="!text-white"
-        image={images.territory}
-        imageAlt="Paysage du territoire du Royaume d’Illasso"
+        image={images.bannerAbout}
+        imageAlt="Entrée du palais portant l’inscription Royaume d’Illasso"
       >
         Des migrations fondatrices aux traditions qui demeurent, cette terre porte la mémoire d’un
         peuple, d’une dynastie et d’un territoire.
@@ -45,8 +46,8 @@ function About() {
         <div className="mx-auto grid max-w-[1344px] items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <figure className="group overflow-hidden rounded-3xl border border-gold/25 shadow-2xl">
             <img
-              src={images.king}
-              alt="Portrait éditorial du Roi d’Illasso"
+              src={images.kingOnThrone}
+              alt="Le Roi d’Illasso en tenue traditionnelle, assis sur son trône doré"
               loading="lazy"
               decoding="async"
               className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.035]"
@@ -113,8 +114,8 @@ function About() {
             </div>
             <figure className="group relative overflow-hidden rounded-3xl border border-gold/25 shadow-2xl">
               <img
-                src={images.palace}
-                alt="Architecture et mémoire du palais royal d’Illasso"
+                src={images.historyThrone}
+                alt="Trône royal doré dans une salle du palais d’Illasso"
                 loading="lazy"
                 decoding="async"
                 className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.04]"
@@ -156,8 +157,8 @@ function About() {
           <div className="mt-10 grid overflow-hidden rounded-3xl border border-gold/20 bg-white/75 lg:grid-cols-[0.9fr_1.1fr]">
             <figure className="group relative min-h-[260px] overflow-hidden lg:min-h-[360px]">
               <img
-                src={images.territory}
-                alt="Paysage du territoire d’Illassô, marqué par l’histoire du royaume"
+                src={images.historyStatues}
+                alt="Statues blanches adossées au mur extérieur du palais"
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
@@ -207,8 +208,8 @@ function About() {
             </div>
             <figure className="group relative min-h-[240px] overflow-hidden lg:min-h-[300px]">
               <img
-                src={images.festival}
-                alt="Rassemblement culturel à Sakété illustrant la vie et le rayonnement de la commune"
+                src={images.historyEmblem}
+                alt="Emblème doré du Royaume d’Illasso"
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
@@ -233,8 +234,8 @@ function About() {
             </div>
             <figure className="group overflow-hidden rounded-3xl border border-gold/20 shadow-2xl lg:col-start-1 lg:row-span-4 lg:row-start-1">
               <img
-                src={images.craft}
-                alt="Artisanat et savoir-faire du royaume"
+                src={images.culture}
+                alt="Statues traditionnelles dans la cour du palais"
                 loading="lazy"
                 decoding="async"
                 className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.04]"
@@ -314,8 +315,8 @@ function About() {
             </div>
             <figure className="group overflow-hidden rounded-3xl border border-gold/20 shadow-2xl">
               <img
-                src={images.festival}
-                alt="Célébration culturelle et rassemblement des communautés de Sakété"
+                src={images.engagements}
+                alt="Cérémonie officielle entre le Roi d’Illassô et le Roi d’Ilé-Ifè"
                 loading="lazy"
                 decoding="async"
                 className="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-[1.04]"

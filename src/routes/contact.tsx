@@ -75,8 +75,8 @@ function Contact() {
         eyebrowClassName="!text-white"
         title="Écrire au palais royal."
         titleClassName="text-4xl sm:text-6xl text-gold"
-        image={images.palace}
-        imageAlt="Vue du palais royal d’Illasso"
+        image={images.bannerContact}
+        imageAlt="Emblème du Royaume d’Illasso dans une salle du palais"
       >
         Pour une demande officielle, une visite, une invitation ou une collaboration culturelle.
       </PageIntro>
